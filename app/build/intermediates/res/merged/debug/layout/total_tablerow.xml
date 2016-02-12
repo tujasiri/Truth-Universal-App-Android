@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@+id/merch_total"
+        android:singleLine="false"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline" />
+</TableRow>
+
+
+
+<!-- From: file:/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/src/main/res/layout/total_tablerow.xml -->

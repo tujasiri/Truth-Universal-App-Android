@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    tools:context="com.truthuniversal.tujasiri.truthuniversalapp.MerchItemDescriptionActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/itemDescIV"
+        android:minHeight="270dp"
+        android:minWidth="270dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/textViewItemName"
+        android:layout_weight="0.40" />
+
+    <TextView
+        android:layout_width="394dp"
+        android:layout_height="91dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/textViewLongDesc" />
+
+    <Button
+        android:layout_width="314dp"
+        android:layout_height="wrap_content"
+        android:text="ADD TO CART"
+        android:id="@+id/addToCartButton"
+        android:layout_weight="0.26"
+        android:layout_gravity="center_horizontal" />
+</LinearLayout><!-- From: file:/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/src/main/res/layout/merch_item_description.xml -->

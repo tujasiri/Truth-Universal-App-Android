@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.truthuniversal.tujasiri.truthuniversalapp"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="22" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.truthuniversal.tujasiri.truthuniversalapp.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.truthuniversal.tujasiri.truthuniversalapp.YouTubeActivity"
+            android:parentActivityName="com.truthuniversal.tujasiri.truthuniversalapp.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.truthuniversal.tujasiri.truthuniversalapp.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.truthuniversal.tujasiri.truthuniversalapp.YouTubePlayerUtil"
+            android:parentActivityName="com.truthuniversal.tujasiri.truthuniversalapp.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.truthuniversal.tujasiri.truthuniversalapp.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.truthuniversal.tujasiri.truthuniversalapp.NewsActivity"
+            android:parentActivityName="com.truthuniversal.tujasiri.truthuniversalapp.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.truthuniversal.tujasiri.truthuniversalapp.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.truthuniversal.tujasiri.truthuniversalapp.CheckoutCartItemViewActivity"
+            android:label="@string/title_activity_merch_item_description"
+            android:parentActivityName="com.truthuniversal.tujasiri.truthuniversalapp.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.truthuniversal.tujasiri.truthuniversalapp.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.truthuniversal.tujasiri.truthuniversalapp.MerchActivity"
+            android:label="@string/title_activity_merch_item_description"
+            android:parentActivityName="com.truthuniversal.tujasiri.truthuniversalapp.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.truthuniversal.tujasiri.truthuniversalapp.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.truthuniversal.tujasiri.truthuniversalapp.MerchItemDescriptionActivity"
+            android:label="@string/title_activity_merch_item_description"
+            android:parentActivityName="com.truthuniversal.tujasiri.truthuniversalapp.MerchActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.truthuniversal.tujasiri.truthuniversalapp.MerchActivity" />
+        </activity>
+        <activity
+            android:name="com.truthuniversal.tujasiri.truthuniversalapp.StripeActivity"
+            android:label="@string/title_activity_merch_item_description"
+            android:parentActivityName="com.truthuniversal.tujasiri.truthuniversalapp.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.truthuniversal.tujasiri.truthuniversalapp.MainActivity" />
+        </activity>
+    </application>
+
+</manifest>
