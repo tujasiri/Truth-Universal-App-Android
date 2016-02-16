@@ -6,11 +6,10 @@
 
 
     <TextView
-        android:id="@+id/tvMonthHeader"
+        android:id="@+id/tvMonthGroup"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="15dp"
-        android:textColor="#000000"
         android:textSize="17dip" />
 
 </LinearLayout>

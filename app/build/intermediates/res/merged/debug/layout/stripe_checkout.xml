@@ -350,17 +350,17 @@
         android:id="@+id/stripe_group4">
 
         <ExpandableListView
-            android:layout_width="102dp"
+            android:layout_width="100dp"
             android:layout_height="200dp"
-            android:id="@+id/expandableListViewYear"
+            android:id="@+id/expandableListViewMonth"
             android:layout_gravity="center_horizontal"
             android:choiceMode="singleChoice"
             android:layout_weight="0.18" />
 
         <ExpandableListView
-            android:layout_width="102dp"
+            android:layout_width="100dp"
             android:layout_height="200dp"
-            android:id="@+id/expandableListViewMonth"
+            android:id="@+id/expandableListViewYear"
             android:layout_gravity="center_horizontal"
             android:choiceMode="singleChoice"
            />

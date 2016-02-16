@@ -66,9 +66,20 @@ public class StripeActivity extends AppCompatActivity {
 
     public static final List<Map<String,String>> groupStateMapList = new ArrayList<Map<String,String>>();
 
+    public static final List<Map<String,String>> groupExpMonthMapList = new ArrayList<Map<String,String>>();
+
+    public static final List<Map<String,String>> groupExpYearMapList = new ArrayList<Map<String,String>>();
+
+
     public static final List<List<Map<String,String>>> childMap = new ArrayList<List<Map<String,String>>>();
 
     public static final List<List<Map<String,String>>> childStateMap = new ArrayList<List<Map<String,String>>>();
+
+    public static final List<List<Map<String,Integer>>> childExpMonthMap = new ArrayList<List<Map<String,Integer>>>();
+
+    public static final List<List<Map<String,Integer>>> childExpYearhMap = new ArrayList<List<Map<String,Integer>>>();
+
+
 
 
     public static final Map<String, String> childItemMap1 = new HashMap<String, String>();
@@ -110,6 +121,8 @@ public class StripeActivity extends AppCompatActivity {
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     ExpandableListView expStateListView;
+    ExpandableListView expMonthListView;
+    ExpandableListView expYearListView;
 
 
 
@@ -166,6 +179,12 @@ public class StripeActivity extends AppCompatActivity {
         // get the state listview
         expStateListView = (ExpandableListView) findViewById(R.id.stateExpandableListView);
 
+        // get the state listview
+        expMonthListView = (ExpandableListView) findViewById(R.id.expandableListViewMonth);
+
+        // get the state listview
+        expYearListView = (ExpandableListView) findViewById(R.id.expandableListViewYear);
+
         // preparing list data
         //prepareListData();
         listDataHeader.add("Countries");
@@ -187,6 +206,13 @@ public class StripeActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+
+        try {
+            childExpYearMapList = populateExpirationList(jsonMonthResource,"year");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         /*
         childMapList.add(childItemMap1);
         childMapList.add(childItemMap2);
@@ -198,13 +224,25 @@ public class StripeActivity extends AppCompatActivity {
 
         childMap.add(childMapList);
         childStateMap.add(childStateMapList);
+        childExpMonthMap.add(childExpMonthMapList);
+        childExpYearhMap.add(childExpYearMapList);
+
 
         groupItemMap.put("Group Item", "COUNTRY");
         groupStateItemMap.put("State Group Item", "STATE");
+        groupExpMonthItemMap.put("ExpMonth Group Item", "EXP. MONTH");
+        groupExpYearItemMap.put("ExpYear Group Item", "EXP. YEAR");
+
+
 
 
         groupMapList.add(groupItemMap);
         groupStateMapList.add(groupStateItemMap);
+        groupExpMonthMapList.add(groupExpMonthItemMap);
+        groupExpYearMapList.add(groupExpYearItemMap);
+
+
+
 
 
 
@@ -225,23 +263,6 @@ public class StripeActivity extends AppCompatActivity {
                             new int[] { R.id.tvChild}     // Data under the keys above go into these TextViews.
                     );
 
-            //expListView.setAdapter(expListAdapter);
-            /*
-
-            expListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    String cn = countryItemList.get(position).country_name;
-
-                    Toast.makeText(getApplicationContext(),
-                            String.format("COUNTRY ==> %s",cn),
-                            Toast.LENGTH_SHORT).show();
-
-
-                }
-
-            });
-            */
 
             expListView.setAdapter(expListAdapter);
 
@@ -249,7 +270,7 @@ public class StripeActivity extends AppCompatActivity {
 
         }
         catch(Exception e){
-            System.out.println(String.format("LISTADAPTER EX ==>%s", e.toString()));
+            System.out.println(String.format("MONTH LISTADAPTER EX ==>%s", e.toString()));
 
         }
 
@@ -427,9 +448,121 @@ public class StripeActivity extends AppCompatActivity {
         });
 
 
-        //********EXPANDABLE LIST VIEW FOR STATE
+        //********EXPANDABLE LISTVIEW FOR STATE
 
 
+        //*******EXPANDABLE LISTVIEW FOR EXP MONTH
+
+
+        try {
+
+            SimpleExpandableListAdapter expExpMonthListAdapter =
+                    new SimpleExpandableListAdapter(
+                            getApplication().getApplicationContext(),
+                            groupExpMonthMapList,              // Creating group List.
+                            R.layout.month_header,             // Group item layout XML.
+                            new String[] { "ExpMonth Group Item" },  // the key of group item.
+                            new int[] { R.id.tvMonthGroup },    // ID of each group item.-Data under the key goes into this TextView.
+                            childExpMonthMap,              // childData describes second-level <span id="IL_AD5" class="IL_AD">entries</span>.
+                            R.layout.month_child,             // Layout for sub-level entries(second level).
+                            new String[] {"month"},      // Keys in childData maps to display.
+                            new int[] { R.id.tvMonthChild}     // Data under the keys above go into these TextViews.
+                    );
+
+
+
+            expMonthListView.setAdapter(expExpMonthListAdapter);
+
+
+
+        }
+        catch(Exception e){
+            System.out.println(String.format("MONTH LISTADAPTER EX ==>%s", e.toString()));
+
+        }
+
+        expMonthListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                /*
+                int expMonth = childExpMonthMapList.get(childPosition).get("month");
+                Toast.makeText(getApplicationContext(),
+                        String.format("STATE ==> %d", expMonth),
+                        Toast.LENGTH_SHORT).show();
+                */
+
+
+
+                //expListView.setChoiceMode(ExpandableListView.CHOICE_MODE_SINGLE);
+                /*
+                EditText stateAbbrevText = (EditText) findViewById(R.id.xxxxx);
+                stateAbbrevText.setText(String.format("%d",expMonth));
+                */
+
+                expMonthListView.collapseGroup(groupPosition);
+
+                return false;
+            }
+        });
+
+
+        // Listview Group click listener
+        expMonthListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v,
+                                        int groupPosition, long id) {
+                // Toast.makeText(getApplicationContext(),
+                // "Group Clicked " + listDataHeader.get(groupPosition),
+                // Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+
+        // Listview Group expanded listener
+        expMonthListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+
+            @Override
+            public void onGroupExpand(int groupPosition) {
+                Toast.makeText(getApplicationContext(),
+                        groupExpMonthMapList.get(groupPosition) + " Month Expanded",
+                        Toast.LENGTH_SHORT).show();
+
+                ExpandableListView emlv = (ExpandableListView) findViewById(R.id.expandableListViewMonth);
+                emlv.setMinimumHeight(1300);
+
+                ViewGroup.LayoutParams stateLayoutParams = expMonthListView.getLayoutParams();
+                stateLayoutParams.height = 1300;
+                expMonthListView.setLayoutParams(stateLayoutParams);
+                expMonthListView.requestLayout();
+            }
+        });
+
+        // Listview Group collasped listener
+        expMonthListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+
+            @Override
+            public void onGroupCollapse(int groupPosition) {
+                Toast.makeText(getApplicationContext(),
+                        groupExpMonthMapList.get(groupPosition) + " Month Collapsed",
+                        Toast.LENGTH_SHORT).show();
+
+                ViewGroup.LayoutParams monthLayoutParams = expMonthListView.getLayoutParams();
+                monthLayoutParams.height = 100;
+                expMonthListView.setLayoutParams(monthLayoutParams);
+                expMonthListView.requestLayout();
+
+            }
+        });
+
+
+
+        //*******END EXPANDABLE LISTVIEW FOR EXP MONTH
+
+
+
+        //*******EXPANDABLE LISTVIEW FOR EXP YEAR
+        //*******END EXPANDABLE LISTVIEW FOR EXP YEAR
 
 
 
@@ -643,11 +776,11 @@ public class StripeActivity extends AppCompatActivity {
 
             JSONObject jsonObject = new JSONObject(jsonExpArray.get(idx).toString());
 
-            Map<String,Integer> tempCountryMap = new HashMap<String,Integer>();
+            Map<String,Integer> tempExpMap = new HashMap<String,Integer>();
 
-            tempCountryMap.put(resourceKey.toString(),(Integer)jsonObject.get(resourceKey.toString()));
+            tempExpMap.put(resourceKey.toString(),(Integer)jsonObject.get(resourceKey.toString()));
 
-            mapList.add(tempCountryMap);
+            mapList.add(tempExpMap);
 
 
         }//end for
