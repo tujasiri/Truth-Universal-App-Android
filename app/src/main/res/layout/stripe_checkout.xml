@@ -177,7 +177,7 @@
            android:ems="10"
            android:id="@+id/state_edit_text"
            android:layout_weight="0.06"
-           android:text="STATE COUNTRY" />
+           android:text="YOUR STATE" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -207,7 +207,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="SELECT COUNTRY:"
+        android:text="COUNTRY:"
         android:ems="10"
         android:id="@+id/country_textview"
         android:layout_weight="0.06"
@@ -348,6 +348,45 @@
         android:layout_height="match_parent"
         android:weightSum="1"
         android:id="@+id/stripe_group4">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/exp_month_value_textview"
+            android:layout_weight="0.06"
+            android:ems="4"
+            android:autoText="false"
+            android:textAlignment="center"
+            android:textStyle="normal"
+            android:layout_gravity="left|center_horizontal"
+            android:gravity="center_vertical|left"
+        android:text="09" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/exp_year_value_textview"
+            android:layout_weight="0.06"
+            android:ems="4"
+            android:autoText="false"
+            android:textAlignment="center"
+            android:textStyle="normal"
+            android:layout_gravity="center"
+            android:gravity="center_vertical|center"
+            android:text="2099" />
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:id="@+id/stripe_group5">
 
         <ExpandableListView
             android:layout_width="100dp"

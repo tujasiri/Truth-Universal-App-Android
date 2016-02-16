@@ -75,9 +75,13 @@ public class StripeActivity extends AppCompatActivity {
 
     public static final List<List<Map<String,String>>> childStateMap = new ArrayList<List<Map<String,String>>>();
 
-    public static final List<List<Map<String,Integer>>> childExpMonthMap = new ArrayList<List<Map<String,Integer>>>();
+    //public static final List<List<Map<String,Integer>>> childExpMonthMap = new ArrayList<List<Map<String,Integer>>>();
 
-    public static final List<List<Map<String,Integer>>> childExpYearhMap = new ArrayList<List<Map<String,Integer>>>();
+    //public static final List<List<Map<String,Integer>>> childExpYearhMap = new ArrayList<List<Map<String,Integer>>>();
+
+    public static final List<List<Map<String,String>>> childExpMonthMap = new ArrayList<List<Map<String,String>>>();
+
+    public static final List<List<Map<String,String>>> childExpYearhMap = new ArrayList<List<Map<String,String>>>();
 
 
 
@@ -101,8 +105,13 @@ public class StripeActivity extends AppCompatActivity {
 
     public static List<Map<String,String>> childMapList = new ArrayList<Map<String,String>>();
     public static List<Map<String,String>> childStateMapList = new ArrayList<Map<String,String>>();
-    public static List<Map<String,Integer>> childExpMonthMapList = new ArrayList<Map<String,Integer>>();
-    public static List<Map<String,Integer>> childExpYearMapList = new ArrayList<Map<String,Integer>>();
+
+    //public static List<Map<String,Integer>> childExpMonthMapList = new ArrayList<Map<String,Integer>>();
+    public static List<Map<String,String>> childExpMonthMapList = new ArrayList<Map<String,String>>();
+
+    //public static List<Map<String,Integer>> childExpYearMapList = new ArrayList<Map<String,Integer>>();
+    public static List<Map<String,String>> childExpYearMapList = new ArrayList<Map<String,String>>();
+
 
 
 
@@ -201,16 +210,19 @@ public class StripeActivity extends AppCompatActivity {
         childStateMapList = populateStateItemList();
 
         try {
+            //childExpMonthMapList = populateExpirationList(jsonMonthResource,"month");
             childExpMonthMapList = populateExpirationList(jsonMonthResource,"month");
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
 
         try {
-            childExpYearMapList = populateExpirationList(jsonMonthResource,"year");
+            childExpYearMapList = populateExpirationList(jsonYearResource,"year");
         } catch (JSONException e) {
             e.printStackTrace();
+            System.out.println("JSON EXCEPTION");
         }
 
         /*
@@ -484,20 +496,22 @@ public class StripeActivity extends AppCompatActivity {
         expMonthListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                /*
-                int expMonth = childExpMonthMapList.get(childPosition).get("month");
+
+                System.out.println("xxxxxx==>");
+
+                String expMonth = childExpMonthMapList.get(childPosition).get("month");
                 Toast.makeText(getApplicationContext(),
-                        String.format("STATE ==> %d", expMonth),
+                        String.format("MONTH ==> %s", expMonth),
                         Toast.LENGTH_SHORT).show();
-                */
+
 
 
 
                 //expListView.setChoiceMode(ExpandableListView.CHOICE_MODE_SINGLE);
-                /*
-                EditText stateAbbrevText = (EditText) findViewById(R.id.xxxxx);
-                stateAbbrevText.setText(String.format("%d",expMonth));
-                */
+
+                TextView expirationMonth = (TextView) findViewById(R.id.exp_month_value_textview);
+                expirationMonth.setText(String.format("%d",Integer.parseInt(expMonth)));
+
 
                 expMonthListView.collapseGroup(groupPosition);
 
@@ -562,6 +576,33 @@ public class StripeActivity extends AppCompatActivity {
 
 
         //*******EXPANDABLE LISTVIEW FOR EXP YEAR
+
+        try {
+
+            SimpleExpandableListAdapter expExpYearListAdapter =
+                    new SimpleExpandableListAdapter(
+                            getApplication().getApplicationContext(),
+                            groupExpYearMapList,              // Creating group List.
+                            R.layout.year_header,             // Group item layout XML.
+                            new String[] { "ExpYear Group Item" },  // the key of group item.
+                            new int[] { R.id.tvYearGroup },    // ID of each group item.-Data under the key goes into this TextView.
+                            childExpYearhMap,              // childData describes second-level <span id="IL_AD5" class="IL_AD">entries</span>.
+                            R.layout.year_child,             // Layout for sub-level entries(second level).
+                            new String[] {"year"},      // Keys in childData maps to display.
+                            new int[] { R.id.tvYearChild}     // Data under the keys above go into these TextViews.
+                    );
+
+
+
+            expYearListView.setAdapter(expExpYearListAdapter);
+
+
+
+        }
+        catch(Exception e){
+            System.out.println(String.format("MONTH LISTADAPTER EX ==>%s", e.toString()));
+
+        }
         //*******END EXPANDABLE LISTVIEW FOR EXP YEAR
 
 
@@ -591,6 +632,9 @@ public class StripeActivity extends AppCompatActivity {
                 String recipientZip = "";
                 double recipientTotal = checkoutCart.calculateTotal();
                 double recipientShipping = checkoutCart.calculateShipping();
+
+                int recipientCardExpirationMonth=0;
+                int recipientCardExpirationYear=0;
 
                 Map<String,List<Map<String, String>>> recipentItemsDict = new HashMap<String,List<Map<String,String>>>();
                 //List<Map<String, String>> encodedMerchItemsList = new ArrayList<Map<String,String>>();
@@ -635,6 +679,10 @@ public class StripeActivity extends AppCompatActivity {
 
                 EditText recipZip = (EditText) findViewById(R.id.zip_edit_text);
                 recipientZip = recipZip.getText().toString().trim();
+
+
+                TextView recipCardExpirationMonth = (TextView) findViewById(R.id.exp_month_value_textview);
+                recipientCardExpirationMonth  = Integer.parseInt(recipCardExpirationMonth.getText().toString());
 
                 //emailDataMap.put("recpientEmail");
                 emailDataMap.put("recipientName",recipientName);
@@ -690,7 +738,7 @@ public class StripeActivity extends AppCompatActivity {
                 */
 
                 cardMap.put("number", recipientCreditCard.toString().trim());
-                cardMap.put("exp_month", 12);
+                cardMap.put("exp_month", recipientCardExpirationMonth);
                 cardMap.put("exp_year", 2020);
 
                 JSONObject cardMapJSON = new JSONObject(cardMap);
@@ -766,19 +814,35 @@ public class StripeActivity extends AppCompatActivity {
         return merchItemsList;
     }
 
-    public List<Map<String,Integer>> populateExpirationList(String jsonString, String resourceKey) throws JSONException {
+    //public List<Map<String,Integer>> populateExpirationList(String jsonString, String resourceKey) throws JSONException {
+    public List<Map<String,String>> populateExpirationList(String jsonString, String resourceKey) throws JSONException {
 
-        List<Map<String,Integer>> mapList = new ArrayList<Map<String,Integer>>();
+
+        //List<Map<String,Integer>> mapList = new ArrayList<Map<String,Integer>>();
+
+        List<Map<String,String>> mapList = new ArrayList<Map<String,String>>();
+
 
         JSONArray jsonExpArray = new JSONArray(jsonString);
 
         for(int idx=0; idx<jsonExpArray.length();idx++){
 
+
+            System.out.println("here");
+
             JSONObject jsonObject = new JSONObject(jsonExpArray.get(idx).toString());
 
-            Map<String,Integer> tempExpMap = new HashMap<String,Integer>();
+            //Map<String,Integer> tempExpMap = new HashMap<String,Integer>();
 
-            tempExpMap.put(resourceKey.toString(),(Integer)jsonObject.get(resourceKey.toString()));
+            Map<String,String> tempExpMap = new HashMap<String,String>();
+
+            System.out.println("here here");
+
+            //tempExpMap.put(resourceKey.toString(),(Integer)jsonObject.get(resourceKey.toString()));
+
+            tempExpMap.put(resourceKey.toString(),(String)jsonObject.get(resourceKey.toString()));
+
+            System.out.println("here here here");
 
             mapList.add(tempExpMap);
 
