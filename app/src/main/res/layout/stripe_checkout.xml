@@ -402,6 +402,7 @@
             android:id="@+id/expandableListViewYear"
             android:layout_gravity="center_horizontal"
             android:choiceMode="singleChoice"
+            android:layout_weight="0.18"
            />
 
     <EditText

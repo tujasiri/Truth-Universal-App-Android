@@ -1,9 +1,11 @@
 package com.truthuniversal.tujasiri.truthuniversalapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Layout;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -11,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.SimpleExpandableListAdapter;
@@ -505,12 +508,10 @@ public class StripeActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
 
 
-
-
                 //expListView.setChoiceMode(ExpandableListView.CHOICE_MODE_SINGLE);
 
                 TextView expirationMonth = (TextView) findViewById(R.id.exp_month_value_textview);
-                expirationMonth.setText(String.format("%d",Integer.parseInt(expMonth)));
+                expirationMonth.setText(String.format("%d", Integer.parseInt(expMonth)));
 
 
                 expMonthListView.collapseGroup(groupPosition);
@@ -603,6 +604,81 @@ public class StripeActivity extends AppCompatActivity {
             System.out.println(String.format("MONTH LISTADAPTER EX ==>%s", e.toString()));
 
         }
+
+        expYearListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+
+                System.out.println("yyyyyy==>");
+
+                String expYear = childExpYearMapList.get(childPosition).get("year");
+                Toast.makeText(getApplicationContext(),
+                        String.format("MONTH ==> %s", expYear),
+                        Toast.LENGTH_SHORT).show();
+
+
+                //expListView.setChoiceMode(ExpandableListView.CHOICE_MODE_SINGLE);
+
+                TextView expirationYear = (TextView) findViewById(R.id.exp_year_value_textview);
+                expirationYear.setText(String.format("%d", Integer.parseInt(expYear)));
+
+
+                expYearListView.collapseGroup(groupPosition);
+
+                return false;
+            }
+        });
+
+
+        expYearListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v,
+                                        int groupPosition, long id) {
+                // Toast.makeText(getApplicationContext(),
+                // "Group Clicked " + listDataHeader.get(groupPosition),
+                // Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+
+        // Listview Group expanded listener
+        expYearListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+
+            @Override
+            public void onGroupExpand(int groupPosition) {
+                Toast.makeText(getApplicationContext(),
+                        groupExpYearMapList.get(groupPosition) + " Year Expanded",
+                        Toast.LENGTH_SHORT).show();
+
+                ExpandableListView eylv = (ExpandableListView) findViewById(R.id.expandableListViewYear);
+                eylv.setMinimumHeight(700);
+
+                ViewGroup.LayoutParams yearLayoutParams = expYearListView.getLayoutParams();
+                yearLayoutParams.height = 700;
+                expYearListView.setLayoutParams(yearLayoutParams);
+                expYearListView.requestLayout();
+            }
+        });
+
+        // Listview Group collasped listener
+        expYearListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+
+            @Override
+            public void onGroupCollapse(int groupPosition) {
+                Toast.makeText(getApplicationContext(),
+                        groupExpYearMapList.get(groupPosition) + " Year Collapsed",
+                        Toast.LENGTH_SHORT).show();
+
+                ViewGroup.LayoutParams yearLayoutParams = expYearListView.getLayoutParams();
+                yearLayoutParams.height = 100;
+                expYearListView.setLayoutParams(yearLayoutParams);
+                expYearListView.requestLayout();
+
+            }
+        });
+
+
         //*******END EXPANDABLE LISTVIEW FOR EXP YEAR
 
 
@@ -684,6 +760,9 @@ public class StripeActivity extends AppCompatActivity {
                 TextView recipCardExpirationMonth = (TextView) findViewById(R.id.exp_month_value_textview);
                 recipientCardExpirationMonth  = Integer.parseInt(recipCardExpirationMonth.getText().toString());
 
+                TextView recipCardExpirationYear = (TextView) findViewById(R.id.exp_year_value_textview);
+                recipientCardExpirationYear  = Integer.parseInt(recipCardExpirationYear.getText().toString());
+
                 //emailDataMap.put("recpientEmail");
                 emailDataMap.put("recipientName",recipientName);
                 emailDataMap.put("recipientEmail",recipientEmail);
@@ -700,10 +779,6 @@ public class StripeActivity extends AppCompatActivity {
                 encodedMerchItemsList = encodeMerchObject(checkoutCart.itemsInCart());
 
                 emailDataMap.put("recipientItems", encodedMerchItemsList);
-
-
-
-
 
 
                 System.out.println("STRIPE Button Clicked!");
@@ -739,7 +814,7 @@ public class StripeActivity extends AppCompatActivity {
 
                 cardMap.put("number", recipientCreditCard.toString().trim());
                 cardMap.put("exp_month", recipientCardExpirationMonth);
-                cardMap.put("exp_year", 2020);
+                cardMap.put("exp_year", recipientCardExpirationYear);
 
                 JSONObject cardMapJSON = new JSONObject(cardMap);
 
@@ -751,8 +826,11 @@ public class StripeActivity extends AppCompatActivity {
 
 
                 //new AsyncStripeTask().execute(STRIPE_URL, chargeMapJSON.toString());
+                LinearLayout stripeLayout = (LinearLayout)findViewById(R.id.stripe_checkout);
 
-                if(formIsValid())
+
+
+                if(formIsValid(stripeLayout))
                      new AsyncStripeTask().execute(STRIPE_URL, chargeMapJSON);
 
 
@@ -775,7 +853,39 @@ public class StripeActivity extends AppCompatActivity {
 
     }
 
-    public boolean formIsValid(){
+    public boolean formIsValid(LinearLayout formLayout){
+
+        for(int i=0;i<formLayout.getChildCount();i++)
+        {
+            View v = formLayout.getChildAt(i);
+
+
+
+
+            if(v instanceof EditText){
+
+                EditText et = (EditText)findViewById(v.getId());
+
+                System.out.println(String.format("EDITTEXT in formIsValid==> %s\n\n",et.getText()));
+
+
+                if(et.getText().toString().equals("")){
+                    //make text red
+                    et.setBackgroundColor(Color.RED);
+                    System.out.println("EMPTY");
+                }
+
+                System.out.println(String.format("view in formIsValid==> %s ID==>%s ResType ==> %s\n\n ",v.toString(),getResources().getResourceName(v.getId()),getResources().getResourceTypeName(v.getId())));
+
+
+            }
+            else if(v instanceof EditText){
+
+            }
+
+        }
+
+
 
         return true;
     }
