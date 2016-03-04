@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.text.Layout;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,7 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
 
 
 /**
@@ -830,14 +832,18 @@ public class StripeActivity extends AppCompatActivity {
 
 
 
-                if(formIsValid(stripeLayout))
-                     new AsyncStripeTask().execute(STRIPE_URL, chargeMapJSON);
+                if(formIsValid(stripeLayout)) {
+                    new AsyncStripeTask().execute(STRIPE_URL, chargeMapJSON);
 
 
-                //if charge is successful send email
+                    //if charge is successful send email
 
 
-                new AsyncStripeEmailTask().execute(STRIPE_EMAIL_URL, emailDataMap);
+                    new AsyncStripeEmailTask().execute(STRIPE_EMAIL_URL, emailDataMap);
+                }
+                else{
+                    //Show TOAST
+                }
 
 
 
@@ -853,18 +859,41 @@ public class StripeActivity extends AppCompatActivity {
 
     }
 
+    public void resetEditTextBackgrounds(LinearLayout frmLayout){
+
+        for(int i=0;i<frmLayout.getChildCount();i++){
+
+            View view = frmLayout.getChildAt(i);
+
+
+            if(view instanceof EditText){
+
+                EditText editText = (EditText)findViewById(view.getId());
+                editText.setBackgroundColor(Color.TRANSPARENT);
+
+            }
+
+
+        }
+
+
+
+    }
+
     public boolean formIsValid(LinearLayout formLayout){
+
+        boolean anyFieldNotValid = false;
+
+        resetEditTextBackgrounds(formLayout);
 
         for(int i=0;i<formLayout.getChildCount();i++)
         {
             View v = formLayout.getChildAt(i);
 
-
-
-
             if(v instanceof EditText){
 
                 EditText et = (EditText)findViewById(v.getId());
+
 
                 System.out.println(String.format("EDITTEXT in formIsValid==> %s\n\n",et.getText()));
 
@@ -873,10 +902,32 @@ public class StripeActivity extends AppCompatActivity {
                     //make text red
                     et.setBackgroundColor(Color.RED);
                     System.out.println("EMPTY");
+                    anyFieldNotValid = true;
                 }
 
-                System.out.println(String.format("view in formIsValid==> %s ID==>%s ResType ==> %s\n\n ",v.toString(),getResources().getResourceName(v.getId()),getResources().getResourceTypeName(v.getId())));
+                System.out.println(String.format("view in formIsValid==> %s ID==>%s ResType ==> %s\n\n ", v.toString(), getResources().getResourceName(v.getId()), getResources().getResourceTypeName(v.getId())));
 
+                System.out.println(String.format("INPUT TYPE ID VALUE==>%d, MAIL CONSTANT ==>%d", et.getInputType(),InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS));
+                System.out.println(String.format("INPUT TYPE ID VALUE HEX==>%s", Integer.toHexString(et.getInputType())));
+
+
+
+                //if (et.getInputType() == InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS){
+
+                    if ((et.getInputType()-1) == InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS){
+
+                        System.out.println(String.format("INPUT ID ==>%d", (et.getInputType())));
+
+                    if(!AppUtilities.isEmailValid(et.getText().toString().trim())) {
+
+                        et.setBackgroundColor(Color.RED);
+                    }
+                    else {
+                        System.out.println("EMAIL is INVALID");
+                        anyFieldNotValid = true;
+                    }
+
+                }
 
             }
             else if(v instanceof EditText){
@@ -886,6 +937,8 @@ public class StripeActivity extends AppCompatActivity {
         }
 
 
+        if(anyFieldNotValid)
+            return false;
 
         return true;
     }
