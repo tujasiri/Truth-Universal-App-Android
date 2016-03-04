@@ -875,7 +875,10 @@ public class StripeActivity extends AppCompatActivity {
                     System.out.println("EMPTY");
                 }
 
-                System.out.println(String.format("view in formIsValid==> %s ID==>%s ResType ==> %s\n\n ",v.toString(),getResources().getResourceName(v.getId()),getResources().getResourceTypeName(v.getId())));
+                System.out.println(String.format("view in formIsValid==> %s ID==>%s ResType ==> %s\n\n ", v.toString(), getResources().getResourceName(v.getId()), getResources().getResourceTypeName(v.getId())));
+
+
+                System.out.println(String.format("INPUT ID ==>%d",((EditText) v).getInputType()));
 
 
             }

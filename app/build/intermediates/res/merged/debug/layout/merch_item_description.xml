@@ -35,4 +35,4 @@
         android:id="@+id/addToCartButton"
         android:layout_weight="0.26"
         android:layout_gravity="center_horizontal" />
-</LinearLayout><!-- From: file:/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/src/main/res/layout/merch_item_description.xml -->
+</LinearLayout><!-- From: file:/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/src/main/res/layout/merch_item_description.xml -->
