@@ -2,137 +2,137 @@
 <items version="2" >
 
     <item
-        jar="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars/libs/internal_impl-22.2.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
-        <dex dex="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.1-c94074ee62199ae604d2f349a5e8c803c19dc4ab.jar" />
-    </item>
-    <item
-        jar="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/libs/YouTubeAndroidPlayerApi.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="3c4f96ff493456651cc7bdb0b47e10eb25545a16">
-        <dex dex="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/build/intermediates/pre-dexed/debug/YouTubeAndroidPlayerApi-e88f2920791dd0f6ceeb050cc6bb9adf239f3d73.jar" />
-    </item>
-    <item
-        jar="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/libs/httpclient-cache-4.5.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="6247317086cb12d2a5fe3296afeccb1d3e00525c">
-        <dex dex="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/build/intermediates/pre-dexed/debug/httpclient-cache-4.5.1-b8488008c9a9f060f6548b43991ef266e52a15b8.jar" />
-    </item>
-    <item
-        jar="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/libs/httpclient-win-4.5.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="1829f9483cded887b5e7eb354d9a86e81d377962">
-        <dex dex="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/build/intermediates/pre-dexed/debug/httpclient-win-4.5.1-48a8f0668478f08ce5302dca1ffc01fad051e28f.jar" />
-    </item>
-    <item
-        jar="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/libs/jna-platform-4.1.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="23457ad1cf75c2c16763330de5565a0e67b4bc0a">
-        <dex dex="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/build/intermediates/pre-dexed/debug/jna-platform-4.1.0-bea41ebfaebea4644c9708b6862e391d3680af2a.jar" />
-    </item>
-    <item
-        jar="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/libs/commons-logging-1.2.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="4bfc12adfe4842bf07b657f0369c4cb522955686">
-        <dex dex="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/build/intermediates/pre-dexed/debug/commons-logging-1.2-b7934fe388dfea2d2c8ec5b2e377ba36e95c4b15.jar" />
-    </item>
-    <item
-        jar="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
-        <dex dex="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/build/intermediates/pre-dexed/debug/classes-5fddcda3107048bc3404b86ea6b3b94dbf4895f0.jar" />
-    </item>
-    <item
-        jar="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/libs/httpmime-4.5.1.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="96823b9421ebb9f490dec837d9f96134e864e3a7">
-        <dex dex="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/build/intermediates/pre-dexed/debug/httpmime-4.5.1-2660cf33596d6ef04a4c4001fd1fc20909e4fd22.jar" />
-    </item>
-    <item
-        jar="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/libs/picasso-2.5.2.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
-        <dex dex="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-33b83a4762874c11d82c50c3a46c3f45e13412ce.jar" />
-    </item>
-    <item
-        jar="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/libs/httpclient-4.5.1.jar"
+        jar="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/libs/httpclient-4.5.1.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="7e3cecc566df91338c6c67883b89ddd05a17db43">
-        <dex dex="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/build/intermediates/pre-dexed/debug/httpclient-4.5.1-6fe51381db4fb7dd537c2b3210ba0af6af760f5a.jar" />
+        <dex dex="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/build/intermediates/pre-dexed/debug/httpclient-4.5.1-453c3495bb797ac2b926ce59e967455c6a1bb6ed.jar" />
     </item>
     <item
-        jar="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars/classes.jar"
+        jar="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/libs/jna-platform-4.1.0.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="f8efd0096475e0daf054267b61544e10dc776503">
-        <dex dex="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/build/intermediates/pre-dexed/debug/classes-3b9fe48aca1040cbcadaf6f12a1777f394708796.jar" />
+        sha1="23457ad1cf75c2c16763330de5565a0e67b4bc0a">
+        <dex dex="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/build/intermediates/pre-dexed/debug/jna-platform-4.1.0-6ad85cfc305fa581c13d3637efd48d17e42285b4.jar" />
     </item>
     <item
-        jar="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/libs/stripe-java-1.40.0.jar"
+        jar="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/libs/stripe-java-1.40.0.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="ea7852585a78f79d85083f29e4a5050679d707b6">
-        <dex dex="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/build/intermediates/pre-dexed/debug/stripe-java-1.40.0-03aa32bafb77c3492b7c0b9daf78c21dc6670521.jar" />
+        <dex dex="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/build/intermediates/pre-dexed/debug/stripe-java-1.40.0-94b9e22ee540d1a24c5c21bff5bd5b442cc17c8d.jar" />
     </item>
     <item
-        jar="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/libs/gradle-wrapper.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="e614e3b2edc63a9cc423437dea087c91962254f5">
-        <dex dex="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/build/intermediates/pre-dexed/debug/gradle-wrapper-b4a50a8e23e5dc0fef74ca6e6ce4057908299bce.jar" />
-    </item>
-    <item
-        jar="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/libs/jna-4.1.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="1c12d070e602efd8021891cdd7fd18bc129372d4">
-        <dex dex="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/build/intermediates/pre-dexed/debug/jna-4.1.0-6e8ad926044de293086dcd7adc243238d731faef.jar" />
-    </item>
-    <item
-        jar="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/libs/httpcore-4.4.3.jar"
+        jar="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/libs/httpcore-4.4.3.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="e876a79d561e5c6207b78d347e198c8c4531a5e5">
-        <dex dex="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/build/intermediates/pre-dexed/debug/httpcore-4.4.3-b10b4ce5e78099c0c318a380e53ba4e05600c3ce.jar" />
+        <dex dex="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/build/intermediates/pre-dexed/debug/httpcore-4.4.3-5e245438f4a0e62d5d397aa6d225b30e38f0e5d9.jar" />
     </item>
     <item
-        jar="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/libs/commons-codec-1.9.jar"
+        jar="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/libs/httpmime-4.5.1.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="9ce04e34240f674bc72680f8b843b1457383161a">
-        <dex dex="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/build/intermediates/pre-dexed/debug/commons-codec-1.9-9c47054ac42172e4138d69371dee349cf39a40e3.jar" />
+        sha1="96823b9421ebb9f490dec837d9f96134e864e3a7">
+        <dex dex="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/build/intermediates/pre-dexed/debug/httpmime-4.5.1-bca7893a380e16102a9c13499a1fe97b0e53e6a2.jar" />
     </item>
     <item
-        jar="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/libs/fluent-hc-4.5.1.jar"
+        jar="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/libs/httpclient-cache-4.5.1.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="2a4bafd995d1403c26d874bf52f76e7f74af8b9a">
-        <dex dex="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/build/intermediates/pre-dexed/debug/fluent-hc-4.5.1-4a6f8df50fdfcd2b83b8746dd017a61695b89cce.jar" />
+        sha1="6247317086cb12d2a5fe3296afeccb1d3e00525c">
+        <dex dex="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/build/intermediates/pre-dexed/debug/httpclient-cache-4.5.1-1bd76ec93a57f06aa87fafd837ef26d4cbbeb448.jar" />
     </item>
     <item
-        jar="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/libs/gson-2.2.4.jar"
+        jar="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/libs/gradle-wrapper.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e614e3b2edc63a9cc423437dea087c91962254f5">
+        <dex dex="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/build/intermediates/pre-dexed/debug/gradle-wrapper-ad1f88dd26fe851e787b0347c180ebe47628730f.jar" />
+    </item>
+    <item
+        jar="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars/libs/internal_impl-22.2.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
+        <dex dex="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.1-7363986f448c4fb5ca5ee1629f123f43cf3320aa.jar" />
+    </item>
+    <item
+        jar="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/libs/gson-2.2.4.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="a60a5e993c98c864010053cb901b7eab25306568">
-        <dex dex="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/build/intermediates/pre-dexed/debug/gson-2.2.4-f5d4f1a66d9b9c532d1e6d03dffe466b8d767947.jar" />
+        <dex dex="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/build/intermediates/pre-dexed/debug/gson-2.2.4-b983abe2b81ab5aa76120ed925f7f529e0357b8e.jar" />
     </item>
     <item
-        jar="/Users/tujasiri/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.1/support-annotations-22.2.1.jar"
+        jar="/Users/tajiriujasiri/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-84191c956ba73048ec910e8c58067ae704549fa2.jar" />
+    </item>
+    <item
+        jar="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/libs/commons-logging-1.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4bfc12adfe4842bf07b657f0369c4cb522955686">
+        <dex dex="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/build/intermediates/pre-dexed/debug/commons-logging-1.2-efd338b0860bd1116c40778c52ba7d063d5d1dc0.jar" />
+    </item>
+    <item
+        jar="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/libs/fluent-hc-4.5.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="2a4bafd995d1403c26d874bf52f76e7f74af8b9a">
+        <dex dex="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/build/intermediates/pre-dexed/debug/fluent-hc-4.5.1-1fa140326002ba3288fd672f8984fcdd68da8eb3.jar" />
+    </item>
+    <item
+        jar="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/libs/jna-4.1.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1c12d070e602efd8021891cdd7fd18bc129372d4">
+        <dex dex="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/build/intermediates/pre-dexed/debug/jna-4.1.0-8ffc98d057f5ecd8cf65e468b6fa954173d3ad23.jar" />
+    </item>
+    <item
+        jar="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/libs/commons-codec-1.9.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9ce04e34240f674bc72680f8b843b1457383161a">
+        <dex dex="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/build/intermediates/pre-dexed/debug/commons-codec-1.9-1b44c031e4b7c5089e8501705c5a1c6d8db44b23.jar" />
+    </item>
+    <item
+        jar="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/build/intermediates/pre-dexed/debug/classes-31b82b5da6c59976cf4f1e3c042da5a5cbbaa998.jar" />
+    </item>
+    <item
+        jar="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/libs/httpclient-win-4.5.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1829f9483cded887b5e7eb354d9a86e81d377962">
+        <dex dex="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/build/intermediates/pre-dexed/debug/httpclient-win-4.5.1-b1a5025220ed366e7048561a837d6ae58ca0f59d.jar" />
+    </item>
+    <item
+        jar="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/libs/YouTubeAndroidPlayerApi.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="3c4f96ff493456651cc7bdb0b47e10eb25545a16">
+        <dex dex="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/build/intermediates/pre-dexed/debug/YouTubeAndroidPlayerApi-3da55e021566bab83d581bd90b7331011c8d3cb2.jar" />
+    </item>
+    <item
+        jar="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
+        <dex dex="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/build/intermediates/pre-dexed/debug/classes-bbe17e2163ba27049bf50609780ebd6fda770c8b.jar" />
+    </item>
+    <item
+        jar="/Users/tajiriujasiri/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.1/support-annotations-22.2.1.jar"
         jumboMode="false"
         revision="22.0.1"
         sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
-        <dex dex="/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.1-86f88c53ad44386119c0844f7e5138e798f8e778.jar" />
+        <dex dex="/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.1-1d76b6c7c4a85484cb42f5c8f5cad2667c1c1b6f.jar" />
     </item>
 
 </items>

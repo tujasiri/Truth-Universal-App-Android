@@ -56,6 +56,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class StripeActivity extends AppCompatActivity {
 
+    int responseCode = 0;
 
     //public static final String STRIPE_URL = "http://truthuniversal.com/ios/stripe-payment.php";
     public static final String STRIPE_URL = "http://truthuniversal.com/android/stripe-payment-test.php";
@@ -296,6 +297,8 @@ public class StripeActivity extends AppCompatActivity {
         // setting list adapter
         //expListView.setAdapter(listAdapter);
 
+
+
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
@@ -313,6 +316,7 @@ public class StripeActivity extends AppCompatActivity {
 
                 return false;
             }
+
         });
 
 
@@ -835,9 +839,7 @@ public class StripeActivity extends AppCompatActivity {
                 if(formIsValid(stripeLayout)) {
                     new AsyncStripeTask().execute(STRIPE_URL, chargeMapJSON);
 
-
                     //if charge is successful send email
-
 
                     new AsyncStripeEmailTask().execute(STRIPE_EMAIL_URL, emailDataMap);
                 }
@@ -890,6 +892,28 @@ public class StripeActivity extends AppCompatActivity {
         {
             View v = formLayout.getChildAt(i);
 
+            System.out.println(String.format("\n\nFULL VIEW INFO==> %s\n\n ", v.toString()));;
+
+            if(v instanceof ExpandableListView) {
+
+                ExpandableListView childExpListView = (ExpandableListView)v;
+
+               int selectedId = (int) childExpListView.getSelectedId();
+               int selectedIdPosition = (int) childExpListView.getSelectedPosition();
+
+               System.out.println(String.format("EXPANDABLELISTVIEW SELECTED ID ==>%d POSITIION==>%d",selectedId,selectedIdPosition));
+
+            }
+
+            if(v instanceof LinearLayout) {
+
+                //recursive call if nested LinearLayout is encountered
+                LinearLayout childFormLayout = (LinearLayout)v;
+
+                if(!formIsValid(childFormLayout))
+                    anyFieldNotValid = true;
+            }
+
             if(v instanceof EditText){
 
                 EditText et = (EditText)findViewById(v.getId());
@@ -930,9 +954,12 @@ public class StripeActivity extends AppCompatActivity {
                 }
 
             }
+
+            /*
             else if(v instanceof EditText){
 
             }
+            */
 
         }
 
@@ -1115,7 +1142,9 @@ public class StripeActivity extends AppCompatActivity {
 
                     outputStreamWriter.flush();
 
-                int responseCode = con.getResponseCode();
+                responseCode = con.getResponseCode();
+                //int responseCode = con.getResponseCode();
+
                 System.out.println("\nSending 'POST' request to URL : " + url);
                 //System.out.println("Post parameters : " + params.toString());
 
@@ -1163,7 +1192,7 @@ public class StripeActivity extends AppCompatActivity {
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
 
-            System.out.println(String.format("here in STRIPE async task"));
+            System.out.println(String.format("here in STRIPE async task...responseCode ==%d",responseCode));
 
             try {
                 this.get(1000, TimeUnit.MILLISECONDS);
