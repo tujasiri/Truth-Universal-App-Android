@@ -177,7 +177,7 @@
            android:ems="10"
            android:id="@+id/state_edit_text"
            android:layout_weight="0.06"
-           android:text="YOUR STATE" />
+           android:text="" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -222,7 +222,7 @@
         android:id="@+id/country_edit_text"
         android:layout_weight="0.06"
         android:autoText="false"
-        android:text="USA" />
+        android:text="" />
 
     <ExpandableListView
         android:layout_width="match_parent"
@@ -361,7 +361,7 @@
             android:textStyle="normal"
             android:layout_gravity="left|center_horizontal"
             android:gravity="center_vertical|left"
-        android:text="09" />
+        android:text="" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -375,7 +375,7 @@
             android:textStyle="normal"
             android:layout_gravity="center"
             android:gravity="center_vertical|center"
-            android:text="2099" />
+            android:text="" />
 
 
 
