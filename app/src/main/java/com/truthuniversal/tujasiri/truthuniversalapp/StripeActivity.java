@@ -764,11 +764,20 @@ public class StripeActivity extends AppCompatActivity {
 
 
                 TextView recipCardExpirationMonth = (TextView) findViewById(R.id.exp_month_value_textview);
-                recipientCardExpirationMonth  = Integer.parseInt(recipCardExpirationMonth.getText().toString());
+
+                System.out.println(String.format("expMONTH ==> %s",recipCardExpirationMonth.getText().toString()));
+
+                if (recipCardExpirationMonth.getText().toString() != null)
+                    recipientCardExpirationMonth  = Integer.parseInt(recipCardExpirationMonth.getText().toString());
+                else
+                    recipientCardExpirationMonth  = 0;
 
                 TextView recipCardExpirationYear = (TextView) findViewById(R.id.exp_year_value_textview);
 
-                recipientCardExpirationYear  = Integer.parseInt(recipCardExpirationYear.getText().toString());
+                if(recipCardExpirationYear.getText().toString() != null)
+                    recipientCardExpirationYear  = Integer.parseInt(recipCardExpirationYear.getText().toString());
+                else
+                    recipientCardExpirationYear  = 0;
 
                 //emailDataMap.put("recpientEmail");
                 emailDataMap.put("recipientName",recipientName);
