@@ -15,4 +15,4 @@
         android:layout_width="match_parent"
         android:layout_height="443dp"
         android:id="@+id/news_layout_listview" />
-</LinearLayout><!-- From: file:/Users/tajiriujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/src/main/res/layout/news_layout.xml -->
+</LinearLayout><!-- From: file:/C:/Users/tujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/src/main/res/layout/news_layout.xml -->

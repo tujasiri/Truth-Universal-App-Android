@@ -767,17 +767,17 @@ public class StripeActivity extends AppCompatActivity {
 
                 System.out.println(String.format("expMONTH ==> %s",recipCardExpirationMonth.getText().toString()));
 
-                if (recipCardExpirationMonth.getText().toString() != null)
-                    recipientCardExpirationMonth  = Integer.parseInt(recipCardExpirationMonth.getText().toString());
-                else
+                if ((recipCardExpirationMonth.getText().toString().isEmpty()))
                     recipientCardExpirationMonth  = 0;
+                else
+                    recipientCardExpirationMonth  = Integer.parseInt(recipCardExpirationMonth.getText().toString());
 
                 TextView recipCardExpirationYear = (TextView) findViewById(R.id.exp_year_value_textview);
 
-                if(recipCardExpirationYear.getText().toString() != null)
-                    recipientCardExpirationYear  = Integer.parseInt(recipCardExpirationYear.getText().toString());
-                else
+                if(recipCardExpirationYear.getText().toString().isEmpty())
                     recipientCardExpirationYear  = 0;
+                else
+                    recipientCardExpirationYear  = Integer.parseInt(recipCardExpirationYear.getText().toString());
 
                 //emailDataMap.put("recpientEmail");
                 emailDataMap.put("recipientName",recipientName);
@@ -871,12 +871,19 @@ public class StripeActivity extends AppCompatActivity {
 
     }
 
-    public void resetEditTextBackgrounds(LinearLayout frmLayout){
+    //public void resetEditTextBackgrounds(LinearLayout frmLayout){
+    public void resetBackgrounds(LinearLayout frmLayout){
 
         for(int i=0;i<frmLayout.getChildCount();i++){
 
             View view = frmLayout.getChildAt(i);
 
+            if(view instanceof TextView){
+
+                TextView textView = (TextView)findViewById(view.getId());
+                textView.setBackgroundColor(Color.TRANSPARENT);
+
+            }
 
             if(view instanceof EditText){
 
@@ -896,7 +903,8 @@ public class StripeActivity extends AppCompatActivity {
 
         boolean anyFieldNotValid = false;
 
-        resetEditTextBackgrounds(formLayout);
+        //resetEditTextBackgrounds(formLayout);
+        resetBackgrounds(formLayout);
 
         for(int i=0;i<formLayout.getChildCount();i++)
         {
@@ -924,15 +932,24 @@ public class StripeActivity extends AppCompatActivity {
                     anyFieldNotValid = true;
             }
 
+            if(v instanceof TextView){
+                TextView tv = (TextView)findViewById(v.getId());
+
+                if(tv.getText().toString().isEmpty()){
+                    //make text red
+                    tv.setBackgroundColor(Color.RED);
+                    System.out.println("EMPTY ... ");
+                    anyFieldNotValid = true;
+                }
+            }
+
             if(v instanceof EditText){
 
                 EditText et = (EditText)findViewById(v.getId());
 
-
                 System.out.println(String.format("EDITTEXT in formIsValid==> %s\n\n",et.getText()));
-
-
-                if(et.getText().toString().equals("")){
+                //if(et.getText().toString().equals("")){
+                if(et.getText().toString().isEmpty()){
                     //make text red
                     et.setBackgroundColor(Color.RED);
                     System.out.println("EMPTY");
