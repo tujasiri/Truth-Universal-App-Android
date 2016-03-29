@@ -153,6 +153,8 @@ public class StripeActivity extends AppCompatActivity {
 
     CountryItem ci = new CountryItem();
 
+    Map<String,Object> emailDataMap = new HashMap<String, Object>();
+
 
 
 
@@ -724,7 +726,7 @@ public class StripeActivity extends AppCompatActivity {
                 JSONArray encodedMerchItemsList = new JSONArray();
 
 
-                Map<String,Object> emailDataMap = new HashMap<String, Object>();
+                //Map<String,Object> emailDataMap = new HashMap<String, Object>();
 
 
 
@@ -851,10 +853,11 @@ public class StripeActivity extends AppCompatActivity {
 
                     //if charge is successful send email
 
-                    new AsyncStripeEmailTask().execute(STRIPE_EMAIL_URL, emailDataMap);
+                    //new AsyncStripeEmailTask().execute(STRIPE_EMAIL_URL, emailDataMap);
                 }
                 else{
                     //Show TOAST
+                    System.out.println("***HERE***");
                 }
 
 
@@ -928,8 +931,11 @@ public class StripeActivity extends AppCompatActivity {
                 //recursive call if nested LinearLayout is encountered
                 LinearLayout childFormLayout = (LinearLayout)v;
 
-                if(!formIsValid(childFormLayout))
+                if(!formIsValid(childFormLayout)) {
+                    System.out.println("SETTING IT 1 ");
+
                     anyFieldNotValid = true;
+                }
             }
 
             if(v instanceof TextView){
@@ -943,13 +949,13 @@ public class StripeActivity extends AppCompatActivity {
                 }
             }
 
-            if(v instanceof EditText){
+            if(v instanceof EditText) {
 
-                EditText et = (EditText)findViewById(v.getId());
+                EditText et = (EditText) findViewById(v.getId());
 
-                System.out.println(String.format("EDITTEXT in formIsValid==> %s\n\n",et.getText()));
+                System.out.println(String.format("EDITTEXT in formIsValid==> %s\n\n", et.getText()));
                 //if(et.getText().toString().equals("")){
-                if(et.getText().toString().isEmpty()){
+                if (et.getText().toString().isEmpty()) {
                     //make text red
                     et.setBackgroundColor(Color.RED);
                     System.out.println("EMPTY");
@@ -958,27 +964,28 @@ public class StripeActivity extends AppCompatActivity {
 
                 System.out.println(String.format("view in formIsValid==> %s ID==>%s ResType ==> %s\n\n ", v.toString(), getResources().getResourceName(v.getId()), getResources().getResourceTypeName(v.getId())));
 
-                System.out.println(String.format("INPUT TYPE ID VALUE==>%d, MAIL CONSTANT ==>%d", et.getInputType(),InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS));
+                System.out.println(String.format("INPUT TYPE ID VALUE==>%d, MAIL CONSTANT ==>%d", et.getInputType(), InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS));
                 System.out.println(String.format("INPUT TYPE ID VALUE HEX==>%s", Integer.toHexString(et.getInputType())));
-
 
 
                 //if (et.getInputType() == InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS){
 
-                    if ((et.getInputType()-1) == InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS){
+                if ((et.getInputType() - 1) == InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS) {
 
-                        System.out.println(String.format("INPUT ID ==>%d", (et.getInputType())));
+                    System.out.println(String.format("INPUT ID ==>%d", (et.getInputType())));
 
-                    if(!AppUtilities.isEmailValid(et.getText().toString().trim())) {
+
+                    if (!AppUtilities.isEmailValid(et.getText().toString().trim())) {
 
                         et.setBackgroundColor(Color.RED);
                     }
-                    else {
+                }
+                else {
                         System.out.println("EMAIL is INVALID");
                         anyFieldNotValid = true;
-                    }
-
                 }
+
+                //}
 
             }
 
@@ -1126,6 +1133,10 @@ public class StripeActivity extends AppCompatActivity {
 
                     String url = (String)params[0];
                     JSONObject stripeMapJSON = (JSONObject)params[1];
+
+                    //Map<String,Object> emailDataMapping = new HashMap<String, Object>();
+
+
                 //Map stripeMap = (Map)params[1];
 
 
@@ -1227,6 +1238,8 @@ public class StripeActivity extends AppCompatActivity {
                 System.out.println(String.format("AsyncStripeExce",ex.toString()));
 
             }
+//check emailDataMap before calling..
+            new AsyncStripeEmailTask().execute(STRIPE_EMAIL_URL, emailDataMap);
 
         }
     }
