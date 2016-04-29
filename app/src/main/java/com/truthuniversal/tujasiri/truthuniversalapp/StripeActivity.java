@@ -972,18 +972,20 @@ public class StripeActivity extends AppCompatActivity {
 
                 if ((et.getInputType() - 1) == InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS) {
 
-                    System.out.println(String.format("INPUT ID ==>%d", (et.getInputType())));
-
+                    System.out.println(String.format("INPUT ID ==>%d i GET TEXT==>%s", (et.getInputType()), et.getText().toString()));
 
                     if (!AppUtilities.isEmailValid(et.getText().toString().trim())) {
 
                         et.setBackgroundColor(Color.RED);
+                        anyFieldNotValid = true;
                     }
                 }
+                /*
                 else {
-                        System.out.println("EMAIL is INVALID");
+                        System.out.println("EMAIL is INVALID!!  EDIT TEXT INPUT TYPE VALUE==>"+et.getInputType());
                         anyFieldNotValid = true;
                 }
+                */
 
                 //}
 
