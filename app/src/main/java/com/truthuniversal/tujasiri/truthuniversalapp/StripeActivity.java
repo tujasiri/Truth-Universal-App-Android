@@ -1241,7 +1241,8 @@ public class StripeActivity extends AppCompatActivity {
 
             }
 //check emailDataMap before calling..
-            new AsyncStripeEmailTask().execute(STRIPE_EMAIL_URL, emailDataMap);
+            if(responseCode == 200)
+                new AsyncStripeEmailTask().execute(STRIPE_EMAIL_URL, emailDataMap);
 
         }
     }
