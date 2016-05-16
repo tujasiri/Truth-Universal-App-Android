@@ -57,6 +57,7 @@ import java.util.concurrent.TimeUnit;
 public class StripeActivity extends AppCompatActivity {
 
     int responseCode = 0;
+    StringBuffer response = new StringBuffer();
 
     //public static final String STRIPE_URL = "http://truthuniversal.com/ios/stripe-payment.php";
     public static final String STRIPE_URL = "http://truthuniversal.com/android/stripe-payment-test.php";
@@ -1196,7 +1197,8 @@ public class StripeActivity extends AppCompatActivity {
 
                 BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
                 String inputLine;
-                StringBuffer response = new StringBuffer();
+                //StringBuffer response = new StringBuffer();
+                response = new StringBuffer();
 
                 while ((inputLine = in.readLine()) != null) {
                     response.append(inputLine + "\n");
@@ -1241,9 +1243,19 @@ public class StripeActivity extends AppCompatActivity {
 
             }
 //check emailDataMap before calling..
-            if(responseCode == 200)
-                new AsyncStripeEmailTask().execute(STRIPE_EMAIL_URL, emailDataMap);
+            if(responseCode == 200){
+                System.out.println("xxxs");
 
+                if(response.substring(0) == "Invalid positive integer")
+                    System.out.println("no good invalid positive integer");
+
+                //if(response.substring(0) == "The card number is not a valid credit card number.")
+
+                if(response.toString().trim().equals("Your card number is incorrect."))
+                    System.out.println("invalid card number");
+                    //new AsyncStripeEmailTask().execute(STRIPE_EMAIL_URL, emailDataMap);
+
+            }
         }
     }
 
