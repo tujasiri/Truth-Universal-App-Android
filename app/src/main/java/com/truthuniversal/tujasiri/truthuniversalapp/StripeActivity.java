@@ -1560,13 +1560,16 @@ public class StripeActivity extends AppCompatActivity {
 
         for(String s: stripeErrors) {
 
-            System.out.println(String.format("stripeResponse ==>%s \ns==>%s\n",stripeResponse.trim(),s.trim()));
+            if (stripeResponse.trim().length() >= s.trim().length())
+            System.out.println(String.format("stripeResponse ==>%s \ns==>%s\n stripeResponse SUBSTRING ==>%s\n",stripeResponse.trim(),s.trim(),stripeResponse.trim().substring(0,s.length())));
+
 
             if (s.trim().equals(stripeResponse.trim()))
                 return Boolean.FALSE;
 
             if (stripeResponse.trim().length() >= s.trim().length())
-                if(stripeResponse.trim().substring(0,s.length()-1).equals(s.trim()))
+                //if(stripeResponse.trim().substring(0,s.length()-1).equals(s.trim()))
+                if(stripeResponse.trim().substring(0,s.length()).equals(s.trim()))
                     return Boolean.FALSE;
         }
 
