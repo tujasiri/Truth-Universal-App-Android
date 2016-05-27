@@ -1,40 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:id="@+id/delete_item_from_cart_scrollview">
 
-    <TextView
-        android:layout_width="373dp"
-        android:layout_height="wrap_content"
-        android:text="REMOVE ITEM FROM CART?"
-        android:id="@+id/dialog_info_textview"
-        android:textSize="20dp"
-        android:textStyle="bold|italic"
-        android:gravity="center|center_vertical|fill_horizontal|center_horizontal|fill_vertical" />
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1"
-        android:id="@+id/delete_item_from_cart_buttons"
-        android:gravity="center">>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="YES"
-        android:id="@+id/yesButton"
-        android:gravity="center" />
+        <TextView
+            android:layout_width="373dp"
+            android:layout_height="wrap_content"
+            android:text="REMOVE ITEM FROM CART?"
+            android:id="@+id/dialog_info_textview"
+            android:textSize="20dp"
+            android:textStyle="bold|italic"
+            android:gravity="center|center_vertical|fill_horizontal|center_horizontal|fill_vertical" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:id="@+id/delete_item_from_cart_buttons"
+            android:gravity="center">>
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="NO"
-        android:id="@+id/noButton"
-        android:gravity="center" />
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="YES"
+            android:id="@+id/yesButton"
+            android:gravity="center" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NO"
+            android:id="@+id/noButton"
+            android:gravity="center" />
+        </LinearLayout>
+
     </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

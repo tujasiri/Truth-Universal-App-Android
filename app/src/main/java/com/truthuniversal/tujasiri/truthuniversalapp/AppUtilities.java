@@ -43,4 +43,8 @@ public class AppUtilities {
         }
         return isValid;
     }
+
+    public static void makeToast(String toastMessage){
+
+    }
 }

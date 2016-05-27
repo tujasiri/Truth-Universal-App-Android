@@ -39,6 +39,7 @@ import java.io.Reader;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -1234,6 +1235,8 @@ public class StripeActivity extends AppCompatActivity {
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
 
+            Boolean noCardError=Boolean.TRUE;
+
             System.out.println(String.format("here in STRIPE async task...responseCode ==%d",responseCode));
 
             try {
@@ -1243,19 +1246,48 @@ public class StripeActivity extends AppCompatActivity {
 
             }
 //check emailDataMap before calling..
-            if(responseCode == 200){
-                System.out.println("xxxs");
 
-                if(response.substring(0) == "Invalid positive integer")
+            if(responseCode == 200){
+                System.out.println(String.format("xxxs, Boolean==>%s\n",noCardError.toString().trim()));
+                /*
+                if(response.toString().trim().equals("Invalid positive integer.")){
                     System.out.println("no good invalid positive integer");
 
-                //if(response.substring(0) == "The card number is not a valid credit card number.")
+                    noCardError = Boolean.FALSE;
+                    //show dialog -- could not complete transaction
+                }
 
-                if(response.toString().trim().equals("Your card number is incorrect."))
+                if(response.toString().trim().equals("Your card number is incorrect.")){
                     System.out.println("invalid card number");
                     //new AsyncStripeEmailTask().execute(STRIPE_EMAIL_URL, emailDataMap);
+                    noCardError = Boolean.FALSE;
+                }
+
+                if(response.toString().trim().equals("The card number is not a valid credit card number.")){
+                    System.out.println("invalid card number");
+                    //new AsyncStripeEmailTask().execute(STRIPE_EMAIL_URL, emailDataMap);
+                    noCardError = Boolean.FALSE;
+                }
+                */
+
+                noCardError = noStripeError(response.toString().trim());
 
             }
+
+            //else   show dialog -- could not complete transaction
+
+            //if(noCardError == Boolean.TRUE)
+            if (noCardError.toString().trim().equals("true")){
+                showStripeErrorDialog("SUCCESS!");
+                new AsyncStripeEmailTask().execute(STRIPE_EMAIL_URL, emailDataMap);
+            }
+            else
+            {
+                showStripeErrorDialog(response.toString().trim());
+                System.out.println("error encountered");
+
+            }
+
         }
     }
 
@@ -1324,7 +1356,6 @@ public class StripeActivity extends AppCompatActivity {
                 System.out.println("Post parameters : " + stripeMapJSON.toString());
 
                 System.out.println("STRIPE EMAIL Response Code : " + responseCode);
-
                 //if response code == 200
 
                 BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -1489,6 +1520,59 @@ public class StripeActivity extends AppCompatActivity {
         }
 
     }//End AsyncCountryTask
+
+    //void showDeleteDialog(int listItemPostion){
+    void showStripeErrorDialog(String stripeErrorMessage){
+        android.support.v4.app.FragmentManager manager= getSupportFragmentManager();
+        StripeCardErrorDialog stripeCardErrorDialog = new StripeCardErrorDialog();
+
+        Bundle args = new Bundle();
+        args.putString("stripeErr",stripeErrorMessage);
+        //deleteItemDialog.setArguments(args);
+        stripeCardErrorDialog.setArguments(args);
+
+        stripeCardErrorDialog.show(manager, "stripeCardErrorDialog");
+
+    }
+
+    //Boolean getStripeError(String stripeResponse){
+    Boolean noStripeError(String stripeResponse){
+
+       String[] stripeErrors = {
+               /*invalid_number*/	"The card number is not a valid credit card number.",
+               /*invalid_number*/	"Your card number is not a valid credit card number.",
+               /*invalid_expiry_month*/	"The card's expiration month is invalid.",
+               /*invalid_expiry_month*/	"Your card's expiration month is invalid.",
+               /*invalid_expiry_year*/	"The card's expiration year is invalid.",
+               /*invalid_expiry_year*/	"Your card's expiration year is invalid.",
+               /*invalid_cvc*/	"The card's security code is invalid.",
+               /*invalid_cvc*/	"Your card's security code is invalid.",
+               /*incorrect_number*/	"The card number is incorrect.",
+               /*incorrect_number*/	"Your card number is incorrect.",
+               /*expired_card*/	"The card has expired.",
+               /*expired_card*/	"Your card has expired.",
+               /*incorrect_cvc*/ "The card's security code is incorrect.",
+               /*incorrect_zip*/ "The card's zip code failed validation.",
+               /*card_declined*/ "The card was declined.",
+               /*card_declined*/ "Your card was declined.",
+               /*missing*/ "There is no card on a customer that is being charged.",
+               /*processing_error*/	 "An error occurred while processing the card."};
+
+        for(String s: stripeErrors) {
+
+            System.out.println(String.format("stripeResponse ==>%s \ns==>%s\n",stripeResponse.trim(),s.trim()));
+
+            if (s.trim().equals(stripeResponse.trim()))
+                return Boolean.FALSE;
+
+            if (stripeResponse.trim().length() >= s.trim().length())
+                if(stripeResponse.trim().substring(0,s.length()-1).equals(s.trim()))
+                    return Boolean.FALSE;
+        }
+
+
+        return Boolean.TRUE;
+    }
 }
 
 

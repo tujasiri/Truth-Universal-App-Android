@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="373dp"
+        android:layout_height="wrap_content"
+        android:text="ORDER PROCESSING ERROR!"
+        android:id="@+id/dialog_error_text"
+        android:textSize="20dp"
+        android:textStyle="bold|italic"
+        android:gravity="center|center_vertical|fill_horizontal|center_horizontal|fill_vertical" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:id="@+id/dismiss_button"
+        android:gravity="center">>
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:id="@+id/ok_button"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+</LinearLayout>
