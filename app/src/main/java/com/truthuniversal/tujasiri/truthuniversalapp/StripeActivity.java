@@ -897,10 +897,7 @@ public class StripeActivity extends AppCompatActivity {
 
             }
 
-
         }
-
-
 
     }
 
@@ -1278,8 +1275,11 @@ public class StripeActivity extends AppCompatActivity {
 
             //if(noCardError == Boolean.TRUE)
             if (noCardError.toString().trim().equals("true")){
+                LinearLayout strLayout = (LinearLayout)findViewById(R.id.stripe_checkout);
+                clearForm(strLayout);
                 showStripeErrorDialog("SUCCESS!");
-                new AsyncStripeEmailTask().execute(STRIPE_EMAIL_URL, emailDataMap);
+                //new AsyncStripeEmailTask().execute(STRIPE_EMAIL_URL, emailDataMap);
+
             }
             else
             {
@@ -1419,8 +1419,7 @@ public class StripeActivity extends AppCompatActivity {
 
             is.close();
 
-
-         jsonString = writer.toString();
+        jsonString = writer.toString();
 
         System.out.println(String.format("JSON RAW RESOURCE %s ==> %s",fileName,jsonString));
 
@@ -1516,7 +1515,6 @@ public class StripeActivity extends AppCompatActivity {
             super.onPostExecute(aBoolean);
 
             System.out.println(String.format("here in COUNTRY async task"));
-
         }
 
     }//End AsyncCountryTask
@@ -1552,7 +1550,9 @@ public class StripeActivity extends AppCompatActivity {
                /*expired_card*/	"The card has expired.",
                /*expired_card*/	"Your card has expired.",
                /*incorrect_cvc*/ "The card's security code is incorrect.",
+               /*incorrect_cvc*/ "Your card's security code is incorrect.",
                /*incorrect_zip*/ "The card's zip code failed validation.",
+               /*incorrect_zip*/ "Your card's zip code failed validation.",
                /*card_declined*/ "The card was declined.",
                /*card_declined*/ "Your card was declined.",
                /*missing*/ "There is no card on a customer that is being charged.",
@@ -1561,7 +1561,7 @@ public class StripeActivity extends AppCompatActivity {
         for(String s: stripeErrors) {
 
             if (stripeResponse.trim().length() >= s.trim().length())
-            System.out.println(String.format("stripeResponse ==>%s \ns==>%s\n stripeResponse SUBSTRING ==>%s\n",stripeResponse.trim(),s.trim(),stripeResponse.trim().substring(0,s.length())));
+                System.out.println(String.format("stripeResponse ==>%s \ns==>%s\n stripeResponse SUBSTRING ==>%s\n",stripeResponse.trim(),s.trim(),stripeResponse.trim().substring(0,s.length())));
 
 
             if (s.trim().equals(stripeResponse.trim()))
@@ -1573,8 +1573,42 @@ public class StripeActivity extends AppCompatActivity {
                     return Boolean.FALSE;
         }
 
-
         return Boolean.TRUE;
+    }
+
+    public void clearForm(LinearLayout frmLayout){
+
+        for(int i=0;i<frmLayout.getChildCount();i++){
+
+            View view = frmLayout.getChildAt(i);
+
+            /*
+            if(view instanceof TextView){
+
+                TextView textView = (TextView)findViewById(view.getId());
+                textView.setBackgroundColor(Color.TRANSPARENT);
+
+
+            }
+            */
+            if(view instanceof ExpandableListView){
+
+
+            }
+
+            if(view instanceof LinearLayout) {
+                LinearLayout chldFormLayout = (LinearLayout) view;
+                clearForm(chldFormLayout);
+            }
+
+            if(view instanceof EditText){
+
+                EditText editText = (EditText)findViewById(view.getId());
+                editText.getText().clear();
+
+            }
+
+        }
     }
 }
 

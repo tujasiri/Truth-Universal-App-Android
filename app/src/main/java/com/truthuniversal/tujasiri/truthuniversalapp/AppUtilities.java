@@ -3,7 +3,12 @@ package com.truthuniversal.tujasiri.truthuniversalapp;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -44,7 +49,6 @@ public class AppUtilities {
         return isValid;
     }
 
-    public static void makeToast(String toastMessage){
 
-    }
+
 }
