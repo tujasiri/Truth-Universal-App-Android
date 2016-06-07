@@ -1266,8 +1266,10 @@ public class StripeActivity extends AppCompatActivity {
                     noCardError = Boolean.FALSE;
                 }
                 */
+                LinearLayout strCardErrLayout = (LinearLayout)findViewById(R.id.stripe_checkout);
 
-                noCardError = noStripeError(response.toString().trim());
+                //noCardError = noStripeError(response.toString().trim());
+                noCardError = noStripeError(response.toString().trim(),strCardErrLayout);
 
             }
 
@@ -1533,8 +1535,8 @@ public class StripeActivity extends AppCompatActivity {
 
     }
 
-    //Boolean getStripeError(String stripeResponse){
-    Boolean noStripeError(String stripeResponse){
+    //Boolean noStripeError(String stripeResponse){
+    Boolean noStripeError(String stripeResponse,LinearLayout stripeCardErrLayout){
 
        String[] stripeErrors = {
                /*invalid_number*/	"The card number is not a valid credit card number.",
@@ -1559,21 +1561,35 @@ public class StripeActivity extends AppCompatActivity {
                /*processing_error*/	 "An error occurred while processing the card."};
 
         for(String s: stripeErrors) {
-
+            /*
             if (stripeResponse.trim().length() >= s.trim().length())
                 System.out.println(String.format("stripeResponse ==>%s \ns==>%s\n stripeResponse SUBSTRING ==>%s\n",stripeResponse.trim(),s.trim(),stripeResponse.trim().substring(0,s.length())));
+            */
 
 
-            if (s.trim().equals(stripeResponse.trim()))
+            if (s.trim().equals(stripeResponse.trim())) {
+                setCardErrFields(stripeResponse.trim(),stripeCardErrLayout);
                 return Boolean.FALSE;
+            }
 
             if (stripeResponse.trim().length() >= s.trim().length())
                 //if(stripeResponse.trim().substring(0,s.length()-1).equals(s.trim()))
-                if(stripeResponse.trim().substring(0,s.length()).equals(s.trim()))
+                if(stripeResponse.trim().substring(0,s.length()).equals(s.trim())){
+                    setCardErrFields(stripeResponse.trim(),stripeCardErrLayout);
                     return Boolean.FALSE;
+                }
         }
 
         return Boolean.TRUE;
+    }
+    public void setCardErrFields(String cardErr,LinearLayout strCardErrorLayout){
+
+        if(cardErr.trim().substring(0).equals("exp")){
+
+            EditText etCardErr = (EditText) strCardErrorLayout.findViewById(R.id.credit_card_edit_text);
+            etCardErr.setBackgroundColor(Color.RED);
+        }
+
     }
 
     public void clearForm(LinearLayout frmLayout){
@@ -1610,6 +1626,8 @@ public class StripeActivity extends AppCompatActivity {
 
         }
     }
+
+
 }
 
 
