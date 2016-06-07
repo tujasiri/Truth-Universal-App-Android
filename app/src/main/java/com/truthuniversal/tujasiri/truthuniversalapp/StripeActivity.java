@@ -1275,9 +1275,12 @@ public class StripeActivity extends AppCompatActivity {
 
             //else   show dialog -- could not complete transaction
 
+            LinearLayout strLayout = (LinearLayout)findViewById(R.id.stripe_checkout);
+
             //if(noCardError == Boolean.TRUE)
             if (noCardError.toString().trim().equals("true")){
-                LinearLayout strLayout = (LinearLayout)findViewById(R.id.stripe_checkout);
+                //LinearLayout strLayout = (LinearLayout)findViewById(R.id.stripe_checkout);
+                //strLayout = (LinearLayout)findViewById(R.id.stripe_checkout);
                 clearForm(strLayout);
                 showStripeErrorDialog("SUCCESS!");
                 //new AsyncStripeEmailTask().execute(STRIPE_EMAIL_URL, emailDataMap);
@@ -1285,6 +1288,7 @@ public class StripeActivity extends AppCompatActivity {
             }
             else
             {
+                //setCardErrFields(response.toString().trim(),strLayout);
                 showStripeErrorDialog(response.toString().trim());
                 System.out.println("error encountered");
 
@@ -1584,10 +1588,37 @@ public class StripeActivity extends AppCompatActivity {
     }
     public void setCardErrFields(String cardErr,LinearLayout strCardErrorLayout){
 
-        if(cardErr.trim().substring(0).equals("exp")){
+        EditText etCardErr;
+        TextView tvCardErr;
 
-            EditText etCardErr = (EditText) strCardErrorLayout.findViewById(R.id.credit_card_edit_text);
-            etCardErr.setBackgroundColor(Color.RED);
+
+        System.out.println(String.format("error==>%s ubn",cardErr));
+        if(cardErr.contains("card")){
+        //if(cardErr.trim().substring(0,cardErr.trim().length()).equals("card")){
+            System.out.println("found card");
+            //if(cardErr.trim().substring(0).equals("exp")){
+            if(cardErr.contains("exp")){
+                System.out.println("found exp");
+
+                //if(cardErr.trim().substring(0).equals("month")){
+                if(cardErr.contains("month")){
+                    System.out.println("found month");
+                    tvCardErr = (TextView) strCardErrorLayout.findViewById(R.id.exp_month_value_textview);
+                    tvCardErr.setBackgroundColor(Color.RED);
+                }
+
+                //if(cardErr.trim().substring(0).equals("year")){
+                if(cardErr.contains("year")){
+                    System.out.println("found year");
+                    tvCardErr = (TextView) strCardErrorLayout.findViewById(R.id.exp_year_value_textview);
+                    tvCardErr.setBackgroundColor(Color.RED);
+                }
+
+            }
+            else{
+                etCardErr = (EditText) strCardErrorLayout.findViewById(R.id.credit_card_edit_text);
+                etCardErr.setBackgroundColor(Color.RED);
+            }
         }
 
     }

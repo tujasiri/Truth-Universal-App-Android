@@ -26,4 +26,4 @@
         android:layout_height="wrap_content"
         android:text="Checkout"
         android:id="@+id/checkout_button" />
-</LinearLayout><!-- From: file:/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/src/main/res/layout/checkout_cart_view.xml -->
+</LinearLayout><!-- From: file:/C:/Users/tujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/src/main/res/layout/checkout_cart_view.xml -->
