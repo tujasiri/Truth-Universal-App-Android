@@ -77,6 +77,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.truthuniversal.tujasiri.truthuniversalapp.MainActivity" />
         </activity>
+        <activity
+            android:name="com.truthuniversal.tujasiri.truthuniversalapp.GooglePlayMusicActivity"
+            android:label="@string/title_activity_merch_item_description"
+            android:parentActivityName="com.truthuniversal.tujasiri.truthuniversalapp.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.truthuniversal.tujasiri.truthuniversalapp.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

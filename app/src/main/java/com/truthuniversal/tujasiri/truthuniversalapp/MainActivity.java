@@ -57,6 +57,7 @@ import java.util.List;
             final Button merchButton = (android.widget.Button) findViewById(R.id.merchButton);
             final Button newsButton = (android.widget.Button) findViewById(R.id.newsButton);
             final Button videoButton = (android.widget.Button) findViewById(R.id.videoButton);
+            final Button musicButton = (android.widget.Button) findViewById(R.id.musicButton);
 
 
 
@@ -94,6 +95,16 @@ import java.util.List;
                 }
 
                 });
+
+            musicButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    System.out.println("MUSIC Button Clicked!");
+                    Intent intent = new Intent(getApplicationContext(),GooglePlayMusicActivity.class);
+                    startActivity(intent);
+
+                }
+
+            });
     }
 
         @Override
