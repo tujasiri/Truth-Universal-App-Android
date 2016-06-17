@@ -86,6 +86,7 @@ public class GooglePlayMusicActivity extends AppCompatActivity{
                 JSONArray jArray = new JSONArray(response.toString());
 
                 //populateNewsItemList(jArray);
+                populateGoogleMusicAlbumItemList(jArray);
 
                 //JSONArray jsonArray = jObj.getJSONArray("");
 
@@ -112,6 +113,69 @@ public class GooglePlayMusicActivity extends AppCompatActivity{
             //populateListView();
 
         }
+
+        private void populateGoogleMusicAlbumItemList(JSONArray jsonMusicArray) {
+            //Map<String,ImageView> imageViewMap = new HashMap<String,ImageView>();
+
+            //JSONObject jsonObject = (JSONObject)jsonMerchObject;
+
+            //merchItemList = ItemSingleton.getInstance().getArrayList();
+
+            try {
+                //JSONArray jsonArray = jsonObject.getJSONArray("");
+
+                for(int i=0;i<jsonMusicArray.length();i++) {
+
+                    GoogleMusicAlbumItem tempGoogleMusicAlbumItem = new GoogleMusicAlbumItem();
+
+                    JSONObject jsonObjectMusicItem =  jsonMusicArray.getJSONObject(i);
+
+                    JSONObject jsonObjectAlbum =  jsonObjectMusicItem.getJSONObject("album");
+
+                    tempGoogleMusicAlbumItem.setGma_album_id(jsonObjectAlbum.getString("gma_album_id"));
+                    tempGoogleMusicAlbumItem.setGma_album_title(jsonObjectAlbum.getString("gma_album_title"));
+                    tempGoogleMusicAlbumItem.setGma_album_image_url(jsonObjectAlbum.getString("gma_album_image_url"));
+                    tempGoogleMusicAlbumItem.setGma_album_artist_name(jsonObjectAlbum.getString("gma_artist_name"));
+                    tempGoogleMusicAlbumItem.setGma_album_price(jsonObjectAlbum.getDouble("gma_album_price"));
+
+                    //newsItemList.add(tempGoogleMusicAlbumItem);
+
+                    JSONArray jsonArrayAlbum =  jsonObjectMusicItem.getJSONArray("album_data");
+
+                    List<GoogleMusicSongItem> embeddedGMSongItems= new ArrayList<GoogleMusicSongItem>();
+
+                    for(int j=0;j<jsonArrayAlbum.length();j++) {
+
+                        JSONObject jsonObjectSongItem =  jsonArrayAlbum.getJSONObject(j);
+                        GoogleMusicSongItem tempGoogleMusicSongItem = new GoogleMusicSongItem();
+
+                        tempGoogleMusicSongItem.setGs_song_id(jsonObjectSongItem.getString("gs_song_id"));
+                        tempGoogleMusicSongItem.setGs_song_title(jsonObjectSongItem.getString("gs_song_title"));
+                        tempGoogleMusicSongItem.setGs_song_price(jsonObjectSongItem.getDouble("gs_song_price"));
+
+                        embeddedGMSongItems.add(tempGoogleMusicSongItem);
+                    }
+
+                    tempGoogleMusicAlbumItem.setGoogleMusicSongItemList(embeddedGMSongItems);
+                    googleMusicItemList.add(tempGoogleMusicAlbumItem);
+
+                    System.out.println("Music JSON ADD==>");
+
+                }//end for
+                for (GoogleMusicAlbumItem temp : googleMusicItemList) {
+                    System.out.println(temp.getGma_album_id());
+                    System.out.println("xxxxxHERE");
+                }
+
+
+
+
+            }catch (JSONException je){
+                System.out.println("MUSIC JSON EXCEPTION==>"+je);
+            }
+
+        }
+
     }
 
 
