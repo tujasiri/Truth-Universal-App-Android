@@ -10,6 +10,7 @@ public class GoogleMusicAlbumItem {
         private String gma_album_image_url = "";
         private String gma_album_artist_name = "";
         private double gma_album_price = 0.0;
+        private GoogleMusicSongItem googleMusicSongItem = new GoogleMusicSongItem();
 
 
         public GoogleMusicAlbumItem(){
@@ -18,6 +19,7 @@ public class GoogleMusicAlbumItem {
             String gma_album_image_url = "";
             String gma_album_artist_name = "";
             double gma_album_price = 0.0;
+            GoogleMusicSongItem googleMusicSongItem = new GoogleMusicSongItem();
 
 
             this.gma_album_id = gma_album_id;
@@ -25,6 +27,7 @@ public class GoogleMusicAlbumItem {
             this.gma_album_image_url = gma_album_image_url;
             this.gma_album_artist_name = gma_album_artist_name;
             this.gma_album_price = gma_album_price;
+            this.googleMusicSongItem = googleMusicSongItem;
         }
 
         public String getGma_album_id() {
@@ -43,8 +46,8 @@ public class GoogleMusicAlbumItem {
             return gma_album_artist_name;
         }
 
-        public double getGma_album_price() {
-            return gma_album_price;
+        public GoogleMusicSongItem getGoogleMusicSongItem() {
+            return googleMusicSongItem;
         }
 
 
@@ -67,6 +70,10 @@ public class GoogleMusicAlbumItem {
 
         public void setGma_album_price (double gma_album_price) {
             this.gma_album_price = gma_album_price;
+        }
+
+        public void setGoogleMusicSongItem(GoogleMusicSongItem googleMusicSongItem) {
+            this.googleMusicSongItem = googleMusicSongItem;
         }
 
 

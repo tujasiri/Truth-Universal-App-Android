@@ -31,6 +31,8 @@ import java.util.List;
  */
 public class GooglePlayMusicActivity extends AppCompatActivity{
 
+    private List<GoogleMusicAlbumItem> googleMusicItemList = new ArrayList<GoogleMusicAlbumItem>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
