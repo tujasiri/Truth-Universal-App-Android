@@ -165,6 +165,10 @@ public class GooglePlayMusicActivity extends AppCompatActivity{
                 for (GoogleMusicAlbumItem temp : googleMusicItemList) {
                     System.out.println(temp.getGma_album_id());
                     System.out.println("xxxxxHERE");
+                    for (GoogleMusicSongItem songtemp : temp.getGoogleMusicSongItemList()) {
+                       System.out.println(String.format("song id==>%s",songtemp.getGs_song_id()));
+                    }
+                    System.out.println("\n");
                 }
 
 
