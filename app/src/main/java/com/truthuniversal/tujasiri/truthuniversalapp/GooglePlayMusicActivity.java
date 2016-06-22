@@ -218,20 +218,7 @@ public class GooglePlayMusicActivity extends AppCompatActivity {
     }
 
     public void makeMusicExpandableListViews(){
-
-        /*
-        LayoutInflater vi = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View v = vi.inflate(R.layout.your_layout, null);
-
-        // fill in any details dynamically here
-
-        TextView textView = (TextView) v.findViewById(R.id.a_text_view);
-        textView.setText("your text");
-
-        // insert into main view
-        ViewGroup insertPoint = (ViewGroup) findViewById(R.id.insert_point);
-        insertPoint.addView(v, 0, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
-         */
+/*
         // Parent layout
         LinearLayout parentLayout = (LinearLayout)findViewById(R.id.expandable_layout);
 
@@ -241,35 +228,97 @@ public class GooglePlayMusicActivity extends AppCompatActivity {
 
         view = layoutInflater.inflate(R.layout.expandable, parentLayout, false);
 
-
-
         //expListViewAlbum = (ExpandableListView) findViewById(R.id.expandableListView_songs);
         expListViewAlbum = (ExpandableListView) view.findViewById(R.id.expandableListView_songs);
+   */
 
         //populate group and child maps
         System.out.println("before for loop");
 
         for (GoogleMusicAlbumItem albumtemp : googleMusicItemList) {
             Map<String, String> tempMapAlbum = new HashMap<String, String>();
+
+            List<Map<String, String>> tempGroupAlbumMapList = new ArrayList<Map<String,String>>();
+            List<Map<String, String>> tempSongMapList = new ArrayList<Map<String,String>>();
+            List<List<Map<String, String>>> tempChildAlbumSongMapList = new ArrayList<List<Map<String,String>>>();
+
+
+
             //tempMapAlbum.put("album", albumtemp.getGma_album_title());
 
             tempMapAlbum.put(albumtemp.getGma_album_id(), albumtemp.getGma_album_title());
             groupAlbumMapList.add(tempMapAlbum);
+            tempGroupAlbumMapList.add(tempMapAlbum);
 
-            Map<String, String> tempMapSong = new HashMap<String, String>();
+            //Map<String, String> tempMapSong = new HashMap<String, String>();
 
             for (GoogleMusicSongItem songtemp : albumtemp.getGoogleMusicSongItemList()) {
+
+                Map<String, String> tempMapSong = new HashMap<String, String>();
+
                 tempMapSong.put("song", songtemp.getGs_song_title());
                 System.out.println(String.format("song id==>%sxxx",songtemp.getGs_song_id()));
-            }
+                System.out.println(String.format("song title==>%sxxx",songtemp.getGs_song_title()));
 
-            childSongMapList.add(tempMapSong);
+                tempSongMapList.add(tempMapSong);
+            }
+            tempChildAlbumSongMapList.add(tempSongMapList);
+
+            //childSongMapList.add(tempMapSong);
+
+
+            //add  album simpleexpandablelistview
+
+            // Parent layout
+            LinearLayout parentLayout = (LinearLayout)findViewById(R.id.expandable_layout);
+
+            // Layout inflater
+            LayoutInflater layoutInflater = getLayoutInflater();
+            View view;
+
+            view = layoutInflater.inflate(R.layout.expandable, parentLayout, false);
+
+            //expListViewAlbum = (ExpandableListView) findViewById(R.id.expandableListView_songs);
+            expListViewAlbum = (ExpandableListView) view.findViewById(R.id.expandableListView_songs);
+
+            SimpleExpandableListAdapter expListAdapterAlbum = getExpListViewAdapter(albumtemp.getGma_album_id(),tempGroupAlbumMapList,tempChildAlbumSongMapList);
+            expListViewAlbum.setAdapter(expListAdapterAlbum);
+
+            parentLayout.addView(expListViewAlbum);
+
+
+            expListViewAlbum.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+                @Override
+                public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+
+                    expListViewAlbum.collapseGroup(groupPosition);
+
+                    return false;
+                }
+
+            });
+            expListViewAlbum.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+
+                @Override
+                public void onGroupExpand(int groupPosition) {
+
+                    ExpandableListView emlva = (ExpandableListView) findViewById(R.id.expandableListView_songs);
+                    emlva.setMinimumHeight(1300);
+
+                    ViewGroup.LayoutParams layoutParams = expListViewAlbum.getLayoutParams();
+                    layoutParams.height = 1300;
+                    expListViewAlbum.setLayoutParams(layoutParams);
+                    expListViewAlbum.requestLayout();
+                }
+            });
+
+
 
             System.out.println("\n");
 
         }
         childAlbumSongMapList.add(childSongMapList);
-
+    /*
         try {
             //listAdapter = new ExpandableListAdapter(getApplication().getApplicationContext(), listDataHeader, countryItemList);"
             System.out.println("\nTrying");
@@ -292,32 +341,51 @@ public class GooglePlayMusicActivity extends AppCompatActivity {
 
             expListViewAlbum.setAdapter(expListAdapterAlbum);
 
+            parentLayout.addView(expListViewAlbum);
 
 
         } catch (Exception e) {
             System.out.println(String.format("ALBUM LISTADAPTER EX ==>%s", e.toString()));
 
         }
+      */
 
-
-        // setting list adapter
-        //expListView.setAdapter(listAdapter);
-
-
-        expListViewAlbum.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-
-                expListViewAlbum.collapseGroup(groupPosition);
-
-                return false;
-            }
-
-        });
-
+            //expListView.setAdapter(listAdapter);
 
 
     }
+    public SimpleExpandableListAdapter getExpListViewAdapter(String albumKey, List<Map<String,String>>grpAlbumMapList, List<List<Map<String, String>>>chldAlbumSongMapList){
+        SimpleExpandableListAdapter simpleExpandableListAdapter = null;
+
+        try {
+            //listAdapter = new ExpandableListAdapter(getApplication().getApplicationContext(), listDataHeader, countryItemList);"
+            System.out.println("\nTrying");
+
+           // SimpleExpandableListAdapter expListAdapterAlbum =
+           simpleExpandableListAdapter =
+                    new SimpleExpandableListAdapter(
+                            getApplication().getApplicationContext(),
+                            grpAlbumMapList,              // Creating group List.
+                            R.layout.google_music_header,             // Group item layout XML.
+                            //new String[]{"B4vkt6afnzg4qnczdu2stvdki7u","B5bsgvwcvwjibf6iq2neetzhstu","Buhdkonapleftrmbbjfzfa65lvi"},  // the key of group item.
+                            new String[]{albumKey},  // the key of group item.
+                            new int[]{R.id.album_title_textview},    // ID of each group item.-Data under the key goes into this TextView.
+                            chldAlbumSongMapList,              // childData describes second-level <span id="IL_AD5" class="IL_AD">entries</span>.
+                            R.layout.google_music_child,             // Layout for sub-level entries(second level).
+                            new String[]{"song"},      // Keys in childData maps to display.
+                            new int[]{R.id.album_song_textview}     // Data under the keys above go into these TextViews.
+                    );
+
+
+        } catch (Exception e) {
+            System.out.println(String.format("ALBUM LISTADAPTER EX ==>%s", e.toString()));
+        }
+
+
+        return simpleExpandableListAdapter;
+
+    }
+
 
 
 }

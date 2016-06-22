@@ -4,6 +4,7 @@
     package="com.truthuniversal.tujasiri.truthuniversalapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SET_DEBUG_APP"/>
     <uses-sdk tools:overrideLibrary="com.google.android.gms.all,com.google.android.gms.ads,com.google.android.gms,
         com.google.android.gms.analytics,com.google.android.gms.appindexing,
         com.google.android.gms.appinvite,com.google.android.gms.appstate,com.google.android.gms.cast,com.google.android.gms.drive,
