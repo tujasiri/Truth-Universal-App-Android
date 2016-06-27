@@ -11,12 +11,12 @@
         <ImageView
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:id="@+id/youtube_list_imageview"
+            android:id="@+id/album_info_header_imageview"
             android:layout_alignParentLeft="false"
             android:layout_alignParentStart="false"
             android:layout_alignParentEnd="false"
-            android:layout_alignParentRight="false"
-            />
+            android:layout_alignParentRight="false" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
-                android:id="@+id/youtube_title_textview"
+                android:id="@+id/album_info_header_textview"
                 android:layout_gravity="center_vertical|left"
                 android:padding="5dp" />
 
@@ -45,5 +45,4 @@
         </LinearLayout>
     </LinearLayout>
 
-
-</RelativeLayout><!-- From: file:/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/src/main/res/layout/youtube_list_view.xml -->
+</RelativeLayout>

@@ -261,7 +261,6 @@ public class MerchActivity extends AppCompatActivity {
             //return true;
         }
 
-        //protected void onPostExecute(Bitmap result) {
 
         @Override
         protected void onPostExecute(Bitmap result) {

@@ -1,6 +1,8 @@
 package com.truthuniversal.tujasiri.truthuniversalapp;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -29,6 +31,7 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
@@ -267,6 +270,17 @@ public class GooglePlayMusicActivity extends AppCompatActivity {
             //childSongMapList.add(tempMapSong);
 
 
+            //add imageview and costtextview
+            LinearLayout headerInfoParentLayout = (LinearLayout)findViewById(R.id.album_info_layout);
+
+            LayoutInflater headerInfoLayoutInflater = getLayoutInflater();
+            View viewHeaderInfo;
+
+            //headerInfoParentLayout.addView();
+            //viewHeaderInfo = headerInfoLayoutInflater.inflate(R.layout.album_header_info_layout, headerInfoParentLayout, false);
+            viewHeaderInfo = headerInfoLayoutInflater.inflate(R.layout.album_header_imageview, headerInfoParentLayout, false);
+
+
             //add  album simpleexpandablelistview
 
             // Parent layout
@@ -278,13 +292,46 @@ public class GooglePlayMusicActivity extends AppCompatActivity {
 
             view = layoutInflater.inflate(R.layout.expandable, parentLayout, false);
 
+
+            String imageUrl = String.format("%s",  albumtemp.getGma_album_image_url());
+
+            System.out.println(String.format("imageUrl ==> %s",imageUrl));
+
+            //new AsyncDownloadHeaderImage(ivTemp).execute(imageUrl.trim());
+
+            //viewHeaderInfo = layoutInflater.inflate(R.layout.album_header_info_layout, headerInfoParentLayout, false);
+
+            ImageView imageViewHeader = (ImageView)viewHeaderInfo.findViewById(R.id.album_info_header_imageview);
+            //ImageView imageViewHeader = (ImageView)view.findViewById(R.id.album_info_header_imageview);
+
+
+
+            System.out.println("imageViewHeader==>"+imageViewHeader);
+
+
+            Picasso.with(getApplicationContext()).load(imageUrl).into(imageViewHeader);
+
+
+            //headerInfoParentLayout.addView(imageViewHeader);
+
+            //imageViewMap.put(mItemList.getMt_image_id(), ivTemp);
+
             //expListViewAlbum = (ExpandableListView) findViewById(R.id.expandableListView_songs);
             expListViewAlbum = (ExpandableListView) view.findViewById(R.id.expandableListView_songs);
 
             SimpleExpandableListAdapter expListAdapterAlbum = getExpListViewAdapter(albumtemp.getGma_album_id(),tempGroupAlbumMapList,tempChildAlbumSongMapList);
             expListViewAlbum.setAdapter(expListAdapterAlbum);
 
-            parentLayout.addView(expListViewAlbum);
+            try {
+                parentLayout.addView(imageViewHeader);
+
+                parentLayout.addView(expListViewAlbum);
+            }catch(Exception excep){
+                System.out.println(excep.toString());
+
+            }
+
+
 
 
             expListViewAlbum.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
