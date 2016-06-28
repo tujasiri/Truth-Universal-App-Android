@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
@@ -238,6 +239,8 @@ public class GooglePlayMusicActivity extends AppCompatActivity {
         //populate group and child maps
         System.out.println("before for loop");
 
+        int albumTag = 0;
+
         for (GoogleMusicAlbumItem albumtemp : googleMusicItemList) {
             Map<String, String> tempMapAlbum = new HashMap<String, String>();
 
@@ -292,10 +295,9 @@ public class GooglePlayMusicActivity extends AppCompatActivity {
 
             view = layoutInflater.inflate(R.layout.expandable, parentLayout, false);
 
-
             String imageUrl = String.format("%s",  albumtemp.getGma_album_image_url());
 
-            System.out.println(String.format("imageUrl ==> %s",imageUrl));
+            //System.out.println(String.format("imageUrl ==> %s",imageUrl));
 
             //new AsyncDownloadHeaderImage(ivTemp).execute(imageUrl.trim());
 
@@ -306,7 +308,7 @@ public class GooglePlayMusicActivity extends AppCompatActivity {
 
 
 
-            System.out.println("imageViewHeader==>"+imageViewHeader);
+            //System.out.println("imageViewHeader==>"+imageViewHeader);
 
 
             Picasso.with(getApplicationContext()).load(imageUrl).into(imageViewHeader);
@@ -321,24 +323,85 @@ public class GooglePlayMusicActivity extends AppCompatActivity {
 
             SimpleExpandableListAdapter expListAdapterAlbum = getExpListViewAdapter(albumtemp.getGma_album_id(),tempGroupAlbumMapList,tempChildAlbumSongMapList);
             expListViewAlbum.setAdapter(expListAdapterAlbum);
+            expListViewAlbum.setTag(albumTag++);
+            System.out.println(String.format("albumtag==>%d", albumTag));
+
 
             try {
                 parentLayout.addView(imageViewHeader);
-
                 parentLayout.addView(expListViewAlbum);
+                parentLayout.bringChildToFront(expListViewAlbum);
+
+                System.out.println(String.format("expListViewAlbum Info==>%s\n",expListViewAlbum.toString()));
+
+
+
             }catch(Exception excep){
                 System.out.println(excep.toString());
 
             }
 
 
+            expListViewAlbum.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
 
+                @Override
+                public void onGroupExpand(int groupPosition) {
+                    /*
+                    Toast.makeText(getApplicationContext(),
+                            groupExpYearMapList.get(groupPosition) + " Year Expanded",
+                            Toast.LENGTH_SHORT).show();
+                    */
+
+                    ExpandableListView eylv = (ExpandableListView) findViewById(R.id.expandableListViewYear);
+                    //eylv.setMinimumHeight(700);
+
+                    ViewGroup.LayoutParams expLayoutParams = expListViewAlbum.getLayoutParams();
+                    expLayoutParams.height = 1700;
+                    expListViewAlbum.setLayoutParams(expLayoutParams);
+                    expListViewAlbum.requestLayout();
+                }
+            });
+
+
+
+
+            expListViewAlbum.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+                @Override
+                public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+
+                    ExpandableListView emlva = (ExpandableListView) parent.findViewById(R.id.expandableListView_songs);
+                    //emlva.setMinimumHeight(300);
+                    //System.out.println(String.format("group clicked...emlva tag==>%s",emlva.getTag().toString()));
+                    System.out.println(String.format("group clicked...parent tag==>%d", parent.getTag()));
+                    System.out.println(String.format("** parent==>%s", parent.toString()));
+
+emlva.expandGroup(groupPosition);
+
+                    /*** THIS IS A TEST*/
+                    ViewGroup.LayoutParams lp = emlva.getLayoutParams();
+                    lp.height = 1500; //change to 1/3 of screen
+                    emlva.setLayoutParams(lp);
+                    emlva.requestLayout();
+                    /***/
+
+                    return false;
+                }
+            });
 
             expListViewAlbum.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
                 @Override
                 public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
 
+
                     expListViewAlbum.collapseGroup(groupPosition);
+
+                    /*** THIS IS A TEST***/
+                    ExpandableListView emlva = (ExpandableListView) parent.findViewById(R.id.expandableListView_songs);
+                    ViewGroup.LayoutParams lp = emlva.getLayoutParams();
+                    lp.height = 100;
+                    emlva.setLayoutParams(lp);
+                    emlva.requestLayout();
+                    /***/
 
                     return false;
                 }
@@ -348,14 +411,27 @@ public class GooglePlayMusicActivity extends AppCompatActivity {
 
                 @Override
                 public void onGroupExpand(int groupPosition) {
+                    /**
 
                     ExpandableListView emlva = (ExpandableListView) findViewById(R.id.expandableListView_songs);
-                    emlva.setMinimumHeight(1300);
+                    //emlva.setMinimumHeight(300);
 
-                    ViewGroup.LayoutParams layoutParams = expListViewAlbum.getLayoutParams();
-                    layoutParams.height = 1300;
-                    expListViewAlbum.setLayoutParams(layoutParams);
-                    expListViewAlbum.requestLayout();
+
+                    //ViewGroup.LayoutParams layoutParams = expListViewAlbum.getLayoutParams();
+                    //layoutParams.height = 2500;
+
+                    //expListViewAlbum.setLayoutParams(layoutParams);
+                    //expListViewAlbum.requestLayout();
+
+                    /*** THIS IS A TEST
+                    ViewGroup.LayoutParams lp = emlva.getLayoutParams();
+                    lp.height = 1000;
+                    emlva.setLayoutParams(lp);
+                    emlva.requestLayout();
+                    /***/
+
+                    System.out.println("groupPosition====>"+groupPosition);
+
                 }
             });
 
@@ -363,6 +439,7 @@ public class GooglePlayMusicActivity extends AppCompatActivity {
 
             System.out.println("\n");
 
+            //albumTag++;
         }
         childAlbumSongMapList.add(childSongMapList);
     /*
