@@ -1,6 +1,7 @@
 package com.truthuniversal.tujasiri.truthuniversalapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -323,7 +324,9 @@ public class GooglePlayMusicActivity extends AppCompatActivity {
 
             SimpleExpandableListAdapter expListAdapterAlbum = getExpListViewAdapter(albumtemp.getGma_album_id(),tempGroupAlbumMapList,tempChildAlbumSongMapList);
             expListViewAlbum.setAdapter(expListAdapterAlbum);
-            expListViewAlbum.setTag(albumTag++);
+
+            expListViewAlbum.setTag(albumTag);
+            imageViewHeader.setTag(albumTag++);
             System.out.println(String.format("albumtag==>%d", albumTag));
 
 
@@ -341,27 +344,24 @@ public class GooglePlayMusicActivity extends AppCompatActivity {
 
             }
 
+            imageViewHeader.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    int albumIndex = (int)v.getTag();
+                    GoogleMusicAlbumItem gmai = googleMusicItemList.get(albumIndex);
+
+                    launchGoogleMusicIntent(buildMarketUrl(gmai.getGma_album_id(), "album"));
+                }
+            });
+
 
             expListViewAlbum.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
 
                 @Override
                 public void onGroupExpand(int groupPosition) {
-                    /*
-                    Toast.makeText(getApplicationContext(),
-                            groupExpYearMapList.get(groupPosition) + " Year Expanded",
-                            Toast.LENGTH_SHORT).show();
-                    */
-
-                    ExpandableListView eylv = (ExpandableListView) findViewById(R.id.expandableListViewYear);
-                    //eylv.setMinimumHeight(700);
-
-                    ViewGroup.LayoutParams expLayoutParams = expListViewAlbum.getLayoutParams();
-                    expLayoutParams.height = 1700;
-                    expListViewAlbum.setLayoutParams(expLayoutParams);
-                    expListViewAlbum.requestLayout();
                 }
             });
-
 
 
 
@@ -370,21 +370,26 @@ public class GooglePlayMusicActivity extends AppCompatActivity {
                 public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
 
                     ExpandableListView emlva = (ExpandableListView) parent.findViewById(R.id.expandableListView_songs);
-                    //emlva.setMinimumHeight(300);
-                    //System.out.println(String.format("group clicked...emlva tag==>%s",emlva.getTag().toString()));
-                    System.out.println(String.format("group clicked...parent tag==>%d", parent.getTag()));
-                    System.out.println(String.format("** parent==>%s", parent.toString()));
 
-emlva.expandGroup(groupPosition);
-
-                    /*** THIS IS A TEST*/
                     ViewGroup.LayoutParams lp = emlva.getLayoutParams();
-                    lp.height = 1500; //change to 1/3 of screen
+
+                    if (parent.isGroupExpanded(groupPosition)) {
+                        lp.height = 100;
+                    } else {
+                        lp.height = 1700; //change to 1/3 of screen
+                    }
+
                     emlva.setLayoutParams(lp);
                     emlva.requestLayout();
-                    /***/
 
                     return false;
+                }
+            });
+
+            expListViewAlbum.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+                @Override
+                public void onGroupCollapse(int groupPosition) {
+
                 }
             });
 
@@ -393,15 +398,34 @@ emlva.expandGroup(groupPosition);
                 public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
 
 
-                    expListViewAlbum.collapseGroup(groupPosition);
-
-                    /*** THIS IS A TEST***/
                     ExpandableListView emlva = (ExpandableListView) parent.findViewById(R.id.expandableListView_songs);
                     ViewGroup.LayoutParams lp = emlva.getLayoutParams();
-                    lp.height = 100;
-                    emlva.setLayoutParams(lp);
-                    emlva.requestLayout();
-                    /***/
+
+
+                    //System.out.println("Selected Id ==>"+emlva.getSelectedId()+" SelectedPosition==>"+emlva.getSelectedPosition());
+                    //System.out.println(String.format("Selected Id ==> %d \nSelected Position==>%d",parent.getSelectedId(),parent.getSelectedPosition()));
+
+                    System.out.println("Tag==>" + parent.getTag());
+                    System.out.println("ChildPositon==>" + childPosition);
+                    //googleMusicItemList.get()
+
+                    /******Get Album and Song Info from MasterList***/
+                    int albumIndex = (int) parent.getTag();
+                    int songIndex = childPosition;
+
+                    GoogleMusicAlbumItem gmai = googleMusicItemList.get(albumIndex);
+                    GoogleMusicSongItem gmsi = gmai.getGoogleMusicSongItemList().get(songIndex);
+
+                    System.out.println(String.format("SONG ==>%s", gmsi.getGs_song_title()));
+                    System.out.println(String.format("SONG ID ==>%s", gmsi.getGs_song_id()));
+
+                    launchGoogleMusicIntent(buildMarketUrl(gmai.getGma_album_id(), "album"));
+
+                    //launchGoogleMusicIntent(buildMarketUrl(gmsi.getGs_song_id(),"song"));
+
+
+                    /******/
+
 
                     return false;
                 }
@@ -411,70 +435,11 @@ emlva.expandGroup(groupPosition);
 
                 @Override
                 public void onGroupExpand(int groupPosition) {
-                    /**
-
-                    ExpandableListView emlva = (ExpandableListView) findViewById(R.id.expandableListView_songs);
-                    //emlva.setMinimumHeight(300);
-
-
-                    //ViewGroup.LayoutParams layoutParams = expListViewAlbum.getLayoutParams();
-                    //layoutParams.height = 2500;
-
-                    //expListViewAlbum.setLayoutParams(layoutParams);
-                    //expListViewAlbum.requestLayout();
-
-                    /*** THIS IS A TEST
-                    ViewGroup.LayoutParams lp = emlva.getLayoutParams();
-                    lp.height = 1000;
-                    emlva.setLayoutParams(lp);
-                    emlva.requestLayout();
-                    /***/
-
-                    System.out.println("groupPosition====>"+groupPosition);
-
                 }
             });
 
-
-
-            System.out.println("\n");
-
-            //albumTag++;
         }
         childAlbumSongMapList.add(childSongMapList);
-    /*
-        try {
-            //listAdapter = new ExpandableListAdapter(getApplication().getApplicationContext(), listDataHeader, countryItemList);"
-            System.out.println("\nTrying");
-
-
-
-            SimpleExpandableListAdapter expListAdapterAlbum =
-                    new SimpleExpandableListAdapter(
-                            getApplication().getApplicationContext(),
-                            groupAlbumMapList,              // Creating group List.
-                            R.layout.google_music_header,             // Group item layout XML.
-                            //new String[]{"B4vkt6afnzg4qnczdu2stvdki7u","B5bsgvwcvwjibf6iq2neetzhstu","Buhdkonapleftrmbbjfzfa65lvi"},  // the key of group item.
-                            new String[]{"B4vkt6afnzg4qnczdu2stvdki7u","B5bsgvwcvwjibf6iq2neetzhstu","Buhdkonapleftrmbbjfzfa65lvi"},  // the key of group item.
-                            new int[]{R.id.album_title_textview},    // ID of each group item.-Data under the key goes into this TextView.
-                            childAlbumSongMapList,              // childData describes second-level <span id="IL_AD5" class="IL_AD">entries</span>.
-                            R.layout.google_music_child,             // Layout for sub-level entries(second level).
-                            new String[]{"song"},      // Keys in childData maps to display.
-                            new int[]{R.id.album_song_textview}     // Data under the keys above go into these TextViews.
-                    );
-
-            expListViewAlbum.setAdapter(expListAdapterAlbum);
-
-            parentLayout.addView(expListViewAlbum);
-
-
-        } catch (Exception e) {
-            System.out.println(String.format("ALBUM LISTADAPTER EX ==>%s", e.toString()));
-
-        }
-      */
-
-            //expListView.setAdapter(listAdapter);
 
 
     }
@@ -507,6 +472,28 @@ emlva.expandGroup(groupPosition);
 
 
         return simpleExpandableListAdapter;
+
+    }
+
+    String buildMarketUrl(String mediaId, String mediaType){
+
+        //String marketUrl = "market://details?id="+mediaId;
+
+        String marketUrl = "https://play.google.com/store/music/album/?id="+mediaId;
+        //String marketUrl = "market://play.google.com/store/music/album/?id="+mediaId;
+
+
+        System.out.println("marketUrl ==>"+marketUrl);
+        return marketUrl.trim();
+    }
+
+    //public void launchGoogleMusicIntent(String uri_id){
+
+    public void launchGoogleMusicIntent(String market_uri){
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        //intent.setData(Uri.parse(String.format("market://details?id=%s",uri_id).trim()));
+        intent.setData(Uri.parse(market_uri.trim()));
+        startActivity(intent);
 
     }
 
