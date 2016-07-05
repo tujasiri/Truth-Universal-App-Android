@@ -1,13 +1,12 @@
 package com.truthuniversal.tujasiri.truthuniversalapp;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.annotation.Nullable;
+//import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -33,81 +32,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by tujasiri on 12/9/15.
+ * Created by tujasiri on 7/1/2016.
  */
-public class NewsActivity extends AppCompatActivity{
-//public class NewsActivity extends FragmentActivity{
+@SuppressWarnings("NewApi")
+public class NewsFragment extends Fragment {
 
     private List<NewsItem> newsItemList = new ArrayList<NewsItem>();
 
-    private DrawerLayout mDrawerLayout;
+    View myView;
 
-    private ActionBarDrawerToggle mDrawerToggle;
-    private CharSequence mDrawerTitle;
-    private CharSequence mTitle;
-
-
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        setContentView(R.layout.news_layout);
+        myView = inflater.inflate(R.layout.news_layout,container,false);
 
         new AsyncNewsTask().execute("http://truthuniversal.com/news");
-        /***Drawer **/
-        mDrawerLayout = (DrawerLayout) this.findViewById(R.id.drawer_layout);
-        mDrawerLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
-
-
-        int i = 0;
-        int j = 0;
-
-
-        Toolbar tb= (Toolbar)findViewById(R.id.toolbar);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //getSupportActionBar().setHomeAsUpIndicator(tb);
-
-
-        mDrawerToggle = new ActionBarDrawerToggle(
-                this,
-                mDrawerLayout,
-                tb,
-                R.string.abc_action_bar_home_description,
-                R.string.abc_action_bar_up_description
-        ) {
-
-            /**
-             * Called when a drawer has settled in a completely closed state.
-             **/
-
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-                getSupportActionBar().setTitle(mTitle);
-            }
-
-            /**
-             * Called when a drawer has settled in a completely open state.
-             **/
-
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                getSupportActionBar().setTitle(mDrawerTitle);
-            }
-        };
-
-        // Set the drawer toggle as the DrawerListener
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
-        /***/
-
+        return myView;
     }
-
-
 
     public class AsyncNewsTask extends AsyncTask<String,Void,Boolean> {
 
@@ -183,7 +126,7 @@ public class NewsActivity extends AppCompatActivity{
 
     private void populateListView() {
         ArrayAdapter<NewsItem> newsItemArrayAdapter = new NewsListAdapter();
-        ListView newslist = (ListView) findViewById(R.id.news_layout_listview);
+        ListView newslist = (ListView) myView.findViewById(R.id.news_layout_listview);
         newslist.setAdapter(newsItemArrayAdapter);
     }
 
@@ -227,7 +170,8 @@ public class NewsActivity extends AppCompatActivity{
     private class NewsListAdapter extends ArrayAdapter<NewsItem>
     {
         public NewsListAdapter() {
-            super(NewsActivity.this, R.layout.news_list_view, newsItemList);
+            //super(NewsActivity.this, R.layout.news_list_view, newsItemList);
+            super(getActivity(), R.layout.news_list_view, newsItemList);
 
         }
 
@@ -242,7 +186,8 @@ public class NewsActivity extends AppCompatActivity{
 
             if(newsItemView == null){
 
-                newsItemView = getLayoutInflater().inflate(R.layout.news_list_view, parent,false);
+                newsItemView = getActivity().getLayoutInflater().inflate(R.layout.news_list_view, parent,false);
+                //newsItemView = getLayoutInflater().inflate(R.layout.news_list_view, parent,false);
 
                 viewHolder = new NewsViewHolder();
 
@@ -264,7 +209,8 @@ public class NewsActivity extends AppCompatActivity{
 
             String imageUrl = currentNewsItem.getNews_image_link();
 
-            Picasso.with(getApplicationContext()).load(imageUrl).into(viewHolder.newsImageView);
+            //Picasso.with(getApplicationContext()).load(imageUrl).into(viewHolder.newsImageView);
+            Picasso.with(getActivity()).load(imageUrl).into(viewHolder.newsImageView);
 
             viewHolder.newsTitleTextView.setText(currentNewsItem.getNews_title());
             viewHolder.newsSubtitleTextView.setText(currentNewsItem.getNews_subtitle());
@@ -283,4 +229,4 @@ public class NewsActivity extends AppCompatActivity{
         public TextView newsSubtitleTextView;
     }
 
-}//end NewsActivity
+}

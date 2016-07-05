@@ -25,6 +25,10 @@ ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android\a
 		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android\app\src\main\AndroidManifest.xml:7:22-69
 uses-sdk
 ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android\app\src\main\AndroidManifest.xml:8:5-13:135
+MERGED from [com.android.support:design:22.2.1] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android\app\build\intermediates\exploded-aar\com.android.support\design\22.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:22.2.1] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:22.2.1] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:22.2.1] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:appcompat-v7:22.2.1] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:22.2.1] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:20:5-43
 MERGED from [com.google.android.gms:play-services-appindexing:8.1.0] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\AndroidManifest.xml:18:5-42
@@ -40,6 +44,10 @@ MERGED from [com.android.support:support-v4:22.2.1] C:\Users\tujasiri\AndroidStu
 		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android\app\src\main\AndroidManifest.xml:8:5-13:135
 application
 ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android\app\src\main\AndroidManifest.xml:17:5-99:19
+MERGED from [com.android.support:design:22.2.1] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android\app\build\intermediates\exploded-aar\com.android.support\design\22.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:22.2.1] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:22.2.1] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:22.2.1] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:appcompat-v7:22.2.1] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:22.2.1] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services-appindexing:8.1.0] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\AndroidManifest.xml:19:5-20

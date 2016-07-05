@@ -4,10 +4,20 @@ package com.truthuniversal.tujasiri.truthuniversalapp;
  * Created by tujasiri on 11/23/15.
  */
 
+import android.annotation.SuppressLint;
+import android.app.FragmentManager;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,7 +40,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-//public class MainActivity extends AppCompatActivity {
 
     public class MainActivity extends AppCompatActivity {
 
@@ -41,72 +50,189 @@ import java.util.List;
         public static final String COUNTRY_DATA_URL = "http://truthuniversal.com/android/countries";
         public static final String STATE_DATA_URL = "http://truthuniversal.com/android/states";
 
+        private DrawerLayout mDrawerLayout;
+
+        private ActionBarDrawerToggle mDrawerToggle;
+        private CharSequence mDrawerTitle="TU App Menu";
+        private CharSequence mTitle;
 
 
-
+        @SuppressLint("NewApi")
         protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_layout);
+            super.onCreate(savedInstanceState);
+            //setContentView(R.layout.main_layout);
+            setContentView(R.layout.content_main);
 
+            ImageView default_iv = (ImageView)findViewById(R.id.default_imageview);
+            default_iv.setBackgroundColor(Color.BLACK);
+            Drawable logoDrawable = getResources().getDrawable(R.drawable.ic_truth_universal_logo, null);
+            default_iv.setImageDrawable(logoDrawable);
 
-
-        countryItemListMain = CountryItemSingleton.getInstance().getArrayList();
-            stateItemListMain = StateItemSingleton.getInstance().getArrayList();
-
-
-            final Button merchButton = (android.widget.Button) findViewById(R.id.merchButton);
-            final Button newsButton = (android.widget.Button) findViewById(R.id.newsButton);
-            final Button videoButton = (android.widget.Button) findViewById(R.id.videoButton);
-            final Button musicButton = (android.widget.Button) findViewById(R.id.musicButton);
-
-
-
-            merchButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-                System.out.println("MERCH Button Clicked!");
-                Intent intent = new Intent(getApplicationContext(),MerchActivity.class);
-                startActivity(intent);
-
-
-
-            }
-            });
-
-
-            newsButton.setOnClickListener(new View.OnClickListener() {
+            /***Drawer **/
+            mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+            mDrawerLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
                 public void onClick(View v) {
-
-                    System.out.println("NEWS Button Clicked!");
-                    Intent intent = new Intent(getApplicationContext(),NewsActivity.class);
-                    startActivity(intent);
-
-
 
                 }
             });
 
-            videoButton.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    System.out.println("VID Button Clicked!");
-                    Intent intent = new Intent(getApplicationContext(),YouTubeActivity.class);
-                    startActivity(intent);
 
+            int i = 0;
+            int j = 0;
+
+
+            Toolbar tb= (Toolbar)findViewById(R.id.toolbar);
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            //getSupportActionBar().setHomeAsUpIndicator(tb);
+
+
+            mDrawerToggle = new ActionBarDrawerToggle(
+                    this,
+                    mDrawerLayout,
+                    tb,
+                    R.string.abc_action_bar_home_description,
+                    R.string.abc_action_bar_up_description
+            ) {
+
+                /**
+                 * Called when a drawer has settled in a completely closed state.
+                 **/
+
+                public void onDrawerClosed(View view) {
+                    super.onDrawerClosed(view);
+                    getSupportActionBar().setTitle(mTitle);
                 }
 
-                });
+                /**
+                 * Called when a drawer has settled in a completely open state.
+                 **/
 
-            musicButton.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    System.out.println("MUSIC Button Clicked!");
-                    Intent intent = new Intent(getApplicationContext(),GooglePlayMusicActivity.class);
-                    startActivity(intent);
-
+                public void onDrawerOpened(View drawerView) {
+                    super.onDrawerOpened(drawerView);
+                    getSupportActionBar().setTitle(mDrawerTitle);
                 }
+            };
 
-            });
-    }
+            // Set the drawer toggle as the DrawerListener
+            mDrawerLayout.setDrawerListener(mDrawerToggle);
+            /***/
 
+
+        countryItemListMain=CountryItemSingleton.getInstance().
+
+        getArrayList();
+
+        stateItemListMain=StateItemSingleton.getInstance().
+
+        getArrayList();
+
+
+        final Button merchButton = (android.widget.Button) findViewById(R.id.merchButton);
+        final Button newsButton = (android.widget.Button) findViewById(R.id.newsButton);
+        final Button videoButton = (android.widget.Button) findViewById(R.id.videoButton);
+        final Button musicButton = (android.widget.Button) findViewById(R.id.musicButton);
+
+
+        merchButton.setOnClickListener(new View.OnClickListener()
+
+        {
+            public void onClick (View v){
+
+            System.out.println("MERCH Button Clicked!");
+
+            FragmentManager fragmentManager = getFragmentManager();
+
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new MerchFragment())
+                    .commit();
+
+            //Intent intent = new Intent(getApplicationContext(), MerchActivity.class);
+            //startActivity(intent);
+
+
+        }
+        });
+
+
+        newsButton.setOnClickListener(new View.OnClickListener()
+
+        {
+            public void onClick (View v){
+
+
+
+            System.out.println("NEWS Button Clicked!");
+
+            FragmentManager fragmentManager = getFragmentManager();
+
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new NewsFragment())
+                    .commit();
+
+            //Intent intent = new Intent(getApplicationContext(), NewsActivity.class);
+            //startActivity(intent);
+
+
+        }
+        });
+
+        videoButton.setOnClickListener(new View.OnClickListener()
+
+        {
+            public void onClick (View v){
+            System.out.println("VID Button Clicked!");
+            FragmentManager fragmentManager = getFragmentManager();
+
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new YouTubeFragment())
+                    .commit();
+
+            //Intent intent = new Intent(getApplicationContext(), YouTubeActivity.class);
+            //startActivity(intent);
+
+        }
+
+        });
+
+        musicButton.setOnClickListener(new View.OnClickListener()
+
+        {
+            public void onClick (View v){
+            System.out.println("MUSIC Button Clicked!");
+
+            FragmentManager fragmentManager = getFragmentManager();
+
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, new GooglePlayMusicFragment())
+                    .commit();
+
+            //Intent intent = new Intent(getApplicationContext(), GooglePlayMusicActivity.class);
+            //startActivity(intent);
+
+        }
+
+        });
+
+
+        }
+
+        /*DRAWER LOGIC'? */
+
+        @Override
+        protected void onPostCreate(Bundle savedInstanceState) {
+            super.onPostCreate(savedInstanceState);
+            // Sync the toggle state after onRestoreInstanceState has occurred.
+            mDrawerToggle.syncState();
+        }
+
+        @Override
+        public void onConfigurationChanged(Configuration newConfig) {
+            super.onConfigurationChanged(newConfig);
+            mDrawerToggle.onConfigurationChanged(newConfig);
+        }
+       /* */
         @Override
         public boolean onCreateOptionsMenu(Menu menu) {
             // Inflate the menu; this adds items to the action bar if it is present.
@@ -379,7 +505,12 @@ import java.util.List;
                 System.out.println("STATE JSON EXCEPTION==>"+je);
             }
 
+
+
+
         }
 
 
-    }
+
+
+    }//end Main
