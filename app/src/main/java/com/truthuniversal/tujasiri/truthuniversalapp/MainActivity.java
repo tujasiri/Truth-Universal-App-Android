@@ -22,7 +22,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -63,7 +66,9 @@ import java.util.List;
             //setContentView(R.layout.main_layout);
             setContentView(R.layout.content_main);
 
-            ImageView default_iv = (ImageView)findViewById(R.id.default_imageview);
+            final LinearLayout buttonLayout = (LinearLayout)findViewById(R.id.left_drawer);
+
+            final ImageView default_iv = (ImageView)findViewById(R.id.default_imageview);
             default_iv.setBackgroundColor(Color.BLACK);
             Drawable logoDrawable = getResources().getDrawable(R.drawable.ic_truth_universal_logo, null);
             default_iv.setImageDrawable(logoDrawable);
@@ -135,6 +140,7 @@ import java.util.List;
         final Button musicButton = (android.widget.Button) findViewById(R.id.musicButton);
 
 
+
         merchButton.setOnClickListener(new View.OnClickListener()
 
         {
@@ -142,6 +148,10 @@ import java.util.List;
 
             System.out.println("MERCH Button Clicked!");
 
+
+            disableSelectedButton(merchButton,buttonLayout);
+
+            default_iv.setVisibility(View.INVISIBLE);
             FragmentManager fragmentManager = getFragmentManager();
 
             fragmentManager.beginTransaction()
@@ -162,8 +172,9 @@ import java.util.List;
             public void onClick (View v){
 
 
-
+                default_iv.setVisibility(View.INVISIBLE);
             System.out.println("NEWS Button Clicked!");
+            disableSelectedButton(newsButton,buttonLayout);
 
             FragmentManager fragmentManager = getFragmentManager();
 
@@ -182,7 +193,10 @@ import java.util.List;
 
         {
             public void onClick (View v){
+
+            default_iv.setVisibility(View.INVISIBLE);
             System.out.println("VID Button Clicked!");
+            disableSelectedButton(videoButton,buttonLayout);
             FragmentManager fragmentManager = getFragmentManager();
 
             fragmentManager.beginTransaction()
@@ -202,11 +216,16 @@ import java.util.List;
             public void onClick (View v){
             System.out.println("MUSIC Button Clicked!");
 
+            disableSelectedButton(musicButton,buttonLayout);
+
+            default_iv.setVisibility(View.INVISIBLE);
+
             FragmentManager fragmentManager = getFragmentManager();
 
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame, new GooglePlayMusicFragment())
                     .commit();
+
 
             //Intent intent = new Intent(getApplicationContext(), GooglePlayMusicActivity.class);
             //startActivity(intent);
@@ -510,7 +529,27 @@ import java.util.List;
 
         }
 
+        public void disableSelectedButton(Button button,LinearLayout frmLayout){
 
+                for(int i=0;i<frmLayout.getChildCount();i++){
+
+                    View view = frmLayout.getChildAt(i);
+
+                    if(view instanceof Button){
+
+                        Button button1 = (Button)findViewById(view.getId());
+
+                        if(button == button1){
+                           System.out.println("button==>"+button);
+                           button1.setEnabled(false);
+                        }
+                        else
+                            button1.setEnabled(true);
+
+                    }//end if
+
+                }//end for
+            }
 
 
     }//end Main

@@ -1,6 +1,7 @@
 package com.truthuniversal.tujasiri.truthuniversalapp;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -391,28 +392,43 @@ public class MerchFragment extends Fragment{
                 ImageView iv1 = (ImageView) view.findViewById(R.id.imageView);
 
 
-                System.out.println(String.format("Imageview id is ==> %d",R.id.imageView));
+                System.out.println(String.format("Imageview id is ==> %d", R.id.imageView));
 
                 iv1.buildDrawingCache();
                 Bitmap imageViewImage = iv1.getDrawingCache();
+                Bitmap imageViewImageCOPY = Bitmap.createBitmap(imageViewImage);
 
                 Bundle extras = new Bundle();
-                extras.putParcelable("imagebitmap", imageViewImage);
-                //extras.putParcelable("theView", view);
+                extras.putParcelable("imagebitmap", imageViewImageCOPY);
+                //extras.putParcelable("theView", view)
 
                 intent.putExtras(extras);
 
+
                 String message = tv1.getText().toString();
                 intent.putExtra(EXTRA_MESSAGE, message);
+                extras.putString(EXTRA_MESSAGE, message);
 
 
                 String costViewString = tv2.getText().toString();
-                intent.putExtra(ITEM_COST,costViewString);
+                intent.putExtra(ITEM_COST, costViewString);
+                extras.putString(ITEM_COST, costViewString);
 
-                intent.putExtra(ITEM_LIST_POSITION,position);
+                intent.putExtra(ITEM_LIST_POSITION, position);
+                extras.putInt(ITEM_LIST_POSITION, position);
+
+               //Fragment fragment = getParentFragment();
+                Fragment fragment = new MerchItemDescriptionFragment();
+
+               fragment.setArguments(extras);
+                //startActivity(intent);
+
+                FragmentManager fragmentManager = getFragmentManager();
 
 
-                startActivity(intent);
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, fragment)
+                        .commit();
 
             }
         });
