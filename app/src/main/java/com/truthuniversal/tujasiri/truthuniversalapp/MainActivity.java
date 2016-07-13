@@ -66,12 +66,18 @@ import java.util.List;
             //setContentView(R.layout.main_layout);
             setContentView(R.layout.content_main);
 
+
+            ImageView ivAppHeader = (ImageView)findViewById(R.id.app_header);
+
+            Drawable appHeaderDrawable = getResources().getDrawable(R.drawable.ic_truth_universal_header,null);
+            ivAppHeader.setImageDrawable(appHeaderDrawable);
+
             final LinearLayout buttonLayout = (LinearLayout)findViewById(R.id.left_drawer);
 
-            final ImageView default_iv = (ImageView)findViewById(R.id.default_imageview);
-            default_iv.setBackgroundColor(Color.BLACK);
-            Drawable logoDrawable = getResources().getDrawable(R.drawable.ic_truth_universal_logo, null);
-            default_iv.setImageDrawable(logoDrawable);
+            //final ImageView default_iv = (ImageView)findViewById(R.id.default_imageview);
+            //default_iv.setBackgroundColor(Color.BLACK);
+            //Drawable logoDrawable = getResources().getDrawable(R.drawable.ic_truth_universal_logo, null);
+            //default_iv.setImageDrawable(logoDrawable);
 
             /***Drawer **/
             mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -151,7 +157,7 @@ import java.util.List;
 
             disableSelectedButton(merchButton,buttonLayout);
 
-            default_iv.setVisibility(View.INVISIBLE);
+            //default_iv.setVisibility(View.INVISIBLE);
             FragmentManager fragmentManager = getFragmentManager();
 
             fragmentManager.beginTransaction()
@@ -172,7 +178,7 @@ import java.util.List;
             public void onClick (View v){
 
 
-                default_iv.setVisibility(View.INVISIBLE);
+                //default_iv.setVisibility(View.INVISIBLE);
             System.out.println("NEWS Button Clicked!");
             disableSelectedButton(newsButton,buttonLayout);
 
@@ -194,7 +200,7 @@ import java.util.List;
         {
             public void onClick (View v){
 
-            default_iv.setVisibility(View.INVISIBLE);
+            //default_iv.setVisibility(View.INVISIBLE);
             System.out.println("VID Button Clicked!");
             disableSelectedButton(videoButton,buttonLayout);
             FragmentManager fragmentManager = getFragmentManager();
@@ -218,7 +224,7 @@ import java.util.List;
 
             disableSelectedButton(musicButton,buttonLayout);
 
-            default_iv.setVisibility(View.INVISIBLE);
+            //default_iv.setVisibility(View.INVISIBLE);
 
             FragmentManager fragmentManager = getFragmentManager();
 

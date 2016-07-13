@@ -1,31 +1,23 @@
 package com.truthuniversal.tujasiri.truthuniversalapp;
 
-import android.content.Intent;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.FragmentManager;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
-import android.text.Layout;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.SimpleExpandableListAdapter;
-
-import com.stripe.Stripe;
-import com.stripe.exception.StripeException;
-import com.stripe.model.Card;
-import com.stripe.model.Charge;
-import com.stripe.model.Token;
-import com.stripe.net.RequestOptions;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,23 +32,20 @@ import java.io.Reader;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 
-
 /**
  * Created by tujasiri on 1/4/16.
  */
-public class StripeActivity extends AppCompatActivity {
+public class StripeFragment extends Fragment{
 
     int responseCode = 0;
     StringBuffer response = new StringBuffer();
@@ -157,14 +146,23 @@ public class StripeActivity extends AppCompatActivity {
     CountryItem ci = new CountryItem();
 
     Map<String,Object> emailDataMap = new HashMap<String, Object>();
+    View stripeView;
 
 
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        stripeView = inflater.inflate(R.layout.stripe_checkout,container,false);
+       /*
+        return stripeView;
 
+    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.stripe_checkout);
+        */
 
         //test json
         String jsonMonthResource="";
@@ -181,7 +179,7 @@ public class StripeActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        final Button stripeButton = (android.widget.Button) findViewById(R.id.checkout_pay_button);
+        final Button stripeButton = (Button) stripeView.findViewById(R.id.checkout_pay_button);
 
         countryItemList = CountryItemSingleton.getInstance().getArrayList();
         stateItemList =  StateItemSingleton.getInstance().getArrayList();
@@ -194,16 +192,16 @@ public class StripeActivity extends AppCompatActivity {
         //new AsyncCountryTask().execute(COUNTRY_DATA_URL);
 
         // get the country listview
-        expListView = (ExpandableListView) findViewById(R.id.expandableListView);
+        expListView = (ExpandableListView) stripeView.findViewById(R.id.expandableListView);
 
         // get the state listview
-        expStateListView = (ExpandableListView) findViewById(R.id.stateExpandableListView);
+        expStateListView = (ExpandableListView) stripeView.findViewById(R.id.stateExpandableListView);
 
         // get the state listview
-        expMonthListView = (ExpandableListView) findViewById(R.id.expandableListViewMonth);
+        expMonthListView = (ExpandableListView) stripeView.findViewById(R.id.expandableListViewMonth);
 
         // get the state listview
-        expYearListView = (ExpandableListView) findViewById(R.id.expandableListViewYear);
+        expYearListView = (ExpandableListView) stripeView.findViewById(R.id.expandableListViewYear);
 
         // preparing list data
         //prepareListData();
@@ -265,17 +263,13 @@ public class StripeActivity extends AppCompatActivity {
         groupExpYearMapList.add(groupExpYearItemMap);
 
 
-
-
-
-
         //listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
         try {
             //listAdapter = new ExpandableListAdapter(getApplication().getApplicationContext(), listDataHeader, countryItemList);
 
             SimpleExpandableListAdapter expListAdapter =
                     new SimpleExpandableListAdapter(
-                            getApplication().getApplicationContext(),
+                            getActivity(),
                             groupMapList,              // Creating group List.
                             R.layout.country_header_view,             // Group item layout XML.
                             new String[] { "Group Item" },  // the key of group item.
@@ -309,12 +303,7 @@ public class StripeActivity extends AppCompatActivity {
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 String cn = countryItemList.get(childPosition).country_name;
 
-                Toast.makeText(getApplicationContext(),
-                        String.format("COUNTRY ==> %s", cn),
-                        Toast.LENGTH_SHORT).show();
-
-                //expListView.setChoiceMode(ExpandableListView.CHOICE_MODE_SINGLE);
-                EditText countryText = (EditText) findViewById(R.id.country_edit_text);
+                EditText countryText = (EditText) stripeView.findViewById(R.id.country_edit_text);
                 countryText.setText(cn);
 
                 expListView.collapseGroup(groupPosition);
@@ -343,11 +332,8 @@ public class StripeActivity extends AppCompatActivity {
 
             @Override
             public void onGroupExpand(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
-                        groupMapList.get(groupPosition) + " Expanded",
-                        Toast.LENGTH_SHORT).show();
 
-                ExpandableListView elv = (ExpandableListView) findViewById(R.id.expandableListView);
+                ExpandableListView elv = (ExpandableListView) stripeView.findViewById(R.id.expandableListView);
                 elv.setMinimumHeight(1300);
 
                 ViewGroup.LayoutParams params = expListView.getLayoutParams();
@@ -362,9 +348,6 @@ public class StripeActivity extends AppCompatActivity {
 
             @Override
             public void onGroupCollapse(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
-                        groupMapList.get(groupPosition) + " Collapsed",
-                        Toast.LENGTH_SHORT).show();
 
                 ViewGroup.LayoutParams params = expListView.getLayoutParams();
                 params.height = 100;
@@ -381,7 +364,7 @@ public class StripeActivity extends AppCompatActivity {
 
             SimpleExpandableListAdapter expStateListAdapter =
                     new SimpleExpandableListAdapter(
-                            getApplication().getApplicationContext(),
+                            getActivity(),
                             groupStateMapList,              // Creating group List.
                             R.layout.state_header_view,             // Group item layout XML.
                             new String[] { "State Group Item" },  // the key of group item.
@@ -393,10 +376,7 @@ public class StripeActivity extends AppCompatActivity {
                     );
 
 
-
                 expStateListView.setAdapter(expStateListAdapter);
-
-
 
         }
         catch(Exception e){
@@ -409,12 +389,8 @@ public class StripeActivity extends AppCompatActivity {
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 String sa = stateItemList.get(childPosition).state_abbreviation;
 
-                Toast.makeText(getApplicationContext(),
-                        String.format("STATE ==> %s", sa),
-                        Toast.LENGTH_SHORT).show();
-
                 //expListView.setChoiceMode(ExpandableListView.CHOICE_MODE_SINGLE);
-                EditText stateAbbrevText = (EditText) findViewById(R.id.state_edit_text);
+                EditText stateAbbrevText = (EditText) stripeView.findViewById(R.id.state_edit_text);
                 stateAbbrevText.setText(sa);
 
                 expStateListView.collapseGroup(groupPosition);
@@ -442,11 +418,8 @@ public class StripeActivity extends AppCompatActivity {
 
             @Override
             public void onGroupExpand(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
-                        groupStateMapList.get(groupPosition) + " Expanded",
-                        Toast.LENGTH_SHORT).show();
 
-                ExpandableListView eslv = (ExpandableListView) findViewById(R.id.stateExpandableListView);
+                ExpandableListView eslv = (ExpandableListView) stripeView.findViewById(R.id.stateExpandableListView);
                 eslv.setMinimumHeight(1300);
 
                 ViewGroup.LayoutParams stateLayoutParams = expStateListView.getLayoutParams();
@@ -461,9 +434,6 @@ public class StripeActivity extends AppCompatActivity {
 
             @Override
             public void onGroupCollapse(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
-                        groupStateMapList.get(groupPosition) + " Collapsed",
-                        Toast.LENGTH_SHORT).show();
 
                 ViewGroup.LayoutParams stateLayoutParams = expStateListView.getLayoutParams();
                 stateLayoutParams.height = 100;
@@ -484,7 +454,7 @@ public class StripeActivity extends AppCompatActivity {
 
             SimpleExpandableListAdapter expExpMonthListAdapter =
                     new SimpleExpandableListAdapter(
-                            getApplication().getApplicationContext(),
+                            getActivity(),
                             groupExpMonthMapList,              // Creating group List.
                             R.layout.month_header,             // Group item layout XML.
                             new String[] { "ExpMonth Group Item" },  // the key of group item.
@@ -514,14 +484,8 @@ public class StripeActivity extends AppCompatActivity {
                 System.out.println("xxxxxx==>");
 
                 String expMonth = childExpMonthMapList.get(childPosition).get("month");
-                Toast.makeText(getApplicationContext(),
-                        String.format("MONTH ==> %s", expMonth),
-                        Toast.LENGTH_SHORT).show();
 
-
-                //expListView.setChoiceMode(ExpandableListView.CHOICE_MODE_SINGLE);
-
-                TextView expirationMonth = (TextView) findViewById(R.id.exp_month_value_textview);
+                TextView expirationMonth = (TextView) stripeView.findViewById(R.id.exp_month_value_textview);
                 expirationMonth.setText(String.format("%d", Integer.parseInt(expMonth)));
 
 
@@ -550,11 +514,8 @@ public class StripeActivity extends AppCompatActivity {
 
             @Override
             public void onGroupExpand(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
-                        groupExpMonthMapList.get(groupPosition) + " Month Expanded",
-                        Toast.LENGTH_SHORT).show();
 
-                ExpandableListView emlv = (ExpandableListView) findViewById(R.id.expandableListViewMonth);
+                ExpandableListView emlv = (ExpandableListView) stripeView.findViewById(R.id.expandableListViewMonth);
                 emlv.setMinimumHeight(1300);
 
                 ViewGroup.LayoutParams stateLayoutParams = expMonthListView.getLayoutParams();
@@ -569,9 +530,6 @@ public class StripeActivity extends AppCompatActivity {
 
             @Override
             public void onGroupCollapse(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
-                        groupExpMonthMapList.get(groupPosition) + " Month Collapsed",
-                        Toast.LENGTH_SHORT).show();
 
                 ViewGroup.LayoutParams monthLayoutParams = expMonthListView.getLayoutParams();
                 monthLayoutParams.height = 100;
@@ -581,19 +539,14 @@ public class StripeActivity extends AppCompatActivity {
             }
         });
 
-
-
         //*******END EXPANDABLE LISTVIEW FOR EXP MONTH
-
-
-
         //*******EXPANDABLE LISTVIEW FOR EXP YEAR
 
         try {
 
             SimpleExpandableListAdapter expExpYearListAdapter =
                     new SimpleExpandableListAdapter(
-                            getApplication().getApplicationContext(),
+                            getActivity(),
                             groupExpYearMapList,              // Creating group List.
                             R.layout.year_header,             // Group item layout XML.
                             new String[] { "ExpYear Group Item" },  // the key of group item.
@@ -623,14 +576,11 @@ public class StripeActivity extends AppCompatActivity {
                 System.out.println("yyyyyy==>");
 
                 String expYear = childExpYearMapList.get(childPosition).get("year");
-                Toast.makeText(getApplicationContext(),
-                        String.format("MONTH ==> %s", expYear),
-                        Toast.LENGTH_SHORT).show();
 
 
                 //expListView.setChoiceMode(ExpandableListView.CHOICE_MODE_SINGLE);
 
-                TextView expirationYear = (TextView) findViewById(R.id.exp_year_value_textview);
+                TextView expirationYear = (TextView) stripeView.findViewById(R.id.exp_year_value_textview);
                 expirationYear.setText(String.format("%d", Integer.parseInt(expYear)));
 
 
@@ -658,11 +608,8 @@ public class StripeActivity extends AppCompatActivity {
 
             @Override
             public void onGroupExpand(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
-                        groupExpYearMapList.get(groupPosition) + " Year Expanded",
-                        Toast.LENGTH_SHORT).show();
 
-                ExpandableListView eylv = (ExpandableListView) findViewById(R.id.expandableListViewYear);
+                ExpandableListView eylv = (ExpandableListView) stripeView.findViewById(R.id.expandableListViewYear);
                 eylv.setMinimumHeight(700);
 
                 ViewGroup.LayoutParams yearLayoutParams = expYearListView.getLayoutParams();
@@ -677,9 +624,6 @@ public class StripeActivity extends AppCompatActivity {
 
             @Override
             public void onGroupCollapse(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
-                        groupExpYearMapList.get(groupPosition) + " Year Collapsed",
-                        Toast.LENGTH_SHORT).show();
 
                 ViewGroup.LayoutParams yearLayoutParams = expYearListView.getLayoutParams();
                 yearLayoutParams.height = 100;
@@ -733,42 +677,42 @@ public class StripeActivity extends AppCompatActivity {
 
 
 
-                EditText recipName = (EditText) findViewById(R.id.stripe_name);
+                EditText recipName = (EditText) stripeView.findViewById(R.id.stripe_name);
                 recipientName = recipName.getText().toString().trim();
 
-                EditText recipCity = (EditText) findViewById(R.id.city_edit_text);
+                EditText recipCity = (EditText) stripeView.findViewById(R.id.city_edit_text);
                 recipientCity = recipCity.getText().toString().trim();
 
-                EditText recipAddress1 = (EditText) findViewById(R.id.address_1);
+                EditText recipAddress1 = (EditText) stripeView.findViewById(R.id.address_1);
                 recipientAddress = recipAddress1.getText().toString().trim();
 
-                EditText recipAddress2 = (EditText) findViewById(R.id.address_2);
+                EditText recipAddress2 = (EditText) stripeView.findViewById(R.id.address_2);
                 recipientAddress =  String.format("%s %s", recipientAddress, recipAddress2.getText().toString().trim());
 
-                EditText recipCountry = (EditText) findViewById(R.id.country_edit_text);
+                EditText recipCountry = (EditText) stripeView.findViewById(R.id.country_edit_text);
                 recipientCountry = recipCountry.getText().toString().trim();
 
-                EditText recipEmail = (EditText) findViewById(R.id.email_text);
+                EditText recipEmail = (EditText) stripeView.findViewById(R.id.email_text);
                 recipientEmail = recipEmail.getText().toString().trim();
 
-                EditText recipPhone = (EditText) findViewById(R.id.phone_edit_text);
+                EditText recipPhone = (EditText) stripeView.findViewById(R.id.phone_edit_text);
                 recipientPhone = recipPhone.getText().toString().trim();
 
-                EditText recipCreditCard = (EditText) findViewById(R.id.credit_card_edit_text);
+                EditText recipCreditCard = (EditText) stripeView.findViewById(R.id.credit_card_edit_text);
                 recipientCreditCard = recipCreditCard.getText().toString().trim();
 
-                EditText recipCVC = (EditText) findViewById(R.id.cvc_edit_text);
+                EditText recipCVC = (EditText) stripeView.findViewById(R.id.cvc_edit_text);
                 recipientCVC = recipCVC.getText().toString().trim();
 
 
-                EditText recipState = (EditText) findViewById(R.id.state_edit_text);
+                EditText recipState = (EditText) stripeView.findViewById(R.id.state_edit_text);
                 recipientState = recipState.getText().toString().trim();
 
-                EditText recipZip = (EditText) findViewById(R.id.zip_edit_text);
+                EditText recipZip = (EditText) stripeView.findViewById(R.id.zip_edit_text);
                 recipientZip = recipZip.getText().toString().trim();
 
 
-                TextView recipCardExpirationMonth = (TextView) findViewById(R.id.exp_month_value_textview);
+                TextView recipCardExpirationMonth = (TextView) stripeView.findViewById(R.id.exp_month_value_textview);
 
                 System.out.println(String.format("expMONTH ==> %s",recipCardExpirationMonth.getText().toString()));
 
@@ -777,7 +721,7 @@ public class StripeActivity extends AppCompatActivity {
                 else
                     recipientCardExpirationMonth  = Integer.parseInt(recipCardExpirationMonth.getText().toString());
 
-                TextView recipCardExpirationYear = (TextView) findViewById(R.id.exp_year_value_textview);
+                TextView recipCardExpirationYear = (TextView) stripeView.findViewById(R.id.exp_year_value_textview);
 
                 if(recipCardExpirationYear.getText().toString().isEmpty())
                     recipientCardExpirationYear  = 0;
@@ -847,7 +791,7 @@ public class StripeActivity extends AppCompatActivity {
 
 
                 //new AsyncStripeTask().execute(STRIPE_URL, chargeMapJSON.toString());
-                LinearLayout stripeLayout = (LinearLayout)findViewById(R.id.stripe_checkout);
+                LinearLayout stripeLayout = (LinearLayout)stripeView.findViewById(R.id.stripe_checkout);
 
 
 
@@ -873,6 +817,7 @@ public class StripeActivity extends AppCompatActivity {
 
 
 
+        return stripeView;
 
 
     }
@@ -886,14 +831,14 @@ public class StripeActivity extends AppCompatActivity {
 
             if(view instanceof TextView){
 
-                TextView textView = (TextView)findViewById(view.getId());
+                TextView textView = (TextView)stripeView.findViewById(view.getId());
                 textView.setBackgroundColor(Color.TRANSPARENT);
 
             }
 
             if(view instanceof EditText){
 
-                EditText editText = (EditText)findViewById(view.getId());
+                EditText editText = (EditText)stripeView.findViewById(view.getId());
                 editText.setBackgroundColor(Color.TRANSPARENT);
 
             }
@@ -939,7 +884,7 @@ public class StripeActivity extends AppCompatActivity {
             }
 
             if(v instanceof TextView){
-                TextView tv = (TextView)findViewById(v.getId());
+                TextView tv = (TextView)stripeView.findViewById(v.getId());
 
                 if(tv.getText().toString().isEmpty()){
                     //make text red
@@ -951,7 +896,7 @@ public class StripeActivity extends AppCompatActivity {
 
             if(v instanceof EditText) {
 
-                EditText et = (EditText) findViewById(v.getId());
+                EditText et = (EditText) stripeView.findViewById(v.getId());
 
                 System.out.println(String.format("EDITTEXT in formIsValid==> %s\n\n", et.getText()));
                 //if(et.getText().toString().equals("")){
@@ -1267,7 +1212,7 @@ public class StripeActivity extends AppCompatActivity {
                     noCardError = Boolean.FALSE;
                 }
                 */
-                LinearLayout strCardErrLayout = (LinearLayout)findViewById(R.id.stripe_checkout);
+                LinearLayout strCardErrLayout = (LinearLayout)stripeView.findViewById(R.id.stripe_checkout);
 
                 //noCardError = noStripeError(response.toString().trim());
                 noCardError = noStripeError(response.toString().trim(),strCardErrLayout);
@@ -1276,7 +1221,7 @@ public class StripeActivity extends AppCompatActivity {
 
             //else   show dialog -- could not complete transaction
 
-            LinearLayout strLayout = (LinearLayout)findViewById(R.id.stripe_checkout);
+            LinearLayout strLayout = (LinearLayout)stripeView.findViewById(R.id.stripe_checkout);
 
             //if(noCardError == Boolean.TRUE)
             if (noCardError.toString().trim().equals("true")){
@@ -1411,7 +1356,8 @@ public class StripeActivity extends AppCompatActivity {
     public String getJSONResource(String fileName) throws IOException,UnsupportedEncodingException {
         String jsonString="";
 
-        int rawResId = this.getResources().getIdentifier(fileName, "raw", this.getPackageName());
+        //int rawResId = this.getResources().getIdentifier(fileName, "raw", this.getPackageName());
+        int rawResId = this.getResources().getIdentifier(fileName, "raw", getActivity().getPackageName());
 
 
         InputStream is = getResources().openRawResource(rawResId);
@@ -1631,17 +1577,7 @@ public class StripeActivity extends AppCompatActivity {
 
             View view = frmLayout.getChildAt(i);
 
-            /*
-            if(view instanceof TextView){
-
-                TextView textView = (TextView)findViewById(view.getId());
-                textView.setBackgroundColor(Color.TRANSPARENT);
-
-
-            }
-            */
             if(view instanceof ExpandableListView){
-
 
             }
 
@@ -1652,7 +1588,7 @@ public class StripeActivity extends AppCompatActivity {
 
             if(view instanceof EditText){
 
-                EditText editText = (EditText)findViewById(view.getId());
+                EditText editText = (EditText)stripeView.findViewById(view.getId());
                 editText.getText().clear();
 
             }
@@ -1660,9 +1596,4 @@ public class StripeActivity extends AppCompatActivity {
         }
     }
 
-
 }
-
-
-
-
