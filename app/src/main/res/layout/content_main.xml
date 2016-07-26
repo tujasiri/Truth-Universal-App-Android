@@ -54,7 +54,8 @@
             android:textSize="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp" />
+            android:layout_marginRight="20dp"
+            android:drawableLeft="@drawable/ic_merch_forklift"/>
 
         <Button
             android:layout_width="match_parent"
@@ -66,7 +67,8 @@
             android:textSize="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp" />
+            android:layout_marginRight="20dp"
+            android:drawableLeft="@drawable/ic_news_icon"/>
 
         <Button
             android:layout_width="match_parent"
@@ -78,7 +80,8 @@
             android:textSize="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="20dp"
+            android:drawableLeft="@drawable/ic_video_icon"/>
 
         <Button
             android:layout_width="match_parent"
@@ -90,7 +93,8 @@
             android:textSize="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp" />
+            android:layout_marginRight="20dp"
+            android:drawableLeft="@drawable/ic_social_icon"/>
 
         <Button
             android:layout_width="match_parent"
@@ -102,7 +106,8 @@
             android:textSize="30dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp" />
+            android:layout_marginRight="20dp"
+            android:drawableLeft="@drawable/ic_music_icon"/>
     </LinearLayout>
 
 

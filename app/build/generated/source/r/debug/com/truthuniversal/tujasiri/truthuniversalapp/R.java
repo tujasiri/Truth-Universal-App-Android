@@ -2034,12 +2034,18 @@ containing a value of this type.
         public static final int fab_background=0x7f02003d;
         public static final int ic_action_name=0x7f02003e;
         public static final int ic_home_icon=0x7f02003f;
-        public static final int ic_shop=0x7f020040;
-        public static final int ic_shopping_cart=0x7f020041;
-        public static final int ic_truth_universal_header=0x7f020042;
-        public static final int ic_truth_universal_logo=0x7f020043;
-        public static final int notification_template_icon_bg=0x7f020045;
-        public static final int snackbar_background=0x7f020044;
+        public static final int ic_merch_forklift=0x7f020040;
+        public static final int ic_music1=0x7f020041;
+        public static final int ic_music_icon=0x7f020042;
+        public static final int ic_news_icon=0x7f020043;
+        public static final int ic_shop=0x7f020044;
+        public static final int ic_shopping_cart=0x7f020045;
+        public static final int ic_social_icon=0x7f020046;
+        public static final int ic_truth_universal_header=0x7f020047;
+        public static final int ic_truth_universal_logo=0x7f020048;
+        public static final int ic_video_icon=0x7f020049;
+        public static final int notification_template_icon_bg=0x7f02004b;
+        public static final int snackbar_background=0x7f02004a;
     }
     public static final class id {
         public static final int action0=0x7f0d009e;

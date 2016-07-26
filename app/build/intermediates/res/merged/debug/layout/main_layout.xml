@@ -13,7 +13,8 @@
         android:textSize="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="20dp"
+        android:drawableLeft="@drawable/ic_music1"/>
 
     <Button
         android:layout_width="match_parent"
@@ -61,5 +62,6 @@
         android:textSize="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
+        android:drawableLeft="@drawable/ic_music1"
         android:layout_marginRight="20dp" />
-</LinearLayout><!-- From: file:/C:/Users/tujasiri/AndroidStudioProjects/Truth-Universal-App-Android/app/src/main/res/layout/main_layout.xml -->
+</LinearLayout><!-- From: file:/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/src/main/res/layout/main_layout.xml -->
