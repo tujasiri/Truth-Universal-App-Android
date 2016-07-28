@@ -28,11 +28,37 @@
         android:text="Small Text"
         android:id="@+id/textViewLongDesc" />
 
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:id="@+id/button_group1">
+
     <Button
-        android:layout_width="314dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="ADD TO CART"
         android:id="@+id/addToCartButton"
         android:layout_weight="0.26"
+        android:drawableLeft="@drawable/ic_shopping_cart"
         android:layout_gravity="center_horizontal" />
+
+     <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="SHOP"
+            android:id="@+id/continueShopping"
+            android:layout_weight="0.26"
+            android:drawableLeft="@drawable/ic_shop"
+            android:layout_gravity="center_horizontal" />
+
+    <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="VIEW CART"
+            android:id="@+id/viewCart"
+            android:layout_weight="0.26"
+            android:drawableLeft="@drawable/ic_shopping_cart"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
 </LinearLayout>

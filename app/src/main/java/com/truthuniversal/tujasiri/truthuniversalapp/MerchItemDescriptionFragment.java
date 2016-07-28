@@ -1,6 +1,7 @@
 package com.truthuniversal.tujasiri.truthuniversalapp;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -36,8 +37,14 @@ public class MerchItemDescriptionFragment extends Fragment {
         MerchItemDetailList = ItemSingleton.getInstance().getArrayList();
         merchDetail_CART = CartSingleton.getInstance().getCheckoutCart();
 
+        final Button shopButton = (Button) merchDescView.findViewById(R.id.continueShopping);
+        final Button viewCartButton = (Button) merchDescView.findViewById(R.id.viewCart);
         final Button addButton = (Button) merchDescView.findViewById(R.id.addToCartButton);
+
+        shopButton.setEnabled(true);
+        viewCartButton.setEnabled(true);
         addButton.setEnabled(true);
+
         addButton.setOnClickListener(new View.OnClickListener() {
 
 
@@ -56,6 +63,30 @@ public class MerchItemDescriptionFragment extends Fragment {
                 merchDetail_CART.addItemToCart(merchItem);
                 addButton.setEnabled(false);
 
+
+            }
+        });
+
+        shopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getFragmentManager();
+
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, new MerchFragment())
+                        .commit();
+
+            }
+        });
+
+        viewCartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getFragmentManager();
+
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, new CheckoutCartItemViewFragment())
+                        .commit();
 
             }
         });
