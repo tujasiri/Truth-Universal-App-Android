@@ -37,6 +37,7 @@ public class CheckoutCartItemViewFragment extends Fragment {
 
         View totalLayout = checkoutCartItemView.findViewById(R.id.checkoutlayout);
         final Button checkoutButton = (Button) checkoutCartItemView.findViewById(R.id.checkout_button);
+        final Button checkoutShopButton = (Button) checkoutCartItemView.findViewById(R.id.continueShoppingCheckOut);
 
         checkoutButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -46,6 +47,19 @@ public class CheckoutCartItemViewFragment extends Fragment {
 
                 fragmentManager.beginTransaction()
                         .replace(R.id.content_frame, new StripeFragment())
+                        .commit();
+
+            }
+        });
+
+
+        checkoutShopButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getFragmentManager();
+
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, new MerchFragment())
                         .commit();
 
             }
