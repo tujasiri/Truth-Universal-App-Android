@@ -81,7 +81,13 @@ public class MerchFragment extends Fragment{
         return merchView;
     }
 
-/*
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+
+
+    /*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
