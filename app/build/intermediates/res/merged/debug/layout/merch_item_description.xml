@@ -40,7 +40,7 @@
         android:text="ADD TO CART"
         android:id="@+id/addToCartButton"
         android:layout_weight="0.26"
-        android:drawableLeft="@drawable/ic_shopping_cart"
+        android:drawableLeft="@drawable/ic_add_to_cart"
         android:layout_gravity="center_horizontal" />
 
      <Button
@@ -61,4 +61,4 @@
             android:drawableLeft="@drawable/ic_shopping_cart"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
-</LinearLayout><!-- From: file:/C:/Users/tujasiri/AndroidStudioProjects/Truth-Universal-App-Android-VERSION1/app/src/main/res/layout/merch_item_description.xml -->
+</LinearLayout><!-- From: file:/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/src/main/res/layout/merch_item_description.xml -->
