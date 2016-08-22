@@ -104,7 +104,6 @@ public class MerchItemDescriptionActivity extends AppCompatActivity {
 
         int id = menuItem.getItemId();
 
-        System.out.println(String.format("id ==>%d, action_settings ==> %d, R.it.cut_icon==>%d",id, R.id.action_settings,R.id.shopping_cart));
 
         if(id == R.id.action_settings){
             return true;
@@ -112,6 +111,7 @@ public class MerchItemDescriptionActivity extends AppCompatActivity {
         }
 
         switch(id){
+            /*
 
             case R.id.shopping_cart:
             {
@@ -123,6 +123,7 @@ public class MerchItemDescriptionActivity extends AppCompatActivity {
 
             }
             break;
+            */
             case R.id.truth_universal_logo:
             {
                 Toast.makeText(getBaseContext(), "Clicked LOG Icon!", Toast.LENGTH_SHORT).show();
@@ -143,6 +144,7 @@ public class MerchItemDescriptionActivity extends AppCompatActivity {
 
             }
             break;
+            /*
             case R.id.shop_icon:
             {
                 //Toast.makeText(getBaseContext(), "Clicked SHP{ Icon!", Toast.LENGTH_SHORT).show();
@@ -153,6 +155,7 @@ public class MerchItemDescriptionActivity extends AppCompatActivity {
 
             }
             break;
+            */
         }//end switch(id)
 
         return true;

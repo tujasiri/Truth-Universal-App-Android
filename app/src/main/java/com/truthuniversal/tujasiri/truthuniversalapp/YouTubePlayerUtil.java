@@ -1,9 +1,16 @@
 package com.truthuniversal.tujasiri.truthuniversalapp;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -12,12 +19,12 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer.Provider;
 import com.google.android.youtube.player.YouTubePlayerView;
+import android.app.ActionBar;
 /**
  * Created by tujasiri on 12/19/15.
  */
+//public abstract class YouTubePlayerUtil extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
 public class YouTubePlayerUtil extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
-
-
 
 
     private static final int RECOVERY_REQUEST = 1;
@@ -29,6 +36,12 @@ public class YouTubePlayerUtil extends YouTubeBaseActivity implements YouTubePla
     }
     */
 
+    private DrawerLayout mDrawerLayout;
+
+    private ActionBarDrawerToggle mDrawerToggle;
+    private CharSequence mDrawerTitle="TU App Menu";
+    private CharSequence mTitle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +50,52 @@ public class YouTubePlayerUtil extends YouTubeBaseActivity implements YouTubePla
 
         youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
         youTubeView.initialize(Config.YOUTUBE_API_KEY, this);
+
+        /****action menu****
+        ImageView ivAppHeader = (ImageView)findViewById(R.id.app_header);
+
+        Drawable appHeaderDrawable = getResources().getDrawable(R.drawable.ic_truth_universal_header,null);
+        ivAppHeader.setImageDrawable(appHeaderDrawable);
+
+        final LinearLayout buttonLayout = (LinearLayout)findViewById(R.id.left_drawer);
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+        int i = 0;
+        int j = 0;
+
+
+        Toolbar tb= (Toolbar)findViewById(R.id.toolbar);
+        getActionBar().setHomeButtonEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        mDrawerToggle = new ActionBarDrawerToggle(
+                this,
+                mDrawerLayout,
+                tb,
+                R.string.abc_action_bar_home_description,
+                R.string.abc_action_bar_up_description
+        ) {
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+                getActionBar().setTitle(mTitle);
+            }
+
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                getActionBar().setTitle(mDrawerTitle);
+            }
+        };
+
+            **action menu****/
     }
 
     @Override

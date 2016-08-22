@@ -2157,7 +2157,7 @@ containing a value of this type.
         public static final int fixed=0x7f0d0034;
         public static final int home=0x7f0d0004;
         public static final int homeAsUp=0x7f0d000e;
-        public static final int home_icon=0x7f0d00ea;
+        public static final int home_icon=0x7f0d00e8;
         public static final int icon=0x7f0d0044;
         public static final int ifRoom=0x7f0d002f;
         public static final int image=0x7f0d0041;
@@ -2218,8 +2218,6 @@ containing a value of this type.
         public static final int search_src_text=0x7f0d0062;
         public static final int search_voice_btn=0x7f0d0066;
         public static final int select_dialog_listview=0x7f0d0067;
-        public static final int shop_icon=0x7f0d00e8;
-        public static final int shopping_cart=0x7f0d00e9;
         public static final int shortcut=0x7f0d0052;
         public static final int showCustom=0x7f0d0010;
         public static final int showHome=0x7f0d0011;

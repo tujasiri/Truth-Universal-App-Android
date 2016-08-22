@@ -11,7 +11,7 @@
         app:showAsAction="always"
 
         />
-
+    <!--
     <item android:id="@+id/shop_icon"
         android:title="Shop Icon"
         android:icon="@drawable/ic_shop"
@@ -25,6 +25,7 @@
             app:showAsAction="always"
 
         />
+    !-->
 
     <item android:id="@+id/home_icon"
         android:title="Home Icon"

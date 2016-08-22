@@ -96,6 +96,7 @@ import java.util.List;
             Toolbar tb= (Toolbar)findViewById(R.id.toolbar);
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            //setSupportActionBar(tb);
             //getSupportActionBar().setHomeAsUpIndicator(tb);
 
 
@@ -106,6 +107,17 @@ import java.util.List;
                     R.string.abc_action_bar_home_description,
                     R.string.abc_action_bar_up_description
             ) {
+
+/*
+
+            mDrawerToggle = new ActionBarDrawerToggle(
+                    this,
+                    mDrawerLayout,
+                   /*tb,
+                    R.string.abc_action_bar_home_description,
+                    R.string.abc_action_bar_up_description
+            ) {
+*/
 
                 /**
                  * Called when a drawer has settled in a completely closed state.
@@ -129,6 +141,7 @@ import java.util.List;
             // Set the drawer toggle as the DrawerListener
             mDrawerLayout.setDrawerListener(mDrawerToggle);
             /***/
+            mDrawerToggle.syncState();
 
 
         countryItemListMain=CountryItemSingleton.getInstance().
@@ -274,7 +287,9 @@ import java.util.List;
 
             int id = menuItem.getItemId();
 
-            System.out.println(String.format("id ==>%d, action_settings ==> %d, R.it.cut_icon==>%d", id, R.id.action_settings, R.id.shopping_cart));
+            if (mDrawerToggle.onOptionsItemSelected(menuItem)) {
+                return true;
+            }
 
             if(id == R.id.action_settings){
                 return true;
@@ -282,6 +297,7 @@ import java.util.List;
             }
 
             switch(id){
+                /*
 
                 case R.id.shopping_cart:
                 {
@@ -293,6 +309,7 @@ import java.util.List;
 
                 }
                 break;
+                */
                 case R.id.truth_universal_logo:
                 {
                     Toast.makeText(getBaseContext(), "Clicked LOG Icon!", Toast.LENGTH_SHORT).show();
@@ -313,6 +330,7 @@ import java.util.List;
 
                 }
                 break;
+                /*
                 case R.id.shop_icon:
                 {
                     //Toast.makeText(getBaseContext(), "Clicked SHP{ Icon!", Toast.LENGTH_SHORT).show();
@@ -323,6 +341,7 @@ import java.util.List;
 
                 }
                 break;
+                */
 
             }//end switch(id)
 
