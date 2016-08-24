@@ -3,10 +3,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--
         <com.google.android.youtube.player.YouTubePlayerView
             android:id="@+id/youtube_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+    !-->
+
+
+    <FrameLayout
+        android:id="@+id/youtube_content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="110dp"/>
+
 
 
 

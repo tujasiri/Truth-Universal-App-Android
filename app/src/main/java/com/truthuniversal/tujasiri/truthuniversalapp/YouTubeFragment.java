@@ -1,6 +1,7 @@
 package com.truthuniversal.tujasiri.truthuniversalapp;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -35,6 +36,7 @@ import java.util.List;
  * Created by tujasiri on 12/21/15.
  */
 public class YouTubeFragment extends Fragment {
+
     private List<YouTubeItem> youTubeItemList = new ArrayList<YouTubeItem>();
 
     public final static String VIDEO_ID = "com.truthuniversal.tujasiri.testapp.VIDEOID";
@@ -187,10 +189,26 @@ public class YouTubeFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 //Intent intent = new Intent(getApplicationContext(),YouTubePlayerUtil.class);
+
+                Bundle ytBundle = new Bundle();
+
                 Intent intent = new Intent(getActivity(),YouTubePlayerUtil.class);
                 intent.putExtra(VIDEO_ID,youTubeItemList.get(position).getVideo_id());
 
-                startActivity(intent);
+                ytBundle.putString(VIDEO_ID,youTubeItemList.get(position).getVideo_id());
+
+                //startActivity(intent);
+
+                Fragment fragment = new YouTubePlayerUtilFragment();
+
+                fragment.setArguments(ytBundle);
+                //startActivity(intent);
+
+                FragmentManager fragmentManager = getFragmentManager();
+
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, fragment)
+                        .commit();
 
 
 

@@ -758,10 +758,10 @@ int id view_offset_helper 0x7f0d0009
 int id withText 0x7f0d0031
 int id wrap_content 0x7f0d0036
 int id yesButton 0x7f0d0084
+int id youtube_content_frame 0x7f0d00e5
 int id youtube_list_imageview 0x7f0d00e3
 int id youtube_listview 0x7f0d00e2
 int id youtube_title_textview 0x7f0d00e4
-int id youtube_view 0x7f0d00e5
 int id zip_edit_text 0x7f0d00c7
 int id zip_textview 0x7f0d00c4
 int integer abc_config_activityDefaultDur 0x7f0b0002

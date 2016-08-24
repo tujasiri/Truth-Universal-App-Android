@@ -48,7 +48,7 @@ public class YouTubePlayerUtil extends YouTubeBaseActivity implements YouTubePla
         super.onCreate(savedInstanceState);
         setContentView(R.layout.youtube_view_layout);
 
-        youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
+       // youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
         youTubeView.initialize(Config.YOUTUBE_API_KEY, this);
 
         /****action menu****

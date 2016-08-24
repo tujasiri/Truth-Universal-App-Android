@@ -2276,10 +2276,10 @@ containing a value of this type.
         public static final int withText=0x7f0d0031;
         public static final int wrap_content=0x7f0d0036;
         public static final int yesButton=0x7f0d0084;
+        public static final int youtube_content_frame=0x7f0d00e5;
         public static final int youtube_list_imageview=0x7f0d00e3;
         public static final int youtube_listview=0x7f0d00e2;
         public static final int youtube_title_textview=0x7f0d00e4;
-        public static final int youtube_view=0x7f0d00e5;
         public static final int zip_edit_text=0x7f0d00c7;
         public static final int zip_textview=0x7f0d00c4;
     }
