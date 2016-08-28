@@ -74,10 +74,11 @@ import java.util.List;
 
             final LinearLayout buttonLayout = (LinearLayout)findViewById(R.id.left_drawer);
 
-            //final ImageView default_iv = (ImageView)findViewById(R.id.default_imageview);
+            final ImageView default_iv = (ImageView)findViewById(R.id.default_imageview);
             //default_iv.setBackgroundColor(Color.BLACK);
-            //Drawable logoDrawable = getResources().getDrawable(R.drawable.ic_truth_universal_logo, null);
-            //default_iv.setImageDrawable(logoDrawable);
+            Drawable splashDrawable = getResources().getDrawable(R.drawable.appsplash_vignette, null);
+
+            default_iv.setImageDrawable(splashDrawable);
 
             /***Drawer **/
             mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -238,6 +239,10 @@ import java.util.List;
             disableSelectedButton(musicButton,buttonLayout);
 
             //default_iv.setVisibility(View.INVISIBLE);
+            default_iv.animate()
+                    .alpha(0.0f)
+                    .translationY(default_iv.getHeight())
+                    .setDuration(600);;
 
             FragmentManager fragmentManager = getFragmentManager();
 
