@@ -4,6 +4,8 @@ package com.truthuniversal.tujasiri.truthuniversalapp;
  * Created by tujasiri on 11/23/15.
  */
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
 import android.app.FragmentManager;
 import android.content.Intent;
@@ -21,6 +23,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
@@ -76,9 +80,34 @@ import java.util.List;
 
             final ImageView default_iv = (ImageView)findViewById(R.id.default_imageview);
             //default_iv.setBackgroundColor(Color.BLACK);
+            final Animation anim_in  = AnimationUtils.loadAnimation(getApplication(), android.R.anim.fade_in);
+
+
+            default_iv.animate().setListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationResume(Animator animation) {
+                    super.onAnimationResume(animation);
+                }
+
+                @Override
+                public void onAnimationStart(Animator animation) {
+                    super.onAnimationStart(animation);
+                    System.out.println("animation start here");
+                    default_iv.animate().alpha(1.0f).setDuration(8000);
+                }
+
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                }
+            });
+
             Drawable splashDrawable = getResources().getDrawable(R.drawable.appsplash_vignette, null);
 
             default_iv.setImageDrawable(splashDrawable);
+
+            default_iv.startAnimation(anim_in);
+
 
             /***Drawer **/
             mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -157,6 +186,7 @@ import java.util.List;
         final Button merchButton = (android.widget.Button) findViewById(R.id.merchButton);
         final Button newsButton = (android.widget.Button) findViewById(R.id.newsButton);
         final Button videoButton = (android.widget.Button) findViewById(R.id.videoButton);
+        final Button socialButton = (android.widget.Button) findViewById(R.id.socialButton);
         final Button musicButton = (android.widget.Button) findViewById(R.id.musicButton);
 
 
@@ -170,6 +200,8 @@ import java.util.List;
 
 
             disableSelectedButton(merchButton,buttonLayout);
+
+            hideBackground(default_iv);
 
             //default_iv.setVisibility(View.INVISIBLE);
             FragmentManager fragmentManager = getFragmentManager();
@@ -195,6 +227,7 @@ import java.util.List;
                 //default_iv.setVisibility(View.INVISIBLE);
             System.out.println("NEWS Button Clicked!");
             disableSelectedButton(newsButton,buttonLayout);
+            hideBackground(default_iv);
 
             FragmentManager fragmentManager = getFragmentManager();
 
@@ -217,6 +250,7 @@ import java.util.List;
             //default_iv.setVisibility(View.INVISIBLE);
             System.out.println("VID Button Clicked!");
             disableSelectedButton(videoButton,buttonLayout);
+            hideBackground(default_iv);
             FragmentManager fragmentManager = getFragmentManager();
 
             fragmentManager.beginTransaction()
@@ -230,6 +264,24 @@ import java.util.List;
 
         });
 
+        socialButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                disableSelectedButton(socialButton,buttonLayout);
+
+                //hideBackground(default_iv);
+
+                FragmentManager fragmentManager = getFragmentManager();
+
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, new SocialFragment())
+                        .commit();
+
+
+            }
+        });
+
         musicButton.setOnClickListener(new View.OnClickListener()
 
         {
@@ -237,12 +289,10 @@ import java.util.List;
             System.out.println("MUSIC Button Clicked!");
 
             disableSelectedButton(musicButton,buttonLayout);
+            hideBackground(default_iv);
 
             //default_iv.setVisibility(View.INVISIBLE);
-            default_iv.animate()
-                    .alpha(0.0f)
-                    .translationY(default_iv.getHeight())
-                    .setDuration(600);;
+
 
             FragmentManager fragmentManager = getFragmentManager();
 
@@ -556,6 +606,21 @@ import java.util.List;
 
 
 
+
+        }
+
+        public void hideBackground(ImageView iv){
+            /*
+            default_iv.animate()
+                    .alpha(0.0f)
+                    .translationY(default_iv.getHeight())
+                    .setDuration(600);;
+            */
+
+            iv.animate()
+                    .alpha(0.0f)
+                    .translationY(iv.getHeight())
+                    .setDuration(600);;
 
         }
 

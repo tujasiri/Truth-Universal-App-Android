@@ -8,4 +8,4 @@
         android:id="@+id/country_listview"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
-</RelativeLayout><!-- From: file:/C:/Users/tujasiri/AndroidStudioProjects/Truth-Universal-App-Android-VERSION1/app/src/main/res/layout/country_layout.xml -->
+</RelativeLayout><!-- From: file:/Users/tujasiri/AndroidStudioProjects/TestApp/TruthUniversalApp/app/src/main/res/layout/country_layout.xml -->
