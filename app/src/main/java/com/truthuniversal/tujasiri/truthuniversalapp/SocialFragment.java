@@ -6,10 +6,14 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,31 +49,71 @@ public class SocialFragment extends Fragment {
 
         myView = inflater.inflate(R.layout.social_layout,container,false);
 
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+
+        int viewHeight = displayMetrics.heightPixels;
+        int viewWidth = displayMetrics.widthPixels;
+
 
         final ImageView social_iv = (ImageView)myView.findViewById(R.id.socialImageButton);
         Drawable igDrawable = getResources().getDrawable(R.drawable.instagram, null);
-        social_iv.setImageDrawable(igDrawable);
+
+        Bitmap bMap = BitmapFactory.decodeResource(getResources(),R.drawable.instagram);
+        Bitmap bMapScaled = Bitmap.createScaledBitmap(bMap,viewWidth/4,viewWidth/4,true);
+
+        social_iv.setImageBitmap(bMapScaled);
+
+        //social_iv.setImageDrawable(igDrawable);
+
+
+
 
 
         final ImageView social_iv2 = (ImageView)myView.findViewById(R.id.socialImageButton2);
         Drawable fbDrawable = getResources().getDrawable(R.drawable.facebook, null);
-        social_iv2.setImageDrawable(fbDrawable);
+
+        bMap = BitmapFactory.decodeResource(getResources(),R.drawable.facebook);
+        bMapScaled = Bitmap.createScaledBitmap(bMap,viewWidth/4,viewWidth/4,true);
+
+        social_iv2.setImageBitmap(bMapScaled);
+       // social_iv2.setImageDrawable(fbDrawable);
 
         final ImageView social_iv3 = (ImageView)myView.findViewById(R.id.socialImageButton3);
         Drawable twitterDrawable = getResources().getDrawable(R.drawable.twitterx, null);
-        social_iv3.setImageDrawable(twitterDrawable);
+
+        bMap = BitmapFactory.decodeResource(getResources(),R.drawable.twitterx);
+        bMapScaled = Bitmap.createScaledBitmap(bMap,viewWidth/4,viewWidth/4,true);
+
+        social_iv3.setImageBitmap(bMapScaled);
+        //social_iv3.setImageDrawable(twitterDrawable);
 
         final ImageView social_iv4 = (ImageView)myView.findViewById(R.id.socialImageButton4);
         Drawable scDrawable = getResources().getDrawable(R.drawable.soundcloud, null);
-        social_iv4.setImageDrawable(scDrawable);
+
+        bMap = BitmapFactory.decodeResource(getResources(),R.drawable.soundcloud);
+        bMapScaled = Bitmap.createScaledBitmap(bMap,viewWidth/4,viewWidth/4,true);
+
+        social_iv4.setImageBitmap(bMapScaled);
+        //social_iv4.setImageDrawable(scDrawable);
 
         final ImageView social_iv5 = (ImageView)myView.findViewById(R.id.socialImageButton5);
         Drawable tumblrDrawable = getResources().getDrawable(R.drawable.tumblr, null);
-        social_iv5.setImageDrawable(tumblrDrawable);
+
+        bMap = BitmapFactory.decodeResource(getResources(),R.drawable.tumblr);
+        bMapScaled = Bitmap.createScaledBitmap(bMap,viewWidth/4,viewWidth/4,true);
+
+        social_iv5.setImageBitmap(bMapScaled);
+        //social_iv5.setImageDrawable(tumblrDrawable);
 
         final ImageView social_iv6 = (ImageView)myView.findViewById(R.id.socialImageButton6);
         Drawable youtubeDrawable = getResources().getDrawable(R.drawable.youtube, null);
-        social_iv6.setImageDrawable(youtubeDrawable);
+
+        bMap = BitmapFactory.decodeResource(getResources(),R.drawable.youtube);
+        bMapScaled = Bitmap.createScaledBitmap(bMap,viewWidth/4,viewWidth/4,true);
+
+        social_iv6.setImageBitmap(bMapScaled);
+        //social_iv6.setImageDrawable(youtubeDrawable);
 
         final ImageButton igButton = (android.widget.ImageButton) myView.findViewById(R.id.socialImageButton);
         final ImageButton fbButton = (android.widget.ImageButton) myView.findViewById(R.id.socialImageButton2);
@@ -159,12 +203,17 @@ public class SocialFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        int viewHeight = myView.getLayoutParams().height;
-        int viewWidth = myView.getWidth();
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+
+        int viewHeight = displayMetrics.heightPixels;
+        int viewWidth = displayMetrics.widthPixels;
 
         System.out.println("width=="+viewWidth);
 
-        //myView.findViewById(R.id.socialImageButton).getLayoutParams().width = (viewWidth/10);
+        myView.findViewById(R.id.socialImageButton).getLayoutParams().width = (viewWidth/4);
+        myView.findViewById(R.id.socialImageButton).getLayoutParams().height = (viewWidth/4);
+
 
     }
 
