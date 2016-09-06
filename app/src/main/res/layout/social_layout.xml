@@ -15,6 +15,7 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         android:id="@+id/socialImageButton" />
     <!--
         android:layout_marginTop="20dp" />
@@ -23,26 +24,31 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         android:id="@+id/socialImageButton2" />
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         android:id="@+id/socialImageButton3"/>
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         android:id="@+id/socialImageButton4"/>
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         android:id="@+id/socialImageButton5"/>
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
         android:id="@+id/socialImageButton6"/>
 </LinearLayout>
 </ScrollView>

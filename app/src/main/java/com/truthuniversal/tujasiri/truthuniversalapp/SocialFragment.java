@@ -54,13 +54,14 @@ public class SocialFragment extends Fragment {
 
         int viewHeight = displayMetrics.heightPixels;
         int viewWidth = displayMetrics.widthPixels;
+        int dimScale = viewWidth/4;
 
 
         final ImageView social_iv = (ImageView)myView.findViewById(R.id.socialImageButton);
         Drawable igDrawable = getResources().getDrawable(R.drawable.instagram, null);
 
         Bitmap bMap = BitmapFactory.decodeResource(getResources(),R.drawable.instagram);
-        Bitmap bMapScaled = Bitmap.createScaledBitmap(bMap,viewWidth/4,viewWidth/4,true);
+        Bitmap bMapScaled = Bitmap.createScaledBitmap(bMap,dimScale,dimScale,true);
 
         social_iv.setImageBitmap(bMapScaled);
 
@@ -74,7 +75,7 @@ public class SocialFragment extends Fragment {
         Drawable fbDrawable = getResources().getDrawable(R.drawable.facebook, null);
 
         bMap = BitmapFactory.decodeResource(getResources(),R.drawable.facebook);
-        bMapScaled = Bitmap.createScaledBitmap(bMap,viewWidth/4,viewWidth/4,true);
+        bMapScaled = Bitmap.createScaledBitmap(bMap,dimScale,dimScale,true);
 
         social_iv2.setImageBitmap(bMapScaled);
        // social_iv2.setImageDrawable(fbDrawable);
@@ -83,7 +84,7 @@ public class SocialFragment extends Fragment {
         Drawable twitterDrawable = getResources().getDrawable(R.drawable.twitterx, null);
 
         bMap = BitmapFactory.decodeResource(getResources(),R.drawable.twitterx);
-        bMapScaled = Bitmap.createScaledBitmap(bMap,viewWidth/4,viewWidth/4,true);
+        bMapScaled = Bitmap.createScaledBitmap(bMap,dimScale,dimScale,true);
 
         social_iv3.setImageBitmap(bMapScaled);
         //social_iv3.setImageDrawable(twitterDrawable);
@@ -92,7 +93,7 @@ public class SocialFragment extends Fragment {
         Drawable scDrawable = getResources().getDrawable(R.drawable.soundcloud, null);
 
         bMap = BitmapFactory.decodeResource(getResources(),R.drawable.soundcloud);
-        bMapScaled = Bitmap.createScaledBitmap(bMap,viewWidth/4,viewWidth/4,true);
+        bMapScaled = Bitmap.createScaledBitmap(bMap,dimScale,dimScale,true);
 
         social_iv4.setImageBitmap(bMapScaled);
         //social_iv4.setImageDrawable(scDrawable);
@@ -101,7 +102,7 @@ public class SocialFragment extends Fragment {
         Drawable tumblrDrawable = getResources().getDrawable(R.drawable.tumblr, null);
 
         bMap = BitmapFactory.decodeResource(getResources(),R.drawable.tumblr);
-        bMapScaled = Bitmap.createScaledBitmap(bMap,viewWidth/4,viewWidth/4,true);
+        bMapScaled = Bitmap.createScaledBitmap(bMap,dimScale,dimScale,true);
 
         social_iv5.setImageBitmap(bMapScaled);
         //social_iv5.setImageDrawable(tumblrDrawable);
@@ -110,7 +111,7 @@ public class SocialFragment extends Fragment {
         Drawable youtubeDrawable = getResources().getDrawable(R.drawable.youtube, null);
 
         bMap = BitmapFactory.decodeResource(getResources(),R.drawable.youtube);
-        bMapScaled = Bitmap.createScaledBitmap(bMap,viewWidth/4,viewWidth/4,true);
+        bMapScaled = Bitmap.createScaledBitmap(bMap,dimScale,dimScale,true);
 
         social_iv6.setImageBitmap(bMapScaled);
         //social_iv6.setImageDrawable(youtubeDrawable);

@@ -39,7 +39,7 @@ public class YouTubeFragment extends Fragment {
 
     private List<YouTubeItem> youTubeItemList = new ArrayList<YouTubeItem>();
 
-    public final static String VIDEO_ID = "com.truthuniversal.tujasiri.testapp.VIDEOID";
+    public final static String VIDEO_ID = "com.truthuniversal.tujasiri.tuapp.VIDEOID";
 
     View ytView;
 

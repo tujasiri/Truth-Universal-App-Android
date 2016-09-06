@@ -16,10 +16,12 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.ActionBar;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -47,8 +49,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.view.Gravity.*;
 
-    public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity {
 
         private List<CountryItem> countryItemListMain = new ArrayList<CountryItem>();
         private List<StateItem> stateItemListMain = new ArrayList<StateItem>();
@@ -60,8 +64,8 @@ import java.util.List;
         private DrawerLayout mDrawerLayout;
 
         private ActionBarDrawerToggle mDrawerToggle;
-        private CharSequence mDrawerTitle="TU App Menu";
-        private CharSequence mTitle;
+        private CharSequence mDrawerTitle="Navigation";
+        private CharSequence mTitle="Truth Universal App";
 
 
         @SuppressLint("NewApi")
@@ -92,7 +96,7 @@ import java.util.List;
                 @Override
                 public void onAnimationStart(Animator animation) {
                     super.onAnimationStart(animation);
-                    System.out.println("animation start here");
+                    //System.out.println("animation start here");
                     default_iv.animate().alpha(1.0f).setDuration(8000);
                 }
 
@@ -189,158 +193,130 @@ import java.util.List;
         final Button socialButton = (android.widget.Button) findViewById(R.id.socialButton);
         final Button musicButton = (android.widget.Button) findViewById(R.id.musicButton);
 
-
-
         merchButton.setOnClickListener(new View.OnClickListener()
 
         {
             public void onClick (View v){
 
-            System.out.println("MERCH Button Clicked!");
 
+                mDrawerLayout.closeDrawer(GravityCompat.START);
 
-            disableSelectedButton(merchButton,buttonLayout);
+                disableSelectedButton(merchButton, buttonLayout);
 
-            hideBackground(default_iv);
-
-            //default_iv.setVisibility(View.INVISIBLE);
-            FragmentManager fragmentManager = getFragmentManager();
-
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new MerchFragment())
-                    .commit();
-
-            //Intent intent = new Intent(getApplicationContext(), MerchActivity.class);
-            //startActivity(intent);
-
-
-        }
-        });
-
-
-        newsButton.setOnClickListener(new View.OnClickListener()
-
-        {
-            public void onClick (View v){
-
-
-                //default_iv.setVisibility(View.INVISIBLE);
-            System.out.println("NEWS Button Clicked!");
-            disableSelectedButton(newsButton,buttonLayout);
-            hideBackground(default_iv);
-
-            FragmentManager fragmentManager = getFragmentManager();
-
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new NewsFragment())
-                    .commit();
-
-            //Intent intent = new Intent(getApplicationContext(), NewsActivity.class);
-            //startActivity(intent);
-
-
-        }
-        });
-
-        videoButton.setOnClickListener(new View.OnClickListener()
-
-        {
-            public void onClick (View v){
-
-            //default_iv.setVisibility(View.INVISIBLE);
-            System.out.println("VID Button Clicked!");
-            disableSelectedButton(videoButton,buttonLayout);
-            hideBackground(default_iv);
-            FragmentManager fragmentManager = getFragmentManager();
-
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new YouTubeFragment())
-                    .commit();
-
-            //Intent intent = new Intent(getApplicationContext(), YouTubeActivity.class);
-            //startActivity(intent);
-
-        }
-
-        });
-
-        socialButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                disableSelectedButton(socialButton,buttonLayout);
-
-                //hideBackground(default_iv);
+                hideBackground(default_iv);
 
                 FragmentManager fragmentManager = getFragmentManager();
 
                 fragmentManager.beginTransaction()
-                        .replace(R.id.content_frame, new SocialFragment())
+                        .replace(R.id.content_frame, new MerchFragment())
                         .commit();
+
+            }
+            });
+
+
+            newsButton.setOnClickListener(new View.OnClickListener(){
+
+                    public void onClick (View v){
+
+                    mDrawerLayout.closeDrawer(GravityCompat.START);
+
+                    disableSelectedButton(newsButton,buttonLayout);
+
+                    hideBackground(default_iv);
+
+                    FragmentManager fragmentManager = getFragmentManager();
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.content_frame, new NewsFragment())
+                            .commit();
+
+           }
+           });
+
+                videoButton.setOnClickListener(new View.OnClickListener() {
+
+                    public void onClick (View v){
+
+                    mDrawerLayout.closeDrawer(GravityCompat.START);
+
+                    disableSelectedButton(videoButton,buttonLayout);
+                    hideBackground(default_iv);
+                    FragmentManager fragmentManager = getFragmentManager();
+
+                    fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, new YouTubeFragment())
+                        .commit();
+            }
+            });
+
+            socialButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    disableSelectedButton(socialButton,buttonLayout);
+
+                    mDrawerLayout.closeDrawer(GravityCompat.START);
+
+                    FragmentManager fragmentManager = getFragmentManager();
+                    fragmentManager.beginTransaction()
+                            .replace(R.id.content_frame, new SocialFragment())
+                            .commit();
+
+
+                }
+            });
+
+
+            musicButton.setOnClickListener(new View.OnClickListener(){
+
+                public void onClick (View v){
+
+                mDrawerLayout.closeDrawer(GravityCompat.START);
+
+                disableSelectedButton(musicButton,buttonLayout);
+                hideBackground(default_iv);
+
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, new GooglePlayMusicFragment())
+                        .commit();
+
+            }
+            });
 
 
             }
-        });
 
-        musicButton.setOnClickListener(new View.OnClickListener()
+            /*DRAWER LOGIC'? */
 
-        {
-            public void onClick (View v){
-            System.out.println("MUSIC Button Clicked!");
+            @Override
+            protected void onPostCreate(Bundle savedInstanceState) {
+                super.onPostCreate(savedInstanceState);
+                // Sync the toggle state after onRestoreInstanceState has occurred.
+                mDrawerToggle.syncState();
+            }
 
-            disableSelectedButton(musicButton,buttonLayout);
-            hideBackground(default_iv);
+            @Override
+            public void onConfigurationChanged(Configuration newConfig) {
+                super.onConfigurationChanged(newConfig);
+                mDrawerToggle.onConfigurationChanged(newConfig);
+            }
 
-            //default_iv.setVisibility(View.INVISIBLE);
+           /* */
+            @Override
+            public boolean onCreateOptionsMenu(Menu menu) {
+                // Inflate the menu; this adds items to the action bar if it is present.
+                getMenuInflater().inflate(R.menu.menu_main_activity_test, menu);
 
+                new AsyncCountryTask().execute(COUNTRY_DATA_URL);
+                new AsyncStateTask().execute(STATE_DATA_URL);
 
-            FragmentManager fragmentManager = getFragmentManager();
+                return super.onCreateOptionsMenu(menu);
+            }
 
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, new GooglePlayMusicFragment())
-                    .commit();
+            public boolean onOptionsItemSelected(MenuItem menuItem){
 
-
-            //Intent intent = new Intent(getApplicationContext(), GooglePlayMusicActivity.class);
-            //startActivity(intent);
-
-        }
-
-        });
-
-
-        }
-
-        /*DRAWER LOGIC'? */
-
-        @Override
-        protected void onPostCreate(Bundle savedInstanceState) {
-            super.onPostCreate(savedInstanceState);
-            // Sync the toggle state after onRestoreInstanceState has occurred.
-            mDrawerToggle.syncState();
-        }
-
-        @Override
-        public void onConfigurationChanged(Configuration newConfig) {
-            super.onConfigurationChanged(newConfig);
-            mDrawerToggle.onConfigurationChanged(newConfig);
-        }
-       /* */
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-            // Inflate the menu; this adds items to the action bar if it is present.
-            getMenuInflater().inflate(R.menu.menu_main_activity_test, menu);
-
-            new AsyncCountryTask().execute(COUNTRY_DATA_URL);
-            new AsyncStateTask().execute(STATE_DATA_URL);
-
-
-            return super.onCreateOptionsMenu(menu);
-        }
-
-        public boolean onOptionsItemSelected(MenuItem menuItem){
-
-            int id = menuItem.getItemId();
+                int id = menuItem.getItemId();
 
             if (mDrawerToggle.onOptionsItemSelected(menuItem)) {
                 return true;
@@ -609,6 +585,7 @@ import java.util.List;
 
         }
 
+        @SuppressLint("NewApi")
         public void hideBackground(ImageView iv){
             /*
             default_iv.animate()

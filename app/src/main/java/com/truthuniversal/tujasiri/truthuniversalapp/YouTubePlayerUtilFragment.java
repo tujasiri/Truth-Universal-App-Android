@@ -4,12 +4,20 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -46,12 +54,54 @@ public class YouTubePlayerUtilFragment extends Fragment implements YouTubePlayer
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //checkoutCartItemView = inflater.inflate(R.layout.checkout_cart_view,container,false);
         ytViewContainer = inflater.inflate(R.layout.youtube_view_layout,container,false);
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+
+        int viewHeight = displayMetrics.heightPixels;
+        int viewWidth = displayMetrics.widthPixels;
+        int dimScale = viewWidth/8;
+
+
+        final ImageView menu_button_iv = (ImageView)ytViewContainer.findViewById(R.id.back_to_video_menu);
+
+        Bitmap bMap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_video_icon);
+        Bitmap bMapScaled = Bitmap.createScaledBitmap(bMap, dimScale, dimScale, true);
+
+        menu_button_iv.setImageBitmap(bMapScaled);
+
+        final ImageButton ytMenuButton = (android.widget.ImageButton) ytViewContainer.findViewById(R.id.back_to_video_menu);
+
+        final Animation myAnim = AnimationUtils.loadAnimation(getActivity(), R.anim.snackbar_in);
+
+        ytMenuButton.setAnimation(myAnim);
+        //ytMenuButton.startAnimation(myAnim);
+
+        ytMenuButton.animate()
+                   .setDuration(800);
+
+
     //protected void onCreate(Bundle savedInstanceState) {
      //   super.onCreate(savedInstanceState);
         //setContentView(R.layout.youtube_view_layout);
 
         //youTubeView = (YouTubePlayerView) ytViewContainer.findViewById(R.id.youtube_view);
         //youTubeView.initialize(Config.YOUTUBE_API_KEY, this);
+        ytMenuButton.setOnClickListener(new View.OnClickListener()
+
+        {
+            public void onClick(View v) {
+
+                FragmentManager fragmentManager = getFragmentManager();
+
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, new YouTubeFragment())
+                        .commit();
+
+
+            }
+
+        });
 
         FragmentManager ytFragmentManager = getFragmentManager();
         ytFragmentManager.beginTransaction()
@@ -63,7 +113,6 @@ public class YouTubePlayerUtilFragment extends Fragment implements YouTubePlayer
 
         try {
 
-            System.out.println("TRYINg");
 
             youTubeViewFragment.initialize(Config.YOUTUBE_API_KEY, new YouTubePlayer.OnInitializedListener() {
                 @Override
@@ -93,14 +142,11 @@ public class YouTubePlayerUtilFragment extends Fragment implements YouTubePlayer
                         String error = String.format(getString(R.string.player_error), errorReason.toString());
                         Toast.makeText(getActivity(), error, Toast.LENGTH_LONG).show();
                     }
-
                 }
             });
         }catch(Exception e){
             System.out.println("EXCEPTION==>"+e.toString());
         }
-
-
 
         return ytViewContainer;
     }
@@ -108,8 +154,6 @@ public class YouTubePlayerUtilFragment extends Fragment implements YouTubePlayer
     @Override
     //public void onInitializationSuccess(Provider provider, YouTubePlayer player, boolean wasRestored) {
     public void onInitializationSuccess(Provider provider, YouTubePlayer player, boolean wasRestored) {
-
-        System.out.println("INITIALIZING!");
 
 
         if (!wasRestored) {

@@ -34,7 +34,7 @@ import java.util.List;
 public class YouTubeActivity extends AppCompatActivity{
     private List<YouTubeItem> youTubeItemList = new ArrayList<YouTubeItem>();
 
-    public final static String VIDEO_ID = "com.truthuniversal.tujasiri.testapp.VIDEOID";
+    public final static String VIDEO_ID = "com.truthuniversal.tujasiri.tuapp.VIDEOID";
 
 
     @Override

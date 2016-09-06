@@ -2072,7 +2072,7 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f0d0056;
         public static final int action_mode_bar_stub=0x7f0d0055;
         public static final int action_mode_close_button=0x7f0d003e;
-        public static final int action_settings=0x7f0d00ed;
+        public static final int action_settings=0x7f0d00ee;
         public static final int activity_chooser_view_content=0x7f0d003f;
         public static final int addToCartButton=0x7f0d0093;
         public static final int address1_textview=0x7f0d00c3;
@@ -2091,6 +2091,7 @@ containing a value of this type.
         public static final int alertTitle=0x7f0d0049;
         public static final int always=0x7f0d002d;
         public static final int app_header=0x7f0d0073;
+        public static final int back_to_video_menu=0x7f0d00ec;
         public static final int beginning=0x7f0d0029;
         public static final int bottom=0x7f0d001a;
         public static final int buttonPanel=0x7f0d004f;
@@ -2165,7 +2166,7 @@ containing a value of this type.
         public static final int fixed=0x7f0d0034;
         public static final int home=0x7f0d0004;
         public static final int homeAsUp=0x7f0d000e;
-        public static final int home_icon=0x7f0d00ef;
+        public static final int home_icon=0x7f0d00f0;
         public static final int icon=0x7f0d0044;
         public static final int ifRoom=0x7f0d002f;
         public static final int image=0x7f0d0041;
@@ -2274,7 +2275,7 @@ containing a value of this type.
         public static final int top=0x7f0d0027;
         public static final int topPanel=0x7f0d0047;
         public static final int total_textview=0x7f0d006e;
-        public static final int truth_universal_logo=0x7f0d00ee;
+        public static final int truth_universal_logo=0x7f0d00ef;
         public static final int tvChild=0x7f0d007c;
         public static final int tvGroup=0x7f0d007d;
         public static final int tvMonthChild=0x7f0d009b;
@@ -2291,7 +2292,7 @@ containing a value of this type.
         public static final int withText=0x7f0d0031;
         public static final int wrap_content=0x7f0d0036;
         public static final int yesButton=0x7f0d0084;
-        public static final int youtube_content_frame=0x7f0d00ec;
+        public static final int youtube_content_frame=0x7f0d00ed;
         public static final int youtube_list_imageview=0x7f0d00ea;
         public static final int youtube_listview=0x7f0d00e9;
         public static final int youtube_title_textview=0x7f0d00eb;

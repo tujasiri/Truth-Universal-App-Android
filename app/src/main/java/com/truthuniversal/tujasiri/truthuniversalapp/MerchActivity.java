@@ -47,12 +47,12 @@ public class MerchActivity extends AppCompatActivity {
 
     //checkoutCart.
 
-    public final static String EXTRA_MESSAGE = "com.truthuniversal.tujasiri.testapp.MESSAGE";
-    public final static String ITEM_LONG_DESC = "com.truthuniversal.tujasiri.testapp.ITEMLONGDESC";
-    public final static String ITEM_COST = "com.truthuniversal.tujasiri.testapp.ITEMCOST";
-    public final static String ITEM_IMAGE = "com.truthuniversal.tujasiri.testapp.ITEMIMAGE";
+    public final static String EXTRA_MESSAGE = "com.truthuniversal.tujasiri.tuapp.MESSAGE";
+    public final static String ITEM_LONG_DESC = "com.truthuniversal.tujasiri.tuapp.ITEMLONGDESC";
+    public final static String ITEM_COST = "com.truthuniversal.tujasiri.tuapp.ITEMCOST";
+    public final static String ITEM_IMAGE = "com.truthuniversal.tujasiri.tuapp.ITEMIMAGE";
 
-    public final static String ITEM_LIST_POSITION = "com.truthuniversal.tujasiri.testapp.ITEMLISTPOSITION";
+    public final static String ITEM_LIST_POSITION = "com.truthuniversal.tujasiri.tuapp.ITEMLISTPOSITION";
 
 
 

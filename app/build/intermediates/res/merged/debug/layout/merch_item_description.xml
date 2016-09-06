@@ -18,13 +18,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="New Text"
-        android:id="@+id/textViewItemName"
-        android:layout_weight="0.40" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/textViewItemName"/>
+    <!--
+        android:layout_weight="0.40"
+   !-->
 
     <TextView
-        android:layout_width="394dp"
-        android:layout_height="91dp"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Small Text"
         android:id="@+id/textViewLongDesc" />
 

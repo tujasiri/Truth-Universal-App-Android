@@ -95,9 +95,17 @@ public class MerchItemDescriptionFragment extends Fragment {
         Bundle bundle = this.getArguments();
 
         //if(bundle != null){
+        /*
             String message = bundle.getString(MerchActivity.EXTRA_MESSAGE);
             String itemCost = bundle.getString(MerchActivity.ITEM_COST);
             int itemListPositon = bundle.getInt(MerchActivity.ITEM_LIST_POSITION, -1);
+        */
+
+        String message = bundle.getString(MerchFragment.EXTRA_MESSAGE);
+
+
+        String itemCost = bundle.getString(MerchFragment.ITEM_COST);
+        int itemListPositon = bundle.getInt(MerchFragment.ITEM_LIST_POSITION, -1);
 
 
         //}
@@ -120,6 +128,7 @@ public class MerchItemDescriptionFragment extends Fragment {
         TextView txtView2 = (TextView)merchDescView.findViewById(R.id.textViewItemName);
 
         txtView2.setText(message);
+        System.out.println("setText==>"+message);
 
         TextView costView = (TextView)merchDescView.findViewById(R.id.textViewLongDesc);
 
@@ -131,7 +140,6 @@ public class MerchItemDescriptionFragment extends Fragment {
 
         iv.setImageBitmap(bmp);
 
-        System.out.println("BITMAP INFO=>"+bmp);
 
         return merchDescView;
     }//end onCreate
