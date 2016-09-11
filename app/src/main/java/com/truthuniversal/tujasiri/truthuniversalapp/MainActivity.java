@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onAnimationStart(Animator animation) {
                     super.onAnimationStart(animation);
                     //System.out.println("animation start here");
-                    default_iv.animate().alpha(1.0f).setDuration(8000);
+                    //default_iv.animate().alpha(1.0f).setDuration(8000);
                 }
 
                 @Override
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
             default_iv.setImageDrawable(splashDrawable);
 
-            default_iv.startAnimation(anim_in);
+            //default_iv.startAnimation(anim_in);
 
 
             /***Drawer **/

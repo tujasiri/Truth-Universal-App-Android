@@ -422,8 +422,13 @@ public class StripeFragment extends Fragment{
                 ExpandableListView eslv = (ExpandableListView) stripeView.findViewById(R.id.stateExpandableListView);
                 eslv.setMinimumHeight(1300);
 
+                System.out.println("CHILDSTATEMAP SIZE ==>"+childStateMap.size());
+                System.out.println("CHILDSTATEMAPLIST SIZE ==>"+childStateMapList.size());
+
                 ViewGroup.LayoutParams stateLayoutParams = expStateListView.getLayoutParams();
-                stateLayoutParams.height = 1300;
+                //stateLayoutParams.height = 2300;
+                stateLayoutParams.height = childStateMapList.size()*175;
+
                 expStateListView.setLayoutParams(stateLayoutParams);
                 expStateListView.requestLayout();
             }

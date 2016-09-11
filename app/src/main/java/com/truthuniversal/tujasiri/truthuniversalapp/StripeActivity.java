@@ -442,15 +442,21 @@ public class StripeActivity extends AppCompatActivity {
 
             @Override
             public void onGroupExpand(int groupPosition) {
+                /*
                 Toast.makeText(getApplicationContext(),
                         groupStateMapList.get(groupPosition) + " Expanded",
                         Toast.LENGTH_SHORT).show();
+                */
+
+
+
+                System.out.println("CHILDSTATEMAP SIZE ==>"+childStateMap.size());
 
                 ExpandableListView eslv = (ExpandableListView) findViewById(R.id.stateExpandableListView);
                 eslv.setMinimumHeight(1300);
 
                 ViewGroup.LayoutParams stateLayoutParams = expStateListView.getLayoutParams();
-                stateLayoutParams.height = 1300;
+                stateLayoutParams.height = 2000;
                 expStateListView.setLayoutParams(stateLayoutParams);
                 expStateListView.requestLayout();
             }
