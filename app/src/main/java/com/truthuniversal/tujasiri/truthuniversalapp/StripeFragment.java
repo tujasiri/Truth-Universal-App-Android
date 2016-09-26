@@ -337,7 +337,11 @@ public class StripeFragment extends Fragment{
                 elv.setMinimumHeight(1300);
 
                 ViewGroup.LayoutParams params = expListView.getLayoutParams();
+
                 params.height = 1300;
+
+                params.height = childMapList.size()*175;
+
                 expListView.setLayoutParams(params);
                 expListView.requestLayout();
             }
@@ -523,9 +527,13 @@ public class StripeFragment extends Fragment{
                 ExpandableListView emlv = (ExpandableListView) stripeView.findViewById(R.id.expandableListViewMonth);
                 emlv.setMinimumHeight(1300);
 
-                ViewGroup.LayoutParams stateLayoutParams = expMonthListView.getLayoutParams();
-                stateLayoutParams.height = 1300;
-                expMonthListView.setLayoutParams(stateLayoutParams);
+                ViewGroup.LayoutParams monthLayoutParams = expMonthListView.getLayoutParams();
+
+                //monthLayoutParams.height = 1300;
+
+                monthLayoutParams.height = childExpMonthMapList.size()*175;
+
+                expMonthListView.setLayoutParams(monthLayoutParams);
                 expMonthListView.requestLayout();
             }
         });
@@ -631,7 +639,11 @@ public class StripeFragment extends Fragment{
             public void onGroupCollapse(int groupPosition) {
 
                 ViewGroup.LayoutParams yearLayoutParams = expYearListView.getLayoutParams();
-                yearLayoutParams.height = 100;
+
+                //yearLayoutParams.height = 100;
+
+                yearLayoutParams.height = childExpYearMapList.size()*175;
+
                 expYearListView.setLayoutParams(yearLayoutParams);
                 expYearListView.requestLayout();
 
@@ -649,7 +661,6 @@ public class StripeFragment extends Fragment{
                 //VALIDATE FORM
 
                 checkoutCart = CartSingleton.getInstance().getCheckoutCart();
-
 
                 ArrayList<MerchItem> recipientItems = new ArrayList<MerchItem>();
 
@@ -677,10 +688,7 @@ public class StripeFragment extends Fragment{
 
                 JSONArray encodedMerchItemsList = new JSONArray();
 
-
                 //Map<String,Object> emailDataMap = new HashMap<String, Object>();
-
-
 
                 EditText recipName = (EditText) stripeView.findViewById(R.id.stripe_name);
                 recipientName = recipName.getText().toString().trim();
