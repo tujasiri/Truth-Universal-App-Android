@@ -26,7 +26,6 @@ public class CheckoutCartItemViewActivity extends AppCompatActivity{
     CheckoutCart checkoutCart = new CheckoutCart();
     private List<MerchItem> itemsInCart = new ArrayList<MerchItem>();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +51,6 @@ public class CheckoutCartItemViewActivity extends AppCompatActivity{
         itemsInCart = checkoutCart.itemsInCart();
 
         populateListView();
-
-
 
     }
     @Override

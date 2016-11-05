@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "358308112938",
+    "firebase_url": "https://truth-universal-app-bc4c1.firebaseio.com",
+    "project_id": "truth-universal-app-bc4c1",
+    "storage_bucket": "truth-universal-app-bc4c1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:358308112938:android:0682a35ac284d9a6",
+        "android_client_info": {
+          "package_name": "com.truthuniversalapp.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "358308112938-qqa3gchtccfh46lghi3lhr22696mu72l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU-A7_MWuiqpQNIA_O3fzySF9CEvoNFRQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

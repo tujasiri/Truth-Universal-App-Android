@@ -73,7 +73,7 @@ public class MerchItemDescriptionActivity extends AppCompatActivity {
 
 
         Bundle extras = getIntent().getExtras();
-        Bitmap bmp = (Bitmap) extras.getParcelable("imagebitmap");
+        Bitmap bmp = extras.getParcelable("imagebitmap");
         //View myView = (View) extras.getParcelable("theView");
 
         TextView txtView2 = (TextView)findViewById(R.id.textViewItemName);

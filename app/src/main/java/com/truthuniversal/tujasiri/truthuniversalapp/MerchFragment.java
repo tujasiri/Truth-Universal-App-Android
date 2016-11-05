@@ -397,9 +397,6 @@ public class MerchFragment extends Fragment{
                 TextView tv2 = (TextView) view.findViewById(R.id.costView);
                 ImageView iv1 = (ImageView) view.findViewById(R.id.imageView);
 
-
-                System.out.println(String.format("Imageview id is ==> %d", R.id.imageView));
-
                 iv1.buildDrawingCache();
                 Bitmap imageViewImage = iv1.getDrawingCache();
                 Bitmap imageViewImageCOPY = Bitmap.createBitmap(imageViewImage);

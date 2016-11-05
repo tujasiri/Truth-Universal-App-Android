@@ -12,11 +12,13 @@
     <!-- Cover Picture -->
     <ImageView
         android:id="@+id/app_header"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:scaleType="fitCenter"/>
+        android:scaleType="centerCrop"/>
     </RelativeLayout>
+
+    <!-- Play with scale type!-->
 
 
     <FrameLayout

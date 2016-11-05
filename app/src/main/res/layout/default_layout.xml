@@ -6,10 +6,12 @@
        android:descendantFocusability="blocksDescendants">
 
         <ImageView
-            android:layout_width="18dp"
-            android:layout_height="18dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/default_imageview"
-            android:layout_centerInParent="true"/>
+            android:adjustViewBounds="true"
+            android:layout_centerInParent="true"
+            />
 
     <TextView
         android:layout_height="178dp"

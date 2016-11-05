@@ -875,6 +875,7 @@ int layout youtube_view_layout 0x7f040054
 int menu menu_main_activity_test 0x7f0e0000
 int menu menu_merch_item_description 0x7f0e0001
 int mipmap ic_launcher 0x7f030000
+int mipmap ic_truth_universal_logo 0x7f030001
 int raw expiration_month 0x7f060000
 int raw expiration_year 0x7f060001
 int string abc_action_bar_home_description 0x7f070000

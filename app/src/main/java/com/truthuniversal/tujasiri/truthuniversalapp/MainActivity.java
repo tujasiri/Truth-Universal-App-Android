@@ -96,8 +96,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onAnimationStart(Animator animation) {
                     super.onAnimationStart(animation);
-                    //System.out.println("animation start here");
-                    //default_iv.animate().alpha(1.0f).setDuration(8000);
                 }
 
                 @Override
@@ -109,9 +107,6 @@ public class MainActivity extends AppCompatActivity {
             Drawable splashDrawable = getResources().getDrawable(R.drawable.appsplash_vignette, null);
 
             default_iv.setImageDrawable(splashDrawable);
-
-            //default_iv.startAnimation(anim_in);
-
 
             /***Drawer **/
             mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -130,9 +125,6 @@ public class MainActivity extends AppCompatActivity {
             Toolbar tb= (Toolbar)findViewById(R.id.toolbar);
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            //setSupportActionBar(tb);
-            //getSupportActionBar().setHomeAsUpIndicator(tb);
-
 
             mDrawerToggle = new ActionBarDrawerToggle(
                     this,
@@ -142,16 +134,6 @@ public class MainActivity extends AppCompatActivity {
                     R.string.abc_action_bar_up_description
             ) {
 
-/*
-
-            mDrawerToggle = new ActionBarDrawerToggle(
-                    this,
-                    mDrawerLayout,
-                   /*tb,
-                    R.string.abc_action_bar_home_description,
-                    R.string.abc_action_bar_up_description
-            ) {
-*/
 
                 /**
                  * Called when a drawer has settled in a completely closed state.
@@ -174,7 +156,6 @@ public class MainActivity extends AppCompatActivity {
 
             // Set the drawer toggle as the DrawerListener
             mDrawerLayout.setDrawerListener(mDrawerToggle);
-            /***/
             mDrawerToggle.syncState();
 
 
@@ -250,10 +231,21 @@ public class MainActivity extends AppCompatActivity {
             });
 
             socialButton.setOnClickListener(new View.OnClickListener() {
+
+
                 @Override
                 public void onClick(View v) {
 
                     disableSelectedButton(socialButton,buttonLayout);
+
+                    if(default_iv.getAlpha()==0.0) {
+                        default_iv.setAlpha(1.0f);
+                        default_iv.setY(0.0f);
+                    }
+
+                    System.out.println("YVal Social==>"+ default_iv.getY());
+
+
 
                     mDrawerLayout.closeDrawer(GravityCompat.START);
 
@@ -328,51 +320,23 @@ public class MainActivity extends AppCompatActivity {
             }
 
             switch(id){
-                /*
-
-                case R.id.shopping_cart:
-                {
-                    Toast.makeText(getBaseContext(), "Clicked Icon!", Toast.LENGTH_SHORT).show();
-                    System.out.println("CLICKED ICON!");
-                    Intent intent = new Intent(getApplicationContext(),CheckoutCartItemViewActivity.class);
-
-                    startActivity(intent);
-
-                }
-                break;
-                */
                 case R.id.truth_universal_logo:
                 {
-                    Toast.makeText(getBaseContext(), "Clicked LOG Icon!", Toast.LENGTH_SHORT).show();
-                    System.out.println("CLICKED ICON!");
+                    //Toast.makeText(getBaseContext(), "Clicked LOG Icon!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-
                     startActivity(intent);
 
                 }
                 break;
                 case R.id.home_icon:
                 {
-                    Toast.makeText(getBaseContext(), "Clicked HOME Icon!", Toast.LENGTH_SHORT).show();
-                    System.out.println("CLICKED ICON!");
+                    //Toast.makeText(getBaseContext(), "Clicked HOME Icon!", Toast.LENGTH_SHORT).show();
+
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-
                     startActivity(intent);
 
                 }
                 break;
-                /*
-                case R.id.shop_icon:
-                {
-                    //Toast.makeText(getBaseContext(), "Clicked SHP{ Icon!", Toast.LENGTH_SHORT).show();
-                    //System.out.println("CLICKED ICON!");
-                    Intent intent = new Intent(getApplicationContext(),MerchActivity.class);
-
-                    startActivity(intent);
-
-                }
-                break;
-                */
 
             }//end switch(id)
 
@@ -402,9 +366,11 @@ public class MainActivity extends AppCompatActivity {
                     outputStreamWriter.flush();
 
                     int responseCode = con.getResponseCode();
+                    /*
                     System.out.println("\nSending 'POST' request to URL : " + url);
                     System.out.println("Post parameters : " + params);
                     System.out.println("Response Code : " + responseCode);
+                    */
 
                     //if response code == 200
 
@@ -446,7 +412,7 @@ public class MainActivity extends AppCompatActivity {
             protected void onPostExecute(Boolean aBoolean) {
                 super.onPostExecute(aBoolean);
 
-                System.out.println(String.format("here in COUNTRY async task"));
+                //System.out.println(String.format("here in COUNTRY async task"));
 
             }
 
@@ -466,13 +432,7 @@ public class MainActivity extends AppCompatActivity {
                     tempCountryItem.setCountry_name(jsonObjectCountryItem.getString("name"));
                     tempCountryItem.setCountry_abbreviation(jsonObjectCountryItem.getString("code"));
 
-
-
                     countryItemListMain.add(tempCountryItem);
-
-                    //System.out.println("NEWS JSON ADD==>");
-
-
 
                 }//end for
             }catch (JSONException je){
@@ -567,13 +527,7 @@ public class MainActivity extends AppCompatActivity {
                     tempStateItem.setState_name(jsonObjectStateItem.getString("name"));
                     tempStateItem.setState_abbreviation(jsonObjectStateItem.getString("abbreviation"));
 
-
-
                     stateItemListMain.add(tempStateItem);
-
-                    //System.out.println("NEWS JSON ADD==>");
-
-
 
                 }//end for
             }catch (JSONException je){
@@ -587,12 +541,6 @@ public class MainActivity extends AppCompatActivity {
 
         @SuppressLint("NewApi")
         public void hideBackground(ImageView iv){
-            /*
-            default_iv.animate()
-                    .alpha(0.0f)
-                    .translationY(default_iv.getHeight())
-                    .setDuration(600);;
-            */
 
             iv.animate()
                     .alpha(0.0f)
@@ -612,7 +560,6 @@ public class MainActivity extends AppCompatActivity {
                         Button button1 = (Button)findViewById(view.getId());
 
                         if(button == button1){
-                           System.out.println("button==>"+button);
                            button1.setEnabled(false);
                         }
                         else

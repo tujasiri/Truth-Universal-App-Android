@@ -1,30 +1,32 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:2:1-101:12
+ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:2:1-103:12
 	xmlns:tools
 		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:3:5-51
 	xmlns:android
 		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:2:11-69
 	package
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:4:5-60
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:6:5-60
 		INJECTED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml
 	android:versionName
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:5:5-30
 		INJECTED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml
 	android:versionCode
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:4:5-28
 		INJECTED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:6:5-67
+ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:8:5-67
 	android:name
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:6:22-64
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:8:22-64
 uses-permission#android.permission.SET_DEBUG_APP
-ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:7:5-71
+ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:9:5-71
 	android:name
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:7:22-69
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:9:22-69
 uses-sdk
-ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:8:5-13:135
+ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:10:5-15:135
 MERGED from [com.android.support:design:22.2.1] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\build\intermediates\exploded-aar\com.android.support\design\22.2.1\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:appcompat-v7:22.2.1] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-v4:22.2.1] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:20:5-43
@@ -41,9 +43,9 @@ MERGED from [com.android.support:support-v4:22.2.1] C:\Users\tujasiri\AndroidStu
 		INJECTED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml
 	tools:overrideLibrary
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:8:5-13:135
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:10:5-15:135
 application
-ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:17:5-99:19
+ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:19:5-101:19
 MERGED from [com.android.support:design:22.2.1] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\build\intermediates\exploded-aar\com.android.support\design\22.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:appcompat-v7:22.2.1] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:22.2.1] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:22:5-20
@@ -54,97 +56,97 @@ MERGED from [com.google.android.gms:play-services-appindexing:8.1.0] C:\Users\tu
 MERGED from [com.google.android.gms:play-services-basement:8.1.0] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:22.2.1] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\AndroidManifest.xml:22:5-20
 	android:label
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:21:9-41
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:23:9-41
 	android:allowBackup
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:19:9-35
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:21:9-35
 	android:icon
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:20:9-43
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:22:9-55
 	android:theme
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:22:9-40
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:24:9-40
 activity#com.truthuniversal.tujasiri.truthuniversalapp.MainActivity
-ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:23:9-31:20
+ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:25:9-33:20
 	android:label
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:25:13-45
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:27:13-45
 	android:name
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:24:13-86
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:26:13-86
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:26:13-30:29
+ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:28:13-32:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:27:17-69
+ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:29:17-69
 	android:name
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:27:25-66
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:29:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:29:17-77
+ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:31:17-77
 	android:name
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:29:27-74
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:31:27-74
 activity#com.truthuniversal.tujasiri.truthuniversalapp.YouTubeActivity
-ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:32:9-38:20
+ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:34:9-40:20
 	android:parentActivityName
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:34:13-100
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:36:13-100
 	android:name
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:33:13-44
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:35:13-44
 meta-data#android.support.PARENT_ACTIVITY
-ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:35:13-37:94
+ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:37:13-39:94
 	android:name
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:36:17-63
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:38:17-63
 	android:value
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:37:17-91
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:39:17-91
 activity#com.truthuniversal.tujasiri.truthuniversalapp.YouTubePlayerUtil
-ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:39:9-45:20
+ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:41:9-47:20
 	android:parentActivityName
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:41:13-100
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:43:13-100
 	android:name
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:40:13-46
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:42:13-46
 activity#com.truthuniversal.tujasiri.truthuniversalapp.NewsActivity
-ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:46:9-52:20
+ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:48:9-54:20
 	android:parentActivityName
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:48:13-100
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:50:13-100
 	android:name
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:47:13-86
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:49:13-86
 activity#com.truthuniversal.tujasiri.truthuniversalapp.CheckoutCartItemViewActivity
-ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:53:9-60:20
+ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:55:9-62:20
 	android:label
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:55:13-74
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:57:13-74
 	android:parentActivityName
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:56:13-100
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:58:13-100
 	android:name
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:54:13-102
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:56:13-102
 activity#com.truthuniversal.tujasiri.truthuniversalapp.MerchActivity
-ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:61:9-68:20
+ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:63:9-70:20
 	android:label
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:63:13-74
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:65:13-74
 	android:parentActivityName
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:64:13-100
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:66:13-100
 	android:name
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:62:13-87
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:64:13-87
 activity#com.truthuniversal.tujasiri.truthuniversalapp.MerchItemDescriptionActivity
-ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:69:9-76:20
+ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:71:9-78:20
 	android:label
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:71:13-74
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:73:13-74
 	android:parentActivityName
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:72:13-101
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:74:13-101
 	android:name
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:70:13-102
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:72:13-102
 activity#com.truthuniversal.tujasiri.truthuniversalapp.StripeActivity
-ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:77:9-84:20
+ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:79:9-86:20
 	android:label
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:79:13-74
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:81:13-74
 	android:parentActivityName
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:80:13-100
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:82:13-100
 	android:name
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:78:13-88
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:80:13-88
 activity#com.truthuniversal.tujasiri.truthuniversalapp.GooglePlayMusicActivity
-ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:85:9-92:20
+ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:87:9-94:20
 	android:label
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:87:13-74
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:89:13-74
 	android:parentActivityName
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:88:13-100
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:90:13-100
 	android:name
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:86:13-97
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:88:13-97
 meta-data#com.google.android.gms.version
-ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:95:9-97:69
+ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:97:9-99:69
 MERGED from [com.google.android.gms:play-services-basement:8.1.0] C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\AndroidManifest.xml:21:9-23:69
 	android:name
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:96:13-58
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:98:13-58
 	android:value
-		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:97:13-66
+		ADDED from C:\Users\tujasiri\AndroidStudioProjects\Truth-Universal-App-Android-VERSION1\app\src\main\AndroidManifest.xml:99:13-66

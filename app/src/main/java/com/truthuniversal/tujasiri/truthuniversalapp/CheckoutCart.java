@@ -43,15 +43,13 @@ public class CheckoutCart {
     }
 
     public void addItemToCart(MerchItem merchItem){
-        System.out.println(String.format("Adding ==>%s", merchItem.getMt_item_desc_long()));
         itemsArray.add(merchItem);
-
+        /*
         for(MerchItem tmpMerchItem :itemsArray){
-
             System.out.println(String.format("In cart ==>%s", tmpMerchItem.getMt_item_desc_long()));
 
         }
-
+        */
     }
 
     public void removeItemFromCart(int positon){
@@ -72,7 +70,6 @@ public class CheckoutCart {
 
         for(int i=0;i<itemsInCart().size();i++){
             itemTotal += itemsInCart().get(i).getMt_item_price();
-            //if(qty < 1)
         }
         return itemTotal;
 
