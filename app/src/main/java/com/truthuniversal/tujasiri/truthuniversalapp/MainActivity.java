@@ -7,32 +7,30 @@ package com.truthuniversal.tujasiri.truthuniversalapp;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.ActionBar;
 import android.support.v4.view.GravityCompat;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,8 +46,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.view.Gravity.*;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -67,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
         private CharSequence mDrawerTitle="Navigation";
         private CharSequence mTitle="Truth Universal App";
 
+        TUFirebaseInstanceIdService tuFirebaseInstanceIdService = new TUFirebaseInstanceIdService();
+        TUFirebaseMessagingService tuFirebaseMessagingService;
+
+
+
 
         @SuppressLint("NewApi")
         protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +75,46 @@ public class MainActivity extends AppCompatActivity {
             //setContentView(R.layout.main_layout);
             setContentView(R.layout.content_main);
 
+
+
+            if (this.getIntent().hasExtra("pushNotificationBundle")) {
+                System.out.println("has push bundle");
+
+
+                DialogInterface.OnClickListener dialogListener = new DialogInterface.OnClickListener()
+                {
+
+                public void onClick(DialogInterface dialogInterface,int id){
+
+                    hideBackground((ImageView)findViewById(R.id.default_imageview));
+
+                    FragmentManager fragManager = getFragmentManager();
+                    fragManager.beginTransaction()
+                            .replace(R.id.content_frame, new NewsFragment())
+                            .commit();
+                }
+                };
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                //builder.setTitle("Truth Universal Notification");
+                builder.setTitle((String) this.getIntent().getBundleExtra("pushNotificationBundle").get("title"));
+                //builder.setCustomTitle((View) findViewById(R.id.my_toolbar));
+                builder.setCancelable(true);
+                //builder.setIcon(R.drawable.ic_truth_universal_logo_firebase);
+                builder.setIcon(R.drawable.ic_truth_logo_dark);
+                builder.setMessage((String) this.getIntent().getBundleExtra("pushNotificationBundle").get("message"));
+                //builder.setPositiveButton("OK", null);
+                builder.setPositiveButton("GO TO NEWS", dialogListener);
+                builder.setNegativeButton("CANCEL", null);
+                builder.show();
+
+            }
+
+
+            FirebaseMessaging.getInstance().subscribeToTopic("test");
+            //String fbToken = FirebaseInstanceId.getInstance().getToken();
+
+            new AsyncRegisterFCMToken().execute();
 
             ImageView ivAppHeader = (ImageView)findViewById(R.id.app_header);
 
@@ -244,7 +285,6 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     System.out.println("YVal Social==>"+ default_iv.getY());
-
 
 
                     mDrawerLayout.closeDrawer(GravityCompat.START);
@@ -568,7 +608,24 @@ public class MainActivity extends AppCompatActivity {
                     }//end if
 
                 }//end for
+
+
             }
+
+        public class AsyncRegisterFCMToken extends AsyncTask<String,Void,Boolean> {
+            @Override
+            protected Boolean doInBackground(String... params) {
+                tuFirebaseInstanceIdService.onTokenRefresh();
+                return null;
+            }
+
+            @Override
+            protected void onPreExecute() {
+                System.out.println("registered token");
+            }
+        }
+
+
 
 
     }//end Main

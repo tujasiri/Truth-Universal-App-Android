@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "358308112938",
-    "firebase_url": "https://truth-universal-app-bc4c1.firebaseio.com",
-    "project_id": "truth-universal-app-bc4c1",
-    "storage_bucket": "truth-universal-app-bc4c1.appspot.com"
+    "project_number": "768036600798",
+    "firebase_url": "https://truth-universal-app-a1afb.firebaseio.com",
+    "project_id": "truth-universal-app-a1afb",
+    "storage_bucket": "truth-universal-app-a1afb.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:358308112938:android:0682a35ac284d9a6",
+        "mobilesdk_app_id": "1:768036600798:android:919248f4fcf3a71d",
         "android_client_info": {
-          "package_name": "com.truthuniversalapp.android"
+          "package_name": "com.truthuniversal.tujasiri.truthuniversalapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "358308112938-qqa3gchtccfh46lghi3lhr22696mu72l.apps.googleusercontent.com",
+          "client_id": "768036600798-r2v91o3bbsc4tr01vck5ld4f7jf9b4f1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCU-A7_MWuiqpQNIA_O3fzySF9CEvoNFRQ"
+          "current_key": "AIzaSyCFgac6WOO9b7_TXrGGYoGlSPHcYocq4Bo"
         }
       ],
       "services": {
