@@ -59,10 +59,6 @@ public class MerchFragment extends Fragment{
 
     public final static String ITEM_LIST_POSITION = "com.truthuniversal.tujasiri.tuapp.ITEMLISTPOSITION";
 
-
-
-
-
     private List<MerchItem> merchItemList = new ArrayList<MerchItem>();
     private Map<String,ImageView> imageViewMap = new HashMap<String,ImageView>();
 

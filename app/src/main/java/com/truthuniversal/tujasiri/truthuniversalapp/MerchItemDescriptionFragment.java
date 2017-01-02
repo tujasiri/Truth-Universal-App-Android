@@ -53,13 +53,7 @@ public class MerchItemDescriptionFragment extends Fragment {
 
                 System.out.println("Button Clicked!");
                 System.out.println(String.format("MerchItemList Item ==> %s", merchItem.getMt_item_desc_short()));
-                //System.out.println(String.format(MerchItemDetailList.get(posi)));
 
-
-                //Check to see if Item is in cart
-                //If not in cart add item if in cart, allow user to add another item to quantity
-
-                //CheckoutCart localCheckoutCart = MerchActivity.checkoutCart;
                 merchDetail_CART.addItemToCart(merchItem);
                 addButton.setEnabled(false);
 

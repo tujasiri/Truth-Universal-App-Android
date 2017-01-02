@@ -1,7 +1,9 @@
 package com.truthuniversal.tujasiri.truthuniversalapp;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -30,6 +33,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Created by tujasiri on 7/1/2016.
@@ -40,6 +44,11 @@ public class NewsFragment extends Fragment {
     private List<NewsItem> newsItemList = new ArrayList<NewsItem>();
 
     View myView;
+
+    public final static String EXTRA_ARTICLE = "com.truthuniversal.tujasiri.ARTICLE";
+    public final static String EXTRA_ARTICLE_TITLE = "com.truthuniversal.tujasiri.ARTICLE_TITLE";
+
+    Logger logger = Logger.getLogger("newsLogger");
 
     @Nullable
     @Override
@@ -128,6 +137,41 @@ public class NewsFragment extends Fragment {
         ArrayAdapter<NewsItem> newsItemArrayAdapter = new NewsListAdapter();
         ListView newslist = (ListView) myView.findViewById(R.id.news_layout_listview);
         newslist.setAdapter(newsItemArrayAdapter);
+
+        newslist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(),NewsFragment.class);
+                String newsArticle = newsItemList.get(position).getNews_article();
+                String newsArticleTitle = newsItemList.get(position).getNews_title();
+
+                ImageView ivNews = (ImageView) view.findViewById(R.id.news_list_imageview);
+                ivNews.buildDrawingCache();
+
+                Bitmap imageViewImage = ivNews.getDrawingCache();
+                Bitmap imageViewNews = Bitmap.createBitmap(imageViewImage);
+
+                Bundle extras = new Bundle();
+
+                extras.putParcelable("imagebitmap", imageViewNews);
+                extras.putString(EXTRA_ARTICLE,newsArticle);
+                extras.putString(EXTRA_ARTICLE_TITLE,newsArticleTitle);
+
+                intent.putExtras(extras);
+
+                logger.info("Clicked News Item logger");
+
+                Fragment fragment = new NewsDetailFragment();
+
+                fragment.setArguments(extras);
+
+                FragmentManager fragmentManager = getFragmentManager();
+
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, fragment)
+                        .commit();
+            }
+        });
     }
 
     private void populateNewsItemList(JSONArray jsonNewsArray) {
